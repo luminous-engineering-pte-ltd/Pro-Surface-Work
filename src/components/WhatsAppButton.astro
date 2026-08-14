@@ -1,0 +1,67 @@
+---
+import { company } from '@/data/services';
+---
+
+<a class="whatsapp" href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noreferrer" aria-label="WhatsApp Pro Surface Works">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M19.05 4.91A9.82 9.82 0 0 0 12.08 2C6.66 2 2.25 6.4 2.25 11.82c0 1.73.45 3.42 1.31 4.91L2.17 21.8l5.2-1.36a9.82 9.82 0 0 0 4.71 1.2h.01c5.42 0 9.83-4.4 9.83-9.82a9.78 9.78 0 0 0-2.87-6.91Zm-6.97 15.07h-.01a8.16 8.16 0 0 1-4.16-1.14l-.3-.18-3.08.81.82-3-.19-.31a8.14 8.14 0 0 1-1.25-4.34c0-4.5 3.67-8.16 8.18-8.16a8.12 8.12 0 0 1 5.77 2.4 8.1 8.1 0 0 1 2.39 5.76c0 4.5-3.67 8.16-8.17 8.16Zm4.48-6.11c-.25-.12-1.45-.72-1.68-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.96-.14.17-.29.19-.53.07-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.76-1.85-.2-.48-.4-.41-.56-.42h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.45-.59 1.66-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28Z" />
+  </svg>
+</a>
+
+<style>
+  .whatsapp {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 45;
+    display: inline-flex;
+    width: 56px;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 0;
+    color: var(--white);
+    background: #1f8f5f;
+    box-shadow: 0 14px 36px rgba(31, 143, 95, 0.32);
+    transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    animation: pulse 2.8s ease-in-out infinite;
+  }
+
+  .whatsapp:hover {
+    background: #1a7d53;
+    box-shadow: 0 18px 42px rgba(31, 143, 95, 0.42);
+    transform: translateY(-2px) scale(1.03);
+  }
+
+  .whatsapp svg {
+    width: 35px;
+    height: 35px;
+    display: block;
+    fill: currentColor;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.04);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .whatsapp {
+      right: 14px;
+      bottom: 18px;
+      width: 50px;
+      height: 50px;
+    }
+
+    .whatsapp svg {
+      width: 31px;
+      height: 31px;
+    }
+  }
+</style>

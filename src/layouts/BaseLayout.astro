@@ -1,0 +1,150 @@
+---
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import WhatsAppButton from '@/components/WhatsAppButton.astro';
+import '@/styles/global.css';
+import { company } from '@/data/services';
+
+type Props = {
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+};
+
+const { title, description, image = 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1400&q=80', canonical } = Astro.props;
+const pageTitle = `${title} | ${company.name}`;
+const url = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      name: company.name,
+      url: `https://${company.domain}`,
+      email: company.email,
+      telephone: company.phone,
+      address: { '@type': 'PostalAddress', addressCountry: 'SG', addressLocality: company.location },
+      areaServed: company.location,
+      priceRange: '$$'
+    })} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppButton />
+    <script>
+      const header = document.querySelector('.site-header');
+      const setHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 16);
+      setHeader();
+      window.addEventListener('scroll', setHeader, { passive: true });
+
+      const servicesMenu = document.querySelector('[data-services-menu]');
+      const servicesToggle = document.querySelector('[data-services-toggle]');
+      const closeServicesLinks = document.querySelectorAll('[data-close-services]');
+
+      const setServicesOpen = (isOpen) => {
+        servicesMenu?.classList.toggle('is-open', isOpen);
+        header?.classList.toggle('services-open', isOpen);
+        servicesToggle?.setAttribute('aria-expanded', String(isOpen));
+      };
+
+      servicesToggle?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        setServicesOpen(!servicesMenu?.classList.contains('is-open'));
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!servicesMenu?.contains(event.target)) {
+          setServicesOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          setServicesOpen(false);
+          document.body.classList.remove('menu-open');
+          document.querySelectorAll('[data-menu-toggle]').forEach((button) => {
+            button.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
+
+      closeServicesLinks.forEach((link) => {
+        link.addEventListener('click', () => setServicesOpen(false));
+      });
+
+      document.querySelectorAll('[data-menu-toggle]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const isOpen = !document.body.classList.contains('menu-open');
+          document.body.classList.toggle('menu-open', isOpen);
+          button.setAttribute('aria-expanded', String(isOpen));
+          setServicesOpen(false);
+        });
+      });
+
+      const mobileServicesWrap = document.querySelector('.mobile-services-wrap');
+      const mobileServicesToggle = document.querySelector('[data-mobile-services-toggle]');
+
+      mobileServicesToggle?.addEventListener('click', () => {
+        const isOpen = !mobileServicesWrap?.classList.contains('is-open');
+        mobileServicesWrap?.classList.toggle('is-open', isOpen);
+        mobileServicesToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.querySelectorAll('.mobile-service-toggle').forEach((button) => {
+        button.addEventListener('click', () => {
+          const parent = button.closest('.mobile-service');
+          const isOpen = !parent?.classList.contains('is-open');
+          parent?.classList.toggle('is-open', isOpen);
+          button.setAttribute('aria-expanded', String(isOpen));
+        });
+      });
+
+      document.querySelectorAll('.mobile-panel a').forEach((link) => {
+        link.addEventListener('click', () => {
+          document.body.classList.remove('menu-open');
+          document.querySelectorAll('[data-menu-toggle]').forEach((button) => {
+            button.setAttribute('aria-expanded', 'false');
+          });
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (document.body.classList.contains('menu-open') && !header?.contains(event.target)) {
+          document.body.classList.remove('menu-open');
+          document.querySelectorAll('[data-menu-toggle]').forEach((button) => {
+            button.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+    </script>
+  </body>
+</html>

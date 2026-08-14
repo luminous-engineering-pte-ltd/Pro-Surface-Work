@@ -1,0 +1,12 @@
+---
+type Props = { eyebrow?: string; title: string; text?: string; dark?: boolean };
+const { eyebrow, title, text } = Astro.props;
+---
+
+<div class="section-head">
+  <div>
+    {eyebrow && <div class="eyebrow">{eyebrow}</div>}
+    <h2>{title}</h2>
+  </div>
+  {text && <p>{text}</p>}
+</div>

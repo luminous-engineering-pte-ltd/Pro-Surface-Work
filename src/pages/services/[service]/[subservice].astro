@@ -1,0 +1,163 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import { services, type ServiceCategory, type SubService } from '@/data/services';
+
+export function getStaticPaths() {
+  return services.flatMap((service) =>
+    service.subServices.map((subService) => ({
+      params: { service: service.slug, subservice: subService.slug },
+      props: { service, subService }
+    }))
+  );
+}
+
+const { service, subService } = Astro.props as { service: ServiceCategory; subService: SubService };
+const related = service.subServices.filter((item) => item.slug !== subService.slug).slice(0, 3);
+---
+
+<BaseLayout title={`${subService.title} Singapore`} description={`${subService.summary} Request a quote from Pro Surface Works for ${subService.title.toLowerCase()} in Singapore.`} image={service.image}>
+  <section class="hero service-hero" style={`--hero-image: url('${service.image}')`}>
+    <div class="container hero-copy">
+      <Breadcrumb items={[{ href: '/', label: 'Home' }, { href: '/services', label: 'Services' }, { href: `/services/${service.slug}`, label: service.title }, { href: `/services/${service.slug}/${subService.slug}`, label: subService.title }]} />
+      <div class="eyebrow">{service.title}</div>
+      <h1>{subService.title}</h1>
+      <p>{subService.summary}</p>
+      <div class="hero-actions">
+        <a class="btn light" href="/contact">Get a Free Quote</a>
+        <a class="btn ghost" href={`/services/${service.slug}`}>Back to Service</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <div class="eyebrow">Service Overview</div>
+        <h2>Focused surface work for a cleaner, more refined finish.</h2>
+      </div>
+      <p>{subService.title} is part of {service.title.toLowerCase()}. Pro Surface Works uses the broader service assessment to understand surface condition, material, area and desired finish before recommending the right treatment.</p>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <SectionHeading eyebrow="What It Includes" title="A practical scope shaped around the surface." />
+      <div class="grid three">
+        {['Surface condition review', 'Preparation recommendations', 'Restoration or finishing work', 'Clean project communication', 'Suitable protection advice', 'Final finish check'].map((item) => <article class="panel reveal"><h3>{item}</h3><p>Included where relevant to the site condition and selected service scope.</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section benefits">
+    <div class="container">
+      <SectionHeading eyebrow="Benefits" title="Professional handling for the material in front of you." />
+      <div class="grid three">
+        {['Improved appearance', 'Better surface readiness', 'Clearer finishing direction', 'Residential suitability', 'Commercial suitability', 'Quote-friendly scope'].map((item) => <article class="benefit reveal"><h3>{item}</h3></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section process">
+    <div class="container">
+      <SectionHeading eyebrow="Process" title="Simple, careful and finish-focused." />
+      <div class="steps">
+        {['Consult', 'Assess', 'Prepare', 'Restore', 'Finish'].map((item, index) => <article class="reveal"><span>{String(index + 1).padStart(2, '0')}</span><h3>{item}</h3></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section related">
+    <div class="container">
+      <SectionHeading eyebrow="Related Services" title="Explore adjacent options." />
+      <div class="grid three">
+        {related.map((item) => <ServiceCard title={item.title} summary={item.summary} href={`/services/${service.slug}/${item.slug}`} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq">
+    <div class="container">
+      <SectionHeading eyebrow="FAQ" title={`${subService.title} questions.`} />
+      <details open><summary>Can I request this exact sub-service?</summary><p>Yes. Mention {subService.title} in the quote form or WhatsApp message so the project can be assessed in that context.</p></details>
+      <details><summary>What information helps with a quote?</summary><p>Photos, approximate area, surface type, property type and preferred timing make the quote request clearer.</p></details>
+      <details><summary>Are related services sometimes recommended?</summary><p>Yes. Surface condition may make preparation, repair, polishing or coating useful before the final finish.</p></details>
+    </div>
+  </section>
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .service-hero {
+    min-height: 72vh;
+    align-items: center;
+    padding: 118px 0 96px;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 0.9fr 1fr;
+    gap: 58px;
+  }
+
+  .benefits,
+  .process,
+  .faq {
+    background: var(--white);
+  }
+
+  .panel,
+  .benefit,
+  .steps article {
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  .dark .panel {
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .steps span {
+    color: var(--gold);
+    font-weight: 900;
+  }
+
+  details {
+    border-top: 1px solid var(--line);
+    padding: 20px 0;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 900;
+  }
+
+  @media (max-width: 900px) {
+    .service-hero {
+      min-height: 68vh;
+      padding: 112px 0 76px;
+    }
+
+    .split,
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .service-hero {
+      min-height: auto;
+      padding: 112px 0 64px;
+    }
+  }
+</style>

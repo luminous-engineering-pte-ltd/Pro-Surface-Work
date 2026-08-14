@@ -1,0 +1,247 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import { services, company } from '@/data/services';
+
+const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85';
+---
+
+<BaseLayout title="Premium Flooring & Surface Restoration Singapore" description="Pro Surface Works provides professional floor polishing, marble restoration, timber finishing, tile care and surface restoration solutions across Singapore." image={heroImage}>
+  <section class="hero home-hero" style={`--hero-image: url('${heroImage}')`}>
+    <div class="container hero-copy">
+      <div class="eyebrow">Singapore Surface Restoration</div>
+      <h1>Restore the Surface. Reveal the Beauty.</h1>
+      <p>Professional floor polishing, marble restoration, timber finishing, tile care and surface restoration solutions across Singapore.</p>
+      <div class="hero-actions">
+        <a class="btn light" href="/contact">Get a Free Quote</a>
+        <a class="btn ghost" href="/services">Explore Services</a>
+        <a class="btn primary whatsapp" href="https://wa.me/6581836772" aria-label="WhatsApp Pro Surface Works at +65 8183 6772">
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container stats-grid">
+      <div><strong>10+</strong><span>Surface Solutions</span></div>
+      <div><strong>Professional</strong><span>Craftsmanship</span></div>
+      <div><strong>Residential & Commercial</strong><span>Project Support</span></div>
+      <div><strong>Singapore-Wide</strong><span>Service Area</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Featured Services" title="Specialist care for floors, stone, timber, tiles and outdoor surfaces." text="Every service is built around careful assessment, proper preparation and a refined final finish." />
+      <div class="grid three">
+        {services.map((service) => <ServiceCard number={service.number} title={service.title} summary={service.summary} href={`/services/${service.slug}`} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <SectionHeading eyebrow="Why Choose Us" title="A professional approach from first inspection to final finish." text="Pro Surface Works focuses on surface-specific solutions rather than one-size-fits-all maintenance." />
+      <div class="grid three feature-grid">
+        {[
+          ['Professional Surface Expertise', 'Specialized solutions for floors, marble, timber, tiles and outdoor surfaces.'],
+          ['Detail-Focused Craftsmanship', 'Every project focuses on preparation, precision and finishing quality.'],
+          ['Complete Surface Solutions', 'From preparation and repair to polishing, coating and finishing.'],
+          ['Residential & Commercial', 'Solutions suitable for homes, offices, commercial properties and other spaces.'],
+          ['Professional Approach', 'Clear communication, careful workmanship and project-focused service.'],
+          ['Clean Project Flow', 'A practical sequence that keeps the right treatment matched to the actual surface condition.']
+        ].map(([title, text]) => (
+          <article class="feature reveal"><h3>{title}</h3><p>{text}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section process">
+    <div class="container">
+      <SectionHeading eyebrow="Our Process" title="A clear four-step restoration workflow." text="Each project starts with the surface in front of us, then moves through assessment, restoration and a clean final review." />
+      <div class="timeline">
+        {[
+          ['01', 'Consultation', 'Understand the surface condition and project requirements.'],
+          ['02', 'Assessment', 'Inspect the existing floor or surface and recommend the appropriate solution.'],
+          ['03', 'Restoration', 'Carry out preparation, repair, polishing, sanding, coating or finishing.'],
+          ['04', 'Final Finish', 'Inspect the completed work and ensure a clean, refined result.']
+        ].map(([number, title, text]) => (
+          <article class="reveal"><span>{number}</span><h3>{title}</h3><p>{text}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section expertise">
+    <div class="container">
+      <SectionHeading eyebrow="Surface Expertise" title="Materials deserve specific preparation and finishing." />
+      <div class="expertise-grid">
+        {['Marble', 'Natural Stone', 'Timber', 'Parquet', 'Tiles', 'Grout', 'Outdoor Decking', 'Finished Surfaces'].map((item) => <div class="expertise-card reveal">{item}</div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section before">
+    <div class="container">
+      <SectionHeading eyebrow="Before & After" title="Designed to show the difference clearly." text="Visual examples are prepared as replacement-ready project slots for marble, timber, tiles and floor restoration work." />
+      <div class="grid four">
+        {['Marble', 'Timber', 'Tiles', 'Floor Restoration'].map((item) => (
+          <article class="image-card reveal">
+            <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=80" alt={`${item} restoration comparison placeholder`} loading="lazy" />
+            <div><span>{item}</span><strong>Before / After</strong></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Testimonials" title="Customer review placeholders for real feedback." text="No fake names or invented reviews are used. These cards are clearly marked for replacement with verified customer feedback." />
+      <div class="grid three">
+        {[1, 2, 3].map(() => <article class="testimonial reveal"><p>Verified customer review placeholder. Replace this with real feedback once available.</p><strong>Review pending verification</strong></article>)}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .stats {
+    padding-top: 34px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .stats-grid div {
+    padding: 26px;
+    border-right: 1px solid var(--line);
+  }
+
+  .stats-grid div:last-child {
+    border-right: 0;
+  }
+
+  .stats strong,
+  .stats span,
+  .expertise-card strong,
+  .image-card strong,
+  .image-card span {
+    display: block;
+  }
+
+  .stats strong {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.8rem;
+  }
+
+  .stats span,
+  .image-card span {
+    color: var(--muted);
+    font-weight: 800;
+  }
+
+  .feature,
+  .testimonial,
+  .timeline article {
+    padding: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius);
+  }
+
+  .process {
+    background: var(--white);
+  }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line);
+  }
+
+  .timeline article {
+    background: var(--paper);
+    border: 0;
+  }
+
+  .timeline span {
+    color: var(--gold);
+    font-weight: 900;
+  }
+
+  .expertise {
+    background: var(--paper-2);
+  }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .expertise-card {
+    min-height: 150px;
+    display: flex;
+    align-items: end;
+    padding: 22px;
+    border-radius: var(--radius);
+    color: var(--white);
+    background:
+      linear-gradient(0deg, rgba(7, 21, 37, 0.82), rgba(7, 21, 37, 0.12)),
+      url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80") center / cover;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  .image-card {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--white);
+  }
+
+  .image-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .image-card div {
+    padding: 18px;
+  }
+
+  .testimonial {
+    background: var(--white);
+    border-color: var(--line);
+  }
+
+  @media (max-width: 900px) {
+    .stats-grid,
+    .timeline,
+    .expertise-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-grid div {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+  }
+</style>

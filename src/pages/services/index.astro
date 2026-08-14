@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import ServiceCard from '@/components/ServiceCard.astro';
+import CTASection from '@/components/CTASection.astro';
+import { services, uniqueSubServices } from '@/data/services';
+---
+
+<BaseLayout title="Services" description="Explore Pro Surface Works services for floor polishing, marble and stone care, timber finishing, tile and grout services, repair and outdoor decking in Singapore.">
+  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=80')`}>
+    <div class="container hero-copy">
+      <div class="eyebrow">Services</div>
+      <h1>Surface solutions made clear.</h1>
+      <p>Browse every main category and discover the specific sub-service that fits your floor, stone, timber, tile or outdoor surface.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Main Services" title="Ten premium service categories." text="Each category has its own landing page with relevant sub-services and quote guidance." />
+      <div class="grid three">
+        {services.map((service) => <ServiceCard number={service.number} title={service.title} summary={service.summary} href={`/services/${service.slug}`} />)}
+      </div>
+    </div>
+  </section>
+  <section class="section sub-list">
+    <div class="container">
+      <SectionHeading eyebrow="Sub-Services" title="Unique service list without duplicate cards." text="Some services belong under multiple categories, so this overview deduplicates them while the category hierarchy stays intact." />
+      <div class="chips">
+        {uniqueSubServices.map((sub) => {
+          const parent = services.find((service) => service.subServices.some((item) => item.slug === sub.slug));
+          return <a href={`/services/${parent?.slug}/${sub.slug}`}>{sub.title}</a>;
+        })}
+      </div>
+    </div>
+  </section>
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .slim {
+    min-height: 62vh;
+  }
+
+  .sub-list {
+    background: var(--white);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chips a {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 10px 14px;
+    background: var(--paper);
+    font-weight: 800;
+  }
+</style>

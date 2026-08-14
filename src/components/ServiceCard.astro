@@ -1,0 +1,45 @@
+---
+type Props = { number?: string; title: string; summary: string; href: string };
+const { number, title, summary, href } = Astro.props;
+---
+
+<a class="service-card reveal" href={href}>
+  {number && <span>{number}</span>}
+  <h3>{title}</h3>
+  <p>{summary}</p>
+  <strong>Explore Service →</strong>
+</a>
+
+<style>
+  .service-card {
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 14px 34px rgba(7, 21, 37, 0.06);
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(31, 90, 73, 0.42);
+    box-shadow: var(--shadow);
+  }
+
+  span {
+    color: var(--gold);
+    font-weight: 900;
+  }
+
+  h3 {
+    margin: 18px 0 12px;
+  }
+
+  strong {
+    color: var(--green-2);
+  }
+</style>

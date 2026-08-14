@@ -1,0 +1,95 @@
+---
+import { company, services } from '@/data/services';
+---
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand" href="/"><span>PS</span> Pro Surface Works</a>
+      <p>Professional floor polishing, restoration, timber finishing, marble care and surface solutions.</p>
+      <a class="btn light" href="/contact">Get a Free Quote</a>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <a href="/">Home</a>
+      <a href="/services">Services</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div>
+      <h3>Services</h3>
+      {services.slice(0, 6).map((service) => <a href={`/services/${service.slug}`}>{service.title}</a>)}
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <a href={`mailto:${company.email}`}>{company.email}</a>
+      <a href={`https://wa.me/${company.whatsapp}`}>{company.phone}</a>
+      <span>{company.location}</span>
+    </div>
+  </div>
+  <div class="container footer-bottom">© 2026 Pro Surface Works. All rights reserved.</div>
+</footer>
+
+<style>
+  .footer {
+    color: var(--white);
+    background: var(--navy);
+    padding: 72px 0 24px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr 1fr 0.8fr;
+    gap: 42px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 900;
+    margin-bottom: 20px;
+  }
+
+  .brand span {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 50%;
+    background: var(--green-2);
+    font-family: "Cormorant Garamond", Georgia, serif;
+  }
+
+  h3 {
+    margin-bottom: 16px;
+    font-size: 1.25rem;
+  }
+
+  a,
+  span {
+    display: block;
+    color: rgba(255, 255, 255, 0.74);
+    margin-bottom: 10px;
+  }
+
+  p {
+    max-width: 350px;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .footer-bottom {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.92rem;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

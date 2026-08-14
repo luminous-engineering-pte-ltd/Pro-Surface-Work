@@ -1,0 +1,131 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { company, services } from '@/data/services';
+---
+
+<BaseLayout title="Contact" description="Request a free quote from Pro Surface Works for floor polishing, surface restoration, marble care, timber finishing, tile services and outdoor decking in Singapore.">
+  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1800&q=80')`}>
+    <div class="container hero-copy">
+      <div class="eyebrow">Contact</div>
+      <h1>Tell Us About Your Project</h1>
+      <p>Tell us what needs fixing and get a clear quote.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container contact-grid">
+      <form class="contact-form" aria-label="Quote request form">
+        <label>Full Name<input name="name" autocomplete="name" required /></label>
+        <label>Email Address<input name="email" type="email" autocomplete="email" required /></label>
+        <label>Phone / WhatsApp<input name="phone" autocomplete="tel" required /></label>
+        <label>Property Type<select name="property"><option>Residential</option><option>Commercial</option><option>Other</option></select></label>
+        <label>Surface Type<input name="surface" placeholder="Marble, timber, tiles, decking..." /></label>
+        <label>Service Required<select name="service">{services.map((service) => <option>{service.title}</option>)}</select></label>
+        <label>Approximate Floor / Surface Area<input name="area" placeholder="e.g. 500 sq ft" /></label>
+        <label>Preferred Date<input name="date" type="date" /></label>
+        <label class="full">Message<textarea name="message" rows="6"></textarea></label>
+        <button class="btn primary full" type="submit">Request a Free Quote</button>
+      </form>
+      <aside class="contact-info">
+        <div class="eyebrow">Contact Information</div>
+        <h2>Let’s Talk About Your Surface</h2>
+        <p>Share the surface type, current condition and what result you want. Photos are helpful when continuing by WhatsApp.</p>
+        <a href={`mailto:${company.email}`}><span>Email</span>{company.email}</a>
+        <a href={`https://wa.me/${company.whatsapp}`}><span>Phone / WhatsApp</span>{company.phone}</a>
+        <a href={`https://${company.domain}`}><span>Website</span>{company.domain}</a>
+        <a class="btn primary" href={`https://wa.me/${company.whatsapp}`}>WhatsApp CTA</a>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .slim {
+    min-height: 62vh;
+    align-items: center;
+    padding: 118px 0 90px;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+    gap: 34px;
+    align-items: start;
+  }
+
+  .contact-form,
+  .contact-info {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .contact-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    padding: 28px;
+  }
+
+  label {
+    display: grid;
+    gap: 8px;
+    color: var(--ink);
+    font-weight: 850;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 14px;
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .full {
+    grid-column: 1 / -1;
+  }
+
+  .contact-info {
+    padding: 34px;
+  }
+
+  .contact-info a:not(.btn) {
+    display: block;
+    margin: 22px 0;
+    font-weight: 900;
+  }
+
+  .contact-info span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .slim {
+      min-height: 58vh;
+      padding: 112px 0 76px;
+    }
+
+    .contact-grid,
+    .contact-form {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .slim {
+      min-height: auto;
+      padding: 112px 0 64px;
+    }
+  }
+</style>
