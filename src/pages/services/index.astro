@@ -16,8 +16,8 @@ import { services, uniqueSubServices } from '@/data/services';
   </section>
   <section class="section">
     <div class="container">
-      <SectionHeading eyebrow="Main Services" title="Three premium service categories." text="Each category has its own landing page with relevant sub-services and quote guidance." />
-      <div class="grid three">
+      <SectionHeading eyebrow="Main Services" title="Two premium service categories." text="Each category has its own landing page with relevant sub-services and quote guidance." />
+      <div class="grid services-grid">
         {services.map((service) => <ServiceCard number={service.number} title={service.title} summary={service.summary} href={`/services/${service.slug}`} />)}
       </div>
     </div>
@@ -45,6 +45,12 @@ import { services, uniqueSubServices } from '@/data/services';
     background: var(--white);
   }
 
+  .services-grid {
+    max-width: 860px;
+    margin-inline: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .chips {
     display: flex;
     flex-wrap: wrap;
@@ -57,5 +63,11 @@ import { services, uniqueSubServices } from '@/data/services';
     padding: 10px 14px;
     background: var(--paper);
     font-weight: 800;
+  }
+
+  @media (max-width: 900px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

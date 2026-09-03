@@ -32,43 +32,32 @@ const sub = (title: string, summary: string): SubService => ({
 export const services: ServiceCategory[] = [
   {
     number: '01',
-    title: 'General Floor Polishing & Maintenance',
-    slug: 'general-floor-polishing-maintenance',
+    title: 'Floor, Marble & Stone Restoration & Polishing',
+    slug: 'floor-marble-stone-restoration-polishing',
     icon: 'Sparkles',
     image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1400&q=80',
-    summary: 'Routine floor polishing, buffing, refinishing and protective care for a cleaner, brighter finish.',
+    summary: 'Floor grinding, marble polishing, stone restoration, top polishing and professional regrouting.',
     description:
-      'Professional polishing and maintenance solutions designed to restore visual clarity, even out tired finishes and protect high-use floors across residential and commercial spaces.',
+      'A complete floor, marble and stone restoration service designed to refine worn surfaces, restore clarity and support a cleaner, more polished finish.',
     subServices: [
-      sub('Machine Polishing', 'Mechanical polishing for a more consistent and refined floor appearance.'),
-      sub('Buffing & Refresh', 'A light refresh for surfaces that need revived sheen without deeper restoration.'),
-      sub('Buffing', 'Controlled buffing to improve surface appearance and remove dullness.'),
-      sub('Floor Refinishing', 'Refinishing support for worn floors that need renewed protection and presence.'),
-      sub('Finish Assessment', 'A practical review of the existing finish before choosing the right treatment.'),
-      sub('Protective Coating', 'Protective finishing layers that help preserve cleaned or restored surfaces.')
+      sub('Floor Grinding & Polishing', 'Progressive grinding and polishing for worn floor surfaces.'),
+      sub('Machine Grinding & Polishing', 'Machine-supported grinding and polishing for a more consistent finish.'),
+      sub('Buffing & Polishing', 'Controlled buffing and polishing to improve surface appearance and reduce dullness.'),
+      sub('Floor Refinishing & Restoration', 'Refinishing and restoration support for worn floors that need renewed presence.'),
+      sub('Marble Floor Polishing', 'Marble floor polishing for homes, offices and commercial spaces.'),
+      sub('Marble Bathroom Polishing', 'Bathroom marble polishing for walls, counters and flooring surfaces.'),
+      sub('Kitchen Top Polishing', 'Polishing for marble and stone kitchen tops affected by daily use.'),
+      sub('Vanity Top Polishing', 'Refinement for bathroom vanity tops with water marks, dullness or light wear.'),
+      sub('Basin Top Polishing', 'Polishing for basin tops affected by daily water marks and surface wear.'),
+      sub('Solid Surface Top Polishing', 'Polishing for suitable solid surface tops that need renewed clarity.'),
+      sub('Marble Regrouting', 'Regrouting support for marble joints that need a cleaner, more stable finish.'),
+      sub('Tile Regrouting', 'Regrouting support for tile joints that need a cleaner, more stable finish.'),
+      sub('Homogeneous Tile Gum Grouting', 'Gum grouting for homogeneous tile surfaces requiring refreshed joints.'),
+      sub('Porcelain Tile Grouting', 'Grouting support for porcelain tile surfaces where joint condition affects the finish.')
     ]
   },
   {
     number: '02',
-    title: 'Marble & Stone Care & Polishing',
-    slug: 'marble-stone-care-polishing',
-    icon: 'Gem',
-    image: 'https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=1400&q=80',
-    summary: 'Specialized care for marble, stone floors, countertops, bathrooms and repaired stone surfaces.',
-    description:
-      'Marble and natural stone require careful preparation and finishing. This service focuses on polishing, repair, regrouting and surface clarity for premium stone areas.',
-    subServices: [
-      sub('Grinding & Polishing', 'Progressive grinding and polishing for worn stone and marble surfaces.'),
-      sub('Marble Flooring', 'Marble floor restoration and polishing for homes, offices and commercial spaces.'),
-      sub('Kitchen Top Polishing', 'Polishing for marble and stone kitchen tops affected by daily use.'),
-      sub('Vanity Top Polishing', 'Refinement for bathroom vanity tops with water marks, dullness or light wear.'),
-      sub('Marble Bathroom Polishing', 'Bathroom marble polishing for walls, counters and flooring surfaces.'),
-      sub('Stone Repair', 'Targeted stone repair for chips, cracks, gaps and visual imperfections.'),
-      sub('Marble Regrouting', 'Regrouting support for marble joints that need a cleaner, more stable finish.')
-    ]
-  },
-  {
-    number: '03',
     title: 'Parquet & Wood Finishing, Repair & Restoration',
     slug: 'parquet-wood-finishing-repair-restoration',
     icon: 'Hammer',

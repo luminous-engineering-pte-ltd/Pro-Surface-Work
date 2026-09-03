@@ -26,7 +26,7 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
 
   <section class="stats">
     <div class="container stats-grid">
-      <div><strong>3</strong><span>Surface Solutions</span></div>
+      <div><strong>2</strong><span>Surface Solutions</span></div>
       <div><strong>Professional</strong><span>Craftsmanship</span></div>
       <div><strong>Residential & Commercial</strong><span>Project Support</span></div>
       <div><strong>Singapore-Wide</strong><span>Service Area</span></div>
@@ -36,7 +36,7 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
   <section class="section">
     <div class="container">
       <SectionHeading eyebrow="Featured Services" title="Specialist care for floors, stone, parquet and timber." text="Every service is built around careful assessment, proper preparation and a refined final finish." />
-      <div class="grid three">
+      <div class="grid services-grid">
         {services.map((service) => <ServiceCard number={service.number} title={service.title} summary={service.summary} href={`/services/${service.slug}`} />)}
       </div>
     </div>
@@ -150,6 +150,12 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
     font-size: 1.8rem;
   }
 
+  .services-grid {
+    max-width: 860px;
+    margin-inline: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .stats span,
   .image-card span {
     color: var(--muted);
@@ -234,6 +240,7 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
 
   @media (max-width: 900px) {
     .stats-grid,
+    .services-grid,
     .timeline,
     .expertise-grid {
       grid-template-columns: 1fr;
