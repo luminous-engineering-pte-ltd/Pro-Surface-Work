@@ -105,22 +105,6 @@ export const services: ServiceCategory[] = [
   },
   {
     number: '05',
-    title: 'Wood Staining & Coloring',
-    slug: 'wood-staining-coloring',
-    icon: 'Palette',
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80',
-    summary: 'Wood staining, natural tinting, antique finishes and color matching for timber details.',
-    description:
-      'Wood staining and color services for projects where tone, consistency and final character matter as much as protection.',
-    subServices: [
-      sub('Wood Staining', 'Color adjustment and stain application for timber surfaces.'),
-      sub('Natural Wood Tinting', 'Subtle tinting that keeps timber grain visible and natural.'),
-      sub('Antique / Vintage Finish', 'Aged and character-rich finishes for selected wood surfaces.'),
-      sub('Color Matching & Touch-up', 'Practical matching and touch-up work for existing timber tones.')
-    ]
-  },
-  {
-    number: '06',
     title: 'Surface Preparation & Sanding',
     slug: 'surface-preparation-sanding',
     icon: 'Layers',
@@ -136,7 +120,7 @@ export const services: ServiceCategory[] = [
     ]
   },
   {
-    number: '07',
+    number: '06',
     title: 'Parquet & Wood Repair & Restoration',
     slug: 'parquet-wood-repair-restoration',
     icon: 'Hammer',
@@ -152,7 +136,7 @@ export const services: ServiceCategory[] = [
     ]
   },
   {
-    number: '08',
+    number: '07',
     title: 'Tile & Grout Services',
     slug: 'tile-grout-services',
     icon: 'Grid3X3',
@@ -168,35 +152,6 @@ export const services: ServiceCategory[] = [
       sub('Leveling', 'Surface leveling support for selected tile and floor conditions.'),
       sub('Chemical Wash', 'Chemical wash service for tile and grout surfaces requiring deeper cleaning.'),
       sub('Tile Coating', 'Protective coating options for suitable tiled surfaces.')
-    ]
-  },
-  {
-    number: '09',
-    title: 'General Floor Maintenance & Repair',
-    slug: 'general-floor-maintenance-repair',
-    icon: 'ShieldCheck',
-    image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1400&q=80',
-    summary: 'Repair, finish assessment and protective coating for floors that need practical maintenance.',
-    description:
-      'A focused maintenance and repair service for surfaces that need inspection, protection or targeted correction without unnecessary treatment.',
-    subServices: [
-      sub('Floor Repair', 'Practical repair support for damaged or worn floor areas.'),
-      sub('Finish Assessment', 'A practical review of the existing finish before choosing the right treatment.'),
-      sub('Protective Coating', 'Protective finishing layers that help preserve cleaned or restored surfaces.')
-    ]
-  },
-  {
-    number: '10',
-    title: 'Outdoor Decking',
-    slug: 'outdoor-decking',
-    icon: 'PanelTop',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=80',
-    summary: 'Outdoor decking care and WPC decking installation for exterior living areas.',
-    description:
-      'Outdoor decking solutions for Singapore properties, including practical decking service and WPC installation for exterior surfaces.',
-    subServices: [
-      sub('Outdoor Decking', 'Outdoor decking service for exterior floor areas.'),
-      sub('WPC Decking Installation', 'Wood-plastic composite decking installation for suitable outdoor spaces.')
     ]
   }
 ];

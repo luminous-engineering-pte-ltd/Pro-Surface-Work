@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { company, services } from '@/data/services';
 ---
 
-<BaseLayout title="Contact" description="Request a free quote from Pro Surface Works for floor polishing, surface restoration, marble care, timber finishing, tile services and outdoor decking in Singapore.">
+<BaseLayout title="Contact" description="Request a free quote from Pro Surface Works for floor polishing, surface restoration, marble care, timber finishing, tile services and surface preparation in Singapore.">
   <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1800&q=80')`}>
     <div class="container hero-copy">
       <div class="eyebrow">Contact</div>
@@ -18,7 +18,7 @@ import { company, services } from '@/data/services';
         <label>Email Address<input name="email" type="email" autocomplete="email" required /></label>
         <label>Phone / WhatsApp<input name="phone" autocomplete="tel" required /></label>
         <label>Property Type<select name="property"><option>Residential</option><option>Commercial</option><option>Other</option></select></label>
-        <label>Surface Type<input name="surface" placeholder="Marble, timber, tiles, decking..." /></label>
+        <label>Surface Type<input name="surface" placeholder="Marble, timber, tiles..." /></label>
         <label>Service Required<select name="service">{services.map((service) => <option>{service.title}</option>)}</select></label>
         <label>Approximate Floor / Surface Area<input name="area" placeholder="e.g. 500 sq ft" /></label>
         <label>Preferred Date<input name="date" type="date" /></label>

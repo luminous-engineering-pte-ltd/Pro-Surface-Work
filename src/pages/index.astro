@@ -26,7 +26,7 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
 
   <section class="stats">
     <div class="container stats-grid">
-      <div><strong>10+</strong><span>Surface Solutions</span></div>
+      <div><strong>7</strong><span>Surface Solutions</span></div>
       <div><strong>Professional</strong><span>Craftsmanship</span></div>
       <div><strong>Residential & Commercial</strong><span>Project Support</span></div>
       <div><strong>Singapore-Wide</strong><span>Service Area</span></div>
@@ -35,7 +35,7 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
 
   <section class="section">
     <div class="container">
-      <SectionHeading eyebrow="Featured Services" title="Specialist care for floors, stone, timber, tiles and outdoor surfaces." text="Every service is built around careful assessment, proper preparation and a refined final finish." />
+      <SectionHeading eyebrow="Featured Services" title="Specialist care for floors, stone, timber and tiles." text="Every service is built around careful assessment, proper preparation and a refined final finish." />
       <div class="grid three">
         {services.map((service) => <ServiceCard number={service.number} title={service.title} summary={service.summary} href={`/services/${service.slug}`} />)}
       </div>
@@ -47,7 +47,7 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
       <SectionHeading eyebrow="Why Choose Us" title="A professional approach from first inspection to final finish." text="Pro Surface Works focuses on surface-specific solutions rather than one-size-fits-all maintenance." />
       <div class="grid three feature-grid">
         {[
-          ['Professional Surface Expertise', 'Specialized solutions for floors, marble, timber, tiles and outdoor surfaces.'],
+          ['Professional Surface Expertise', 'Specialized solutions for floors, marble, timber and tiles.'],
           ['Detail-Focused Craftsmanship', 'Every project focuses on preparation, precision and finishing quality.'],
           ['Complete Surface Solutions', 'From preparation and repair to polishing, coating and finishing.'],
           ['Residential & Commercial', 'Solutions suitable for homes, offices, commercial properties and other spaces.'],
@@ -80,7 +80,7 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
     <div class="container">
       <SectionHeading eyebrow="Surface Expertise" title="Materials deserve specific preparation and finishing." />
       <div class="expertise-grid">
-        {['Marble', 'Natural Stone', 'Timber', 'Parquet', 'Tiles', 'Grout', 'Outdoor Decking', 'Finished Surfaces'].map((item) => <div class="expertise-card reveal">{item}</div>)}
+        {['Marble', 'Natural Stone', 'Timber', 'Parquet', 'Tiles', 'Grout', 'Finished Surfaces'].map((item) => <div class="expertise-card reveal">{item}</div>)}
       </div>
     </div>
   </section>
