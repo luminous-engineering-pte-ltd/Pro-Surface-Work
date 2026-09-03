@@ -8,12 +8,12 @@ import { services, company } from '@/data/services';
 const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85';
 ---
 
-<BaseLayout title="Premium Flooring & Surface Restoration Singapore" description="Pro Surface Works provides professional floor polishing, marble restoration, timber finishing, tile care and surface restoration solutions across Singapore." image={heroImage}>
+<BaseLayout title="Premium Flooring & Surface Restoration Singapore" description="Pro Surface Works provides professional floor polishing, marble restoration, parquet repair, timber finishing and surface restoration solutions across Singapore." image={heroImage}>
   <section class="hero home-hero" style={`--hero-image: url('${heroImage}')`}>
     <div class="container hero-copy">
       <div class="eyebrow">Singapore Surface Restoration</div>
       <h1>Restore the Surface. Reveal the Beauty.</h1>
-      <p>Professional floor polishing, marble restoration, timber finishing, tile care and surface restoration solutions across Singapore.</p>
+      <p>Professional floor polishing, marble restoration, parquet repair, timber finishing and surface restoration solutions across Singapore.</p>
       <div class="hero-actions">
         <a class="btn light" href="/contact">Get a Free Quote</a>
         <a class="btn ghost" href="/services">Explore Services</a>
@@ -26,7 +26,7 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
 
   <section class="stats">
     <div class="container stats-grid">
-      <div><strong>7</strong><span>Surface Solutions</span></div>
+      <div><strong>3</strong><span>Surface Solutions</span></div>
       <div><strong>Professional</strong><span>Craftsmanship</span></div>
       <div><strong>Residential & Commercial</strong><span>Project Support</span></div>
       <div><strong>Singapore-Wide</strong><span>Service Area</span></div>
@@ -35,7 +35,7 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
 
   <section class="section">
     <div class="container">
-      <SectionHeading eyebrow="Featured Services" title="Specialist care for floors, stone, timber and tiles." text="Every service is built around careful assessment, proper preparation and a refined final finish." />
+      <SectionHeading eyebrow="Featured Services" title="Specialist care for floors, stone, parquet and timber." text="Every service is built around careful assessment, proper preparation and a refined final finish." />
       <div class="grid three">
         {services.map((service) => <ServiceCard number={service.number} title={service.title} summary={service.summary} href={`/services/${service.slug}`} />)}
       </div>
@@ -47,7 +47,7 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
       <SectionHeading eyebrow="Why Choose Us" title="A professional approach from first inspection to final finish." text="Pro Surface Works focuses on surface-specific solutions rather than one-size-fits-all maintenance." />
       <div class="grid three feature-grid">
         {[
-          ['Professional Surface Expertise', 'Specialized solutions for floors, marble, timber and tiles.'],
+          ['Professional Surface Expertise', 'Specialized solutions for floors, marble, parquet and timber.'],
           ['Detail-Focused Craftsmanship', 'Every project focuses on preparation, precision and finishing quality.'],
           ['Complete Surface Solutions', 'From preparation and repair to polishing, coating and finishing.'],
           ['Residential & Commercial', 'Solutions suitable for homes, offices, commercial properties and other spaces.'],
@@ -80,16 +80,16 @@ const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?
     <div class="container">
       <SectionHeading eyebrow="Surface Expertise" title="Materials deserve specific preparation and finishing." />
       <div class="expertise-grid">
-        {['Marble', 'Natural Stone', 'Timber', 'Parquet', 'Tiles', 'Grout', 'Finished Surfaces'].map((item) => <div class="expertise-card reveal">{item}</div>)}
+        {['Marble', 'Natural Stone', 'Timber', 'Parquet', 'Wood Finishes', 'Finished Surfaces'].map((item) => <div class="expertise-card reveal">{item}</div>)}
       </div>
     </div>
   </section>
 
   <section class="section before">
     <div class="container">
-      <SectionHeading eyebrow="Before & After" title="Designed to show the difference clearly." text="Visual examples are prepared as replacement-ready project slots for marble, timber, tiles and floor restoration work." />
-      <div class="grid four">
-        {['Marble', 'Timber', 'Tiles', 'Floor Restoration'].map((item) => (
+      <SectionHeading eyebrow="Before & After" title="Designed to show the difference clearly." text="Visual examples are prepared as replacement-ready project slots for marble, timber and floor restoration work." />
+      <div class="grid three">
+        {['Marble', 'Timber', 'Floor Restoration'].map((item) => (
           <article class="image-card reveal">
             <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=80" alt={`${item} restoration comparison placeholder`} loading="lazy" />
             <div><span>{item}</span><strong>Before / After</strong></div>

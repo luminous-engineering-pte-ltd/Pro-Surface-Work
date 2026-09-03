@@ -6,17 +6,17 @@ import CTASection from '@/components/CTASection.astro';
 import { services, uniqueSubServices } from '@/data/services';
 ---
 
-<BaseLayout title="Services" description="Explore Pro Surface Works services for floor polishing, marble and stone care, timber finishing, tile and grout services, repair and surface preparation in Singapore.">
+<BaseLayout title="Services" description="Explore Pro Surface Works services for floor polishing, marble and stone care, parquet repair, timber finishing and surface preparation in Singapore.">
   <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=80')`}>
     <div class="container hero-copy">
       <div class="eyebrow">Services</div>
       <h1>Surface solutions made clear.</h1>
-      <p>Browse every main category and discover the specific sub-service that fits your floor, stone, timber or tile surface.</p>
+      <p>Browse every main category and discover the specific sub-service that fits your floor, stone, parquet or timber surface.</p>
     </div>
   </section>
   <section class="section">
     <div class="container">
-      <SectionHeading eyebrow="Main Services" title="Seven premium service categories." text="Each category has its own landing page with relevant sub-services and quote guidance." />
+      <SectionHeading eyebrow="Main Services" title="Three premium service categories." text="Each category has its own landing page with relevant sub-services and quote guidance." />
       <div class="grid three">
         {services.map((service) => <ServiceCard number={service.number} title={service.title} summary={service.summary} href={`/services/${service.slug}`} />)}
       </div>

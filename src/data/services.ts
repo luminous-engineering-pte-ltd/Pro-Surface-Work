@@ -69,89 +69,26 @@ export const services: ServiceCategory[] = [
   },
   {
     number: '03',
-    title: 'Wood & Timber Solutions & Finishing',
-    slug: 'wood-timber-solutions-finishing',
-    icon: 'Trees',
+    title: 'Parquet & Wood Finishing, Repair & Restoration',
+    slug: 'parquet-wood-finishing-repair-restoration',
+    icon: 'Hammer',
     image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1400&q=80',
-    summary: 'Timber sanding, varnishing, staining, top-coats and finishing for floors, stairs and handrails.',
+    summary: 'Parquet repair, wood restoration, sanding, varnishing, staining and protective finishing.',
     description:
-      'A complete timber finishing service for wooden floors and details, built around preparation, color control, surface protection and a refined final feel.',
+      'A complete parquet and wood service built around careful repair, surface preparation, sanding, varnishing, restoration and protective finishing.',
     subServices: [
-      sub('Sanding & Varnishing', 'Surface sanding followed by a suitable varnish finish for timber floors.'),
+      sub('Parquet Repair & Restoration', 'Parquet repair and restoration with attention to existing pattern, tone and surface condition.'),
+      sub('Floor Sanding & Varnishing', 'Floor sanding followed by a suitable varnish system.'),
+      sub('Staircase Sanding & Varnishing', 'Sanding and varnishing for timber staircases, treads and risers.'),
       sub('Light Sanding', 'Light sanding for surfaces that need controlled preparation before finishing.'),
-      sub('Wood Floor Finishing', 'Professional finishing to improve timber floor appearance and durability.'),
       sub('Wood Staining', 'Color adjustment and stain application for timber surfaces.'),
-      sub('Protective Top-Coat', 'A protective top layer for timber surfaces after preparation or staining.'),
-      sub('Treads & Risers', 'Finishing and restoration support for timber stair treads and risers.'),
-      sub('Handrails', 'Sanding, staining and finishing for timber handrails.')
-    ]
-  },
-  {
-    number: '04',
-    title: 'Wood & Parquet Varnishing & Finishing',
-    slug: 'wood-parquet-varnishing-finishing',
-    icon: 'Brush',
-    image: 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=1400&q=80',
-    summary: 'Glossy, matte, PU and melamine finishes for timber surfaces needing a professional final layer.',
-    description:
-      'Varnishing and finishing services that help timber surfaces look complete, feel smooth and hold up better against daily use.',
-    subServices: [
       sub('Glossy Varnish Coating', 'A polished gloss finish for timber surfaces where shine is desired.'),
       sub('Matte Varnish Finish', 'A restrained matte finish for timber surfaces with a softer visual profile.'),
-      sub('PU (Polyurethane) Varnish', 'Polyurethane varnish application for practical timber protection.'),
-      sub('Melamine Polish & Finish', 'Melamine polishing and finishing for selected wood surfaces.'),
-      sub('Protective Top-Coat', 'A protective top layer for timber surfaces after preparation or staining.')
-    ]
-  },
-  {
-    number: '05',
-    title: 'Surface Preparation & Sanding',
-    slug: 'surface-preparation-sanding',
-    icon: 'Layers',
-    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80',
-    summary: 'Sanding, smoothing, leveling and old varnish removal before a new finish is applied.',
-    description:
-      'Preparation is the foundation of a premium finish. This service addresses unevenness, old coating residue and surface readiness before restoration or finishing.',
-    subServices: [
-      sub('Floor Sanding & Varnishing', 'Floor sanding followed by a suitable varnish system.'),
-      sub('Light Sanding & Buffing', 'Controlled sanding and buffing for lighter surface preparation needs.'),
-      sub('Surface Leveling & Smoothing', 'Surface preparation to reduce unevenness and improve finish quality.'),
-      sub('Old Varnish Removal & Stripping', 'Removal of old finish layers before new coating or restoration work.')
-    ]
-  },
-  {
-    number: '06',
-    title: 'Parquet & Wood Repair & Restoration',
-    slug: 'parquet-wood-repair-restoration',
-    icon: 'Hammer',
-    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1400&q=80',
-    summary: 'Repair and restoration for timber floors, parquet, gaps, scratches and dents.',
-    description:
-      'Timber repair and restoration services for surfaces that need practical correction before refinishing, polishing or protective coating.',
-    subServices: [
+      sub('Protective Top-Coat', 'A protective top layer for timber surfaces after preparation or staining.'),
       sub('Timber & Wood Repair', 'Targeted repairs for worn, damaged or unstable timber areas.'),
-      sub('Parquet Restoration', 'Parquet surface restoration with attention to existing pattern and tone.'),
+      sub('Old Varnish Removal & Stripping', 'Removal of old finish layers before new coating or restoration work.'),
       sub('Crack & Gap Filling', 'Filling for visible cracks and gaps before finishing.'),
       sub('Scratches & Dent Removal', 'Reduction of surface scratches and dents where the timber condition allows.')
-    ]
-  },
-  {
-    number: '07',
-    title: 'Tile & Grout Services',
-    slug: 'tile-grout-services',
-    icon: 'Grid3X3',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80',
-    summary: 'Tile repair, restoration, regrouting, chemical wash, leveling and tile coating.',
-    description:
-      'Tile and grout services for floors, bathrooms and practical surfaces where cleanliness, alignment and joint condition shape the final impression.',
-    subServices: [
-      sub('Tile Repair', 'Repair support for cracked, loose or damaged tile areas.'),
-      sub('Tile Restoration', 'Restoration work to improve the appearance of tired tiled surfaces.'),
-      sub('Regrouting', 'Renewal of grout lines for cleaner, more consistent joints.'),
-      sub('Marble Regrouting', 'Regrouting support for marble joints that need a cleaner, more stable finish.'),
-      sub('Leveling', 'Surface leveling support for selected tile and floor conditions.'),
-      sub('Chemical Wash', 'Chemical wash service for tile and grout surfaces requiring deeper cleaning.'),
-      sub('Tile Coating', 'Protective coating options for suitable tiled surfaces.')
     ]
   }
 ];
