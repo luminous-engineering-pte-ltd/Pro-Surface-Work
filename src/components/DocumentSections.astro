@@ -1,5 +1,5 @@
 ---
-import { contentHref, pageFaqs, type CopyPage, type CopyBlock } from '@/data/pageCopy';
+import { contentHref, inlineContentParts, pageFaqs, type CopyPage, type CopyBlock } from '@/data/pageCopy';
 
 type Props = { page: CopyPage; skip?: string[] };
 const { page, skip = [] } = Astro.props;
@@ -19,21 +19,22 @@ function groupedBlocks(blocks: CopyBlock[]) {
 ---
 
 {sections.map((section, index) => (
-  <section class:list={['section', 'document-section', { tinted: index % 2 === 1, 'faq-section': section.eyebrow === 'FAQ' }]} id={section.eyebrow.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+  <section class:list={['section', 'document-section', { tinted: index % 2 === 1, 'faq-section': section.eyebrow === 'FAQ' }]} id={(section.eyebrow || section.title).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
     <div class="container">
       <div class="document-heading">
-        <div class="eyebrow">{section.eyebrow}</div>
+        {section.eyebrow && <div class="eyebrow">{section.eyebrow}</div>}
         <h2>{section.title}</h2>
       </div>
       {section.eyebrow === 'FAQ' ? (
         <div class="document-faq">
-          {pageFaqs(page).map((item, faqIndex) => <details open={faqIndex === 0}><summary>{item.question}</summary><p>{item.answer}</p></details>)}
+          {pageFaqs(page).map((item, faqIndex) => <details open={faqIndex === 0}><summary>{item.question}</summary><p>{inlineContentParts(item.answer).map((part) => part.href ? <a href={part.href}>{part.text}</a> : part.text)}</p></details>)}
         </div>
       ) : (
         <div class="document-body">
           {groupedBlocks(section.blocks).map((block) => {
             if (block.kind === 'listGroup') return <ul>{block.items.map((item) => <li>{item}</li>)}</ul>;
             if (block.kind === 'facts') return <dl class="fact-list">{block.rows?.map(([term, value]) => <div><dt>{term}</dt><dd>{value}</dd></div>)}</dl>;
+            if (block.kind === 'table') return <div class="table-scroll"><table><thead><tr>{block.rows?.[0]?.map((cell) => <th>{cell}</th>)}</tr></thead><tbody>{block.rows?.slice(1).map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody></table></div>;
             if (block.kind === 'link') {
               const href = contentHref(block.text ?? '');
               return href ? <a class="document-link" href={href}>{block.text}</a> : <span class="document-link">{block.text}</span>;
@@ -42,7 +43,7 @@ function groupedBlocks(blocks: CopyBlock[]) {
               const href = contentHref(block.text ?? '');
               return <h3>{href ? <a href={href}>{block.text}</a> : block.text}</h3>;
             }
-            return <p>{block.text}</p>;
+            return <p>{inlineContentParts(block.text ?? '').map((part) => part.href ? <a href={part.href}>{part.text}</a> : part.text)}</p>;
           })}
         </div>
       )}
@@ -54,12 +55,13 @@ function groupedBlocks(blocks: CopyBlock[]) {
   .document-section { background: var(--white); }
   .document-section.tinted { background: var(--paper); }
   .document-heading { max-width: 880px; margin-bottom: 32px; }
-  .document-heading h2 { margin: 8px 0 0; font-size: clamp(2rem, 3.5vw, 3.35rem); line-height: 1.05; }
+  .document-heading h2 { margin: 8px 0 0; font-size: clamp(2rem, 3vw, 3rem); line-height: 1.08; }
   .document-body, .document-faq { max-width: 880px; }
   .document-body h3 { margin: 34px 0 10px; font-size: 1.85rem; }
   .document-body h3:first-child { margin-top: 0; }
   .document-body h3 a:hover { color: var(--green-2); }
   .document-body p { max-width: 780px; margin-bottom: 16px; }
+  .document-body p a, .document-faq p a { color: var(--green-2); text-decoration: underline; text-underline-offset: 3px; }
   .document-body ul { margin: 12px 0 28px; padding-left: 22px; color: var(--muted); line-height: 1.75; }
   .document-body li + li { margin-top: 8px; }
   .document-link { display: inline-flex; margin: 4px 0 20px; color: var(--green-2); font-weight: 800; }
@@ -68,6 +70,10 @@ function groupedBlocks(blocks: CopyBlock[]) {
   .fact-list div { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
   .fact-list dt { color: var(--muted); }
   .fact-list dd { margin: 0; font-weight: 700; text-align: right; }
+  .table-scroll { max-width: 100%; overflow-x: auto; margin: 20px 0 28px; }
+  .table-scroll table { width: 100%; border-collapse: collapse; line-height: 1.5; }
+  .table-scroll th, .table-scroll td { padding: 15px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+  .table-scroll th { background: var(--paper-2); }
   .document-faq details { padding: 18px 0; border-bottom: 1px solid var(--line); }
   .document-faq summary { cursor: pointer; font-weight: 800; }
   .document-faq p { margin: 12px 0 0; }

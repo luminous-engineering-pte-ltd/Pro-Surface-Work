@@ -15,6 +15,24 @@ $documents = [ordered]@{
   'timber-wood-repair' = 'Pro Surface Works - Timber & Wood Repair.docx'
   'wood-decking' = 'Pro Surface Works - Wood Decking.docx'
   'vinyl-flooring' = 'Pro Surface Works - Vinyl Flooring.docx'
+  'epoxy-grouting' = 'Pro Surface Works - Epoxy Grouting.docx'
+  'floor-polishing-buffing' = 'Pro Surface Works - Floor Polishing  Buffing.docx'
+  'floor-refinishing-restoration' = 'Pro Surface Works - Floor Refinishing  Restoration.docx'
+  'kitchen-countertop-polishing' = 'Pro Surface Works - Kitchen Countertop Polishing.docx'
+  'marble-floor-polishing' = 'Pro Surface Works - Marble Floor Polishing.docx'
+  'marble-gum-grouting' = 'Pro Surface Works - Marble Gum Grouting.docx'
+  'marble-restoration' = 'Pro Surface Works - Marble Restoration.docx'
+  'old-varnish-removal' = 'Pro Surface Works - Old Varnish Removal.docx'
+  'parquet-floor-polishing' = 'Pro Surface Works - Parquet Floor Polishing.docx'
+  'parquet-floor-sanding-varnishing' = 'Pro Surface Works - Parquet Floor Sanding  Varnishing.docx'
+  'parquet-flooring-installation' = 'Pro Surface Works - Parquet Flooring Installation.docx'
+  'parquet-repair-restoration' = 'Pro Surface Works - Parquet Repair  Restoration.docx'
+  'skirting-installation-repair' = 'Pro Surface Works - Skirting Installation  Repair.docx'
+  'staircase-sanding-varnishing' = 'Pro Surface Works - Staircase Sanding  Varnishing.docx'
+  'tile-marble-regrouting' = 'Pro Surface Works - Tile  Marble Regrouting.docx'
+  'vanity-basin-top-polishing' = 'Pro Surface Works - Vanity  Basin Top Polishing.docx'
+  'vinyl-flooring-installation' = 'Pro Surface Works - Vinyl Flooring Installation.docx'
+  'wood-deck-installation-repair' = 'Pro Surface Works - Wood Deck Installation  Repair.docx'
 }
 
 function Get-Text($node, $ns) {
@@ -29,18 +47,30 @@ function Get-Paragraph($node, $ns) {
   $style = if ($styleNode) { $styleNode.GetAttribute('val', 'http://schemas.openxmlformats.org/wordprocessingml/2006/main') } else { '' }
   $runs = @($node.SelectNodes('.//w:r[.//w:t]', $ns))
   $boldRuns = @($runs | Where-Object { $_.SelectSingleNode('./w:rPr/w:b', $ns) })
-  $kind = if ($style -eq 'ListParagraph' -or $value -match '^\d+\.\s') { 'list' }
-    elseif ($value -match '\s*\u2192\s*$') { 'link' }
+  $kind = if ($style -match '^Heading[1-6]$') { 'section' }
+    elseif ($style -eq 'ListParagraph' -or ($value -match '^\d+\.\s' -and $runs.Count -ne $boldRuns.Count)) { 'list' }
+    elseif ($value -match '\s*\u2192\s*$' -or $value -eq 'Request a Free Assessment') { 'link' }
     elseif ($runs.Count -gt 0 -and $runs.Count -eq $boldRuns.Count) { 'heading' }
     else { 'paragraph' }
 
   return @{ kind = $kind; text = $value }
 }
 
+$output = Join-Path $PSScriptRoot '..\src\data\page-copy.json'
+$existingPages = if (Test-Path -LiteralPath $output) {
+  [System.IO.File]::ReadAllText($output, [System.Text.Encoding]::UTF8) | ConvertFrom-Json
+} else { $null }
 $pages = [ordered]@{}
+$imported = 0
 foreach ($key in $documents.Keys) {
   $path = Join-Path $SourceDirectory $documents[$key]
-  if (-not (Test-Path -LiteralPath $path)) { throw "Missing document: $path" }
+  if (-not (Test-Path -LiteralPath $path)) {
+    $existing = if ($existingPages) { $existingPages.PSObject.Properties[$key] } else { $null }
+    if (-not $existing) { throw "Missing document and imported copy: $path" }
+    $pages[$key] = $existing.Value
+    continue
+  }
+  $imported++
   $zip = [System.IO.Compression.ZipFile]::OpenRead($path)
   try {
     $reader = New-Object System.IO.StreamReader($zip.GetEntry('word/document.xml').Open())
@@ -65,13 +95,20 @@ foreach ($key in $documents.Keys) {
           foreach ($row in $rows) { $meta[$row[0]] = $row[1] }
           $firstTable = $false
         } elseif ($current) {
-          [void]$current.blocks.Add(@{ kind = 'facts'; rows = @($rows.ToArray()) })
+          $kind = if ($key -eq 'about') { 'facts' } else { 'table' }
+          [void]$current.blocks.Add(@{ kind = $kind; rows = @($rows.ToArray()) })
         }
         continue
       }
       if ($node.LocalName -ne 'p') { continue }
       $paragraph = Get-Paragraph $node $ns
       if (-not $paragraph -or $paragraph.text -eq 'PAGE META') { continue }
+      if ($paragraph.kind -eq 'section') {
+        $eyebrow = if ($paragraph.text -eq 'Frequently Asked Questions') { 'FAQ' } else { '' }
+        $current = @{ eyebrow = $eyebrow; title = $paragraph.text; blocks = (New-Object System.Collections.ArrayList) }
+        [void]$sections.Add($current)
+        continue
+      }
       if ($paragraph.kind -eq 'heading' -and $paragraph.text -ceq $paragraph.text.ToUpperInvariant() -and $paragraph.text -match '[A-Z]') {
         if ($key -eq 'home' -and $intro.Count -eq 0) {
           [void]$intro.Add(@{ kind = 'eyebrow'; text = $paragraph.text })
@@ -100,7 +137,6 @@ foreach ($key in $documents.Keys) {
   } finally { $zip.Dispose() }
 }
 
-$output = Join-Path $PSScriptRoot '..\src\data\page-copy.json'
 $json = ConvertTo-Json -InputObject $pages -Depth 20
 [System.IO.File]::WriteAllText($output, $json, (New-Object System.Text.UTF8Encoding($false)))
-Write-Output "Imported $($pages.Count) documents into $output"
+Write-Output "Imported $imported documents; $($pages.Count) pages available in $output"

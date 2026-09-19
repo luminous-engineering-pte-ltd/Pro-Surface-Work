@@ -2,7 +2,7 @@ import rawPages from './page-copy.json';
 import { services, servicePath, subServicePath, type FaqItem } from './services';
 
 export type CopyBlock = {
-  kind: 'eyebrow' | 'heading' | 'paragraph' | 'list' | 'link' | 'facts';
+  kind: 'eyebrow' | 'heading' | 'paragraph' | 'list' | 'link' | 'facts' | 'table';
   text?: string;
   rows?: [string, string][];
 };
@@ -41,6 +41,36 @@ export function contentHref(label: string): string | undefined {
     const child = category.subServices.find((item) => item.title === clean || item.slug === childSlug);
     if (child) return subServicePath(category, child);
   }
+}
+
+export function inlineContentParts(value: string): { text: string; href?: string }[] {
+  if (!/\b(see|explore)\b|Projects page/i.test(value)) return [{ text: value }];
+
+  const targets = [
+    { text: 'Projects page', href: '/projects/' },
+    { text: 'Grouting hub', href: '/services/grouting/' },
+    ...services.map((service) => ({ text: service.title, href: servicePath(service) })),
+    ...services.flatMap((service) => service.subServices.map((sub) => ({ text: sub.title, href: subServicePath(service, sub) })))
+  ].sort((a, b) => b.text.length - a.text.length);
+
+  const parts: { text: string; href?: string }[] = [];
+  let cursor = 0;
+  while (cursor < value.length) {
+    let next: { text: string; href: string; index: number } | undefined;
+    for (const target of targets) {
+      const index = value.indexOf(target.text, cursor);
+      if (index < 0) continue;
+      if (!next || index < next.index || (index === next.index && target.text.length > next.text.length)) {
+        next = { ...target, index };
+      }
+    }
+    if (!next) break;
+    if (next.index > cursor) parts.push({ text: value.slice(cursor, next.index) });
+    parts.push({ text: next.text, href: next.href });
+    cursor = next.index + next.text.length;
+  }
+  if (cursor < value.length) parts.push({ text: value.slice(cursor) });
+  return parts.length ? parts : [{ text: value }];
 }
 
 export function pageFaqs(page: CopyPage): FaqItem[] {
