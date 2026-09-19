@@ -226,7 +226,7 @@ export const company = {
   name: 'Pro Surface Works',
   domain: 'prosurfaceworks.com',
   email: 'support@prosurfaceworks.com',
-  phone: '+65 8183 6772',
-  whatsapp: '6581836772',
+  phone: '+65 8597 9456',
+  whatsapp: '6585979456',
   location: 'Singapore'
 };
