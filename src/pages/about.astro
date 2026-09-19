@@ -1,85 +1,32 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import SectionHeading from '@/components/SectionHeading.astro';
-import CTASection from '@/components/CTASection.astro';
+import DocumentSections from '@/components/DocumentSections.astro';
+import { pageCopy, faqSchema } from '@/data/pageCopy';
+
+const page = pageCopy.about;
+const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=80';
+const heading = page.intro.find((block) => block.kind === 'heading')?.text;
+const lead = page.intro.find((block) => block.kind === 'paragraph')?.text;
 ---
 
-<BaseLayout title="Pro Surface Works Singapore" description="Learn about Pro Surface Works Singapore, a floor, marble, parquet, grouting, timber and surface restoration specialist.">
-  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=80')`}>
+<BaseLayout title={page.title} description={page.description} image={heroImage} schema={faqSchema(page)}>
+  <section class="hero document-hero" style={`--hero-image: url('${heroImage}')`}>
     <div class="container hero-copy">
-      <div class="eyebrow">About Pro Surface Works</div>
-      <h1>Surface Restoration Built Around Quality</h1>
-      <p>Professional surface restoration for floors, marble, grout, parquet, timber and finished surfaces across Singapore.</p>
+      <div class="eyebrow">Pro Surface Works</div>
+      <h1>{heading}</h1>
+      <p>{lead}</p>
     </div>
   </section>
-  <section class="section">
-    <div class="container split">
-      <div>
-        <div class="eyebrow">Who We Are</div>
-        <h2>A professional flooring and surface restoration specialist.</h2>
-      </div>
-      <div>
-        <p>Pro Surface Works supports residential and commercial clients with focused restoration, polishing, repair, preparation and finishing services. The work is centered on matching the right method to the actual surface condition.</p>
-        <p>From marble and stone care to parquet repair, timber finishing, varnishing, staining and sanding, the goal is a cleaner, more refined surface that suits the property and use case.</p>
-      </div>
+  <section class="section intro-section">
+    <div class="container intro-copy">
+      {page.intro.filter((block) => block.kind === 'paragraph').slice(1).map((block) => <p>{block.text}</p>)}
     </div>
   </section>
-  <section class="section dark">
-    <div class="container">
-      <SectionHeading eyebrow="Our Expertise" title="Complete surface care without a generic handyman feel." />
-      <div class="grid three">
-        {['Floor polishing', 'Marble and stone', 'Grouting', 'Parquet repair', 'Timber and wood', 'Decking and vinyl'].map((item) => <div class="tile reveal">{item}</div>)}
-      </div>
-    </div>
-  </section>
-  <section class="section approach">
-    <div class="container">
-      <SectionHeading eyebrow="Our Approach" title="Careful assessment, proper preparation and professional workmanship." text="A strong finish starts before the visible work begins. Each project is handled through surface review, preparation, restoration and finishing." />
-      <div class="grid three">
-        {['Careful assessment', 'Proper preparation', 'Professional workmanship', 'Quality finishing', 'Customer-focused service', 'Clear communication'].map((item) => <article class="point reveal"><h3>{item}</h3><p>Practical project handling with attention to the condition, material and expected result.</p></article>)}
-      </div>
-    </div>
-  </section>
-  <CTASection />
+  <DocumentSections page={page} />
 </BaseLayout>
 
 <style>
-  .slim {
-    min-height: 62vh;
-  }
-
-  .split {
-    display: grid;
-    grid-template-columns: 0.9fr 1fr;
-    gap: 58px;
-  }
-
-  .tile,
-  .point {
-    padding: 24px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-  }
-
-  .dark .tile {
-    border-color: rgba(255, 255, 255, 0.16);
-    background: rgba(255, 255, 255, 0.06);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.45rem;
-    font-weight: 700;
-  }
-
-  .approach {
-    background: var(--white);
-  }
-
-  .point {
-    background: var(--paper);
-  }
-
-  @media (max-width: 900px) {
-    .split {
-      grid-template-columns: 1fr;
-    }
-  }
+  .document-hero { min-height: 62vh; }
+  .intro-section { background: var(--paper); }
+  .intro-copy { max-width: 880px; }
 </style>

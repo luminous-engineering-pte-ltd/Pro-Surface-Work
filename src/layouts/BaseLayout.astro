@@ -14,7 +14,7 @@ type Props = {
 };
 
 const { title, description, image = 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1400&q=80', canonical, schema } = Astro.props;
-const pageTitle = `${title} | ${company.name}`;
+const pageTitle = title.includes(company.name) ? title : `${title} | ${company.name}`;
 const url = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
 const baseSchema = {
   '@context': 'https://schema.org',
