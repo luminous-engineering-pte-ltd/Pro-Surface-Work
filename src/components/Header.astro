@@ -1,5 +1,5 @@
 ---
-import { services, navLinks } from '@/data/services';
+import { services, navLinks, servicePath, subServicePath } from '@/data/services';
 ---
 
 <header class="site-header">
@@ -21,13 +21,13 @@ import { services, navLinks } from '@/data/services';
                 <div class="mega-kicker">Services</div>
                 {services.map((service) => (
                   <article class="mega-item">
-                    <a href={`/services/${service.slug}`} class="mega-title" data-close-services>
+                    <a href={servicePath(service)} class="mega-title" data-close-services>
                       <span class="mega-number">{service.number}</span>
                       <strong>{service.title}</strong>
                     </a>
                     <div class="mega-subs">
                       {service.subServices.map((sub) => (
-                        <a href={`/services/${service.slug}/${sub.slug}`} data-close-services>{sub.title}</a>
+                        <a href={subServicePath(service, sub)} data-close-services>{sub.title}</a>
                       ))}
                     </div>
                   </article>
@@ -46,7 +46,7 @@ import { services, navLinks } from '@/data/services';
           <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
         </svg>
       </a>
-      <a class="quote-link" href="/contact" data-close-services>Get a Quote</a>
+      <a class="quote-link" href="/contact/" data-close-services>Get a Quote</a>
     </div>
     <button class="menu-btn" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false">
       <span></span><span></span>
@@ -67,18 +67,22 @@ import { services, navLinks } from '@/data/services';
               <span class="mobile-service-chevron" aria-hidden="true"></span>
             </button>
             <div>
-              <a href={`/services/${service.slug}`}>Overview</a>
+              <a href={servicePath(service)}>Overview</a>
               {service.subServices.map((sub) => (
-                <a href={`/services/${service.slug}/${sub.slug}`}>{sub.title}</a>
+                <a href={subServicePath(service, sub)}>{sub.title}</a>
               ))}
             </div>
           </div>
         ))}
       </div>
     </div>
-    <a href="/about">About</a>
-    <a href="/contact">Contact</a>
-    <a class="quote-link mobile" href="/contact">Get a Quote</a>
+    <a href="/projects/">Projects</a>
+    <a href="/service-areas/">Service Areas</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
+    <a href="/faq/">FAQ</a>
+    <a href="/contact/">Contact</a>
+    <a class="quote-link mobile" href="/contact/">Get a Quote</a>
   </div>
 </header>
 
@@ -141,8 +145,9 @@ import { services, navLinks } from '@/data/services';
   }
 
   .desktop-nav {
-    gap: 28px;
+    gap: 18px;
     font-weight: 800;
+    font-size: 0.94rem;
   }
 
   .desktop-nav > a {

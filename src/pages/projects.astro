@@ -1,0 +1,52 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import CTASection from '@/components/CTASection.astro';
+import { services, servicePath } from '@/data/services';
+
+const examples = [
+  ['Marble floor polishing', 'Dull marble flooring refreshed with a clearer, brighter finish.', 'marble-stone-care'],
+  ['Parquet floor restoration', 'Worn timber blocks assessed, prepared and refinished for a cleaner look.', 'parquet-flooring'],
+  ['Tile and marble regrouting', 'Dark or failing joints refreshed for better surface presentation.', 'grouting']
+];
+---
+
+<BaseLayout title="Floor Restoration Before and After Singapore" description="View Pro Surface Works project examples and before-and-after restoration work for floors, marble, parquet, timber and grouting in Singapore.">
+  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1800&q=80')`}>
+    <div class="container hero-copy">
+      <div class="eyebrow">Projects</div>
+      <h1>Floor restoration before and after in Singapore.</h1>
+      <p>A portfolio structure for marble polishing, parquet restoration, grouting and floor care project examples.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Project Portfolio" title="Before-and-after restoration work." text="Use these structured project cards for verified site photos as the portfolio grows." />
+      <div class="grid three">
+        {examples.map(([title, text, slug]) => {
+          const service = services.find((item) => item.slug === slug)!;
+          return (
+            <article class="project-card reveal">
+              <img src={service.image} alt={`${title} before and after project in Singapore`} loading="lazy" />
+              <div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <a href={servicePath(service)}>View related service</a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .slim { min-height: 62vh; }
+  .project-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); }
+  .project-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .project-card div { padding: 22px; }
+  .project-card a { color: var(--green-2); font-weight: 900; }
+</style>

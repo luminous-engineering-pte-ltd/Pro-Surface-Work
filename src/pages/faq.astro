@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import CTASection from '@/components/CTASection.astro';
+
+const faqs = [
+  ['What photos should I send for a quote?', 'Send wide photos of the whole area, close-ups of scratches, stains or grout lines, and the approximate floor or surface size.'],
+  ['Do you handle both residential and commercial projects?', 'Yes. Pro Surface Works can advise on homes, apartments, offices, retail spaces and selected commercial properties in Singapore.'],
+  ['How do I choose between polishing and restoration?', 'Polishing may suit light dullness, while restoration is usually better for deeper wear, etching, scratches or uneven finishing.'],
+  ['Can parquet floors be repaired before polishing?', 'Yes. Loose, damaged or worn parquet areas may need repair or sanding and varnishing before a polished finish makes sense.'],
+  ['When is regrouting recommended?', 'Regrouting is useful when grout lines are stained, cracked, missing, uneven or difficult to clean.'],
+  ['How quickly can I get a quote?', 'Initial guidance is usually easier when you send photos, location, property type, service required and preferred timing.']
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer }
+  }))
+};
+---
+
+<BaseLayout title="Floor and Surface Restoration FAQ" description="Answers to common customer questions about floor polishing, marble restoration, parquet repair, grouting and quote requests in Singapore." schema={schema}>
+  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1800&q=80')`}>
+    <div class="container hero-copy">
+      <div class="eyebrow">FAQ</div>
+      <h1>Floor and surface restoration questions.</h1>
+      <p>Concise answers for customers comparing floor polishing, marble restoration, parquet repair, grouting and quote options.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Answers" title="Common customer questions." />
+      {faqs.map(([question, answer], index) => <details open={index === 0}><summary>{question}</summary><p>{answer}</p></details>)}
+    </div>
+  </section>
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .slim { min-height: 62vh; }
+  details { border-top: 1px solid var(--line); padding: 20px 0; }
+  summary { cursor: pointer; font-weight: 900; }
+</style>

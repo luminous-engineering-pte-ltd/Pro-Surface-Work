@@ -4,7 +4,7 @@ import Breadcrumb from '@/components/Breadcrumb.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import ServiceCard from '@/components/ServiceCard.astro';
 import CTASection from '@/components/CTASection.astro';
-import { services, type ServiceCategory, type SubService } from '@/data/services';
+import { findSubServiceBySlug, services, servicePath, subServicePath, type ServiceCategory, type SubService } from '@/data/services';
 
 export function getStaticPaths() {
   return services.flatMap((service) =>
@@ -16,19 +16,60 @@ export function getStaticPaths() {
 }
 
 const { service, subService } = Astro.props as { service: ServiceCategory; subService: SubService };
-const related = service.subServices.filter((item) => item.slug !== subService.slug).slice(0, 3);
+const related = subService.related
+  .map((slug) => findSubServiceBySlug(slug) ?? (services.find((item) => item.slug === slug) ? { service: services.find((item) => item.slug === slug)!, subService: undefined } : undefined))
+  .filter(Boolean)
+  .slice(0, 3);
+const pageUrl = subServicePath(service, subService);
+const breadcrumbItems = [
+  { href: '/', label: 'Home' },
+  { href: '/services/', label: 'Services' },
+  { href: servicePath(service), label: service.title },
+  { href: pageUrl, label: subService.title }
+];
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: subService.title,
+    serviceType: subService.primaryKeyword,
+    provider: { '@type': 'LocalBusiness', name: 'Pro Surface Works' },
+    areaServed: 'Singapore',
+    url: new URL(pageUrl, Astro.site).toString(),
+    description: subService.metaDescription
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.label,
+      item: new URL(item.href, Astro.site).toString()
+    }))
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: subService.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer }
+    }))
+  }
+];
 ---
 
-<BaseLayout title={`${subService.title} Singapore`} description={`${subService.summary} Request a quote from Pro Surface Works for ${subService.title.toLowerCase()} in Singapore.`} image={service.image}>
+<BaseLayout title={subService.seoTitle} description={subService.metaDescription} image={service.image} schema={schema}>
   <section class="hero service-hero" style={`--hero-image: url('${service.image}')`}>
     <div class="container hero-copy">
-      <Breadcrumb items={[{ href: '/', label: 'Home' }, { href: '/services', label: 'Services' }, { href: `/services/${service.slug}`, label: service.title }, { href: `/services/${service.slug}/${subService.slug}`, label: subService.title }]} />
+      <Breadcrumb items={breadcrumbItems} />
       <div class="eyebrow">{service.title}</div>
-      <h1>{subService.title}</h1>
-      <p>{subService.summary}</p>
+      <h1>{subService.seoTitle}</h1>
+      <p>{subService.intro}</p>
       <div class="hero-actions">
-        <a class="btn light" href="/contact">Get a Free Quote</a>
-        <a class="btn ghost" href={`/services/${service.slug}`}>Back to Service</a>
+        <a class="btn light" href="/contact/">Get a Free Quote</a>
+        <a class="btn ghost" href={servicePath(service)}>Back to {service.title}</a>
       </div>
     </div>
   </section>
@@ -37,44 +78,75 @@ const related = service.subServices.filter((item) => item.slug !== subService.sl
     <div class="container split">
       <div>
         <div class="eyebrow">Service Overview</div>
-        <h2>Focused surface work for a cleaner, more refined finish.</h2>
+        <h2>Focused care for the condition in front of you.</h2>
       </div>
-      <p>{subService.title} is part of {service.title.toLowerCase()}. Pro Surface Works uses the broader service assessment to understand surface condition, material, area and desired finish before recommending the right treatment.</p>
+      <p>{subService.overview}</p>
+    </div>
+  </section>
+
+  <section class="section problems">
+    <div class="container">
+      <SectionHeading eyebrow="Common Issues" title="Problems this service can help with." />
+      <div class="grid four">
+        {subService.problems.map((item) => <article class="tile reveal"><h3>{item}</h3></article>)}
+      </div>
     </div>
   </section>
 
   <section class="section dark">
     <div class="container">
-      <SectionHeading eyebrow="What It Includes" title="A practical scope shaped around the surface." />
-      <div class="grid three">
-        {['Surface condition review', 'Preparation recommendations', 'Restoration or finishing work', 'Clean project communication', 'Suitable protection advice', 'Final finish check'].map((item) => <article class="panel reveal"><h3>{item}</h3><p>Included where relevant to the site condition and selected service scope.</p></article>)}
+      <SectionHeading eyebrow="Our Process" title="A practical workflow from assessment to finish." />
+      <div class="steps">
+        {subService.process.map((item, index) => <article class="reveal"><span>{String(index + 1).padStart(2, '0')}</span><h3>{item}</h3></article>)}
       </div>
     </div>
   </section>
 
   <section class="section benefits">
     <div class="container">
-      <SectionHeading eyebrow="Benefits" title="Professional handling for the material in front of you." />
-      <div class="grid three">
-        {['Improved appearance', 'Better surface readiness', 'Clearer finishing direction', 'Residential suitability', 'Commercial suitability', 'Quote-friendly scope'].map((item) => <article class="benefit reveal"><h3>{item}</h3></article>)}
+      <SectionHeading eyebrow="Benefits" title="Why customers request this service." />
+      <div class="grid four">
+        {subService.benefits.map((item) => <article class="benefit reveal"><h3>{item}</h3></article>)}
       </div>
     </div>
   </section>
 
-  <section class="section process">
+  <section class="section suitable">
+    <div class="container split">
+      <div>
+        <div class="eyebrow">Suitable For</div>
+        <h2>Spaces and surfaces where this often applies.</h2>
+      </div>
+      <div class="chips">
+        {subService.suitable.map((item) => <span>{item}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section project-strip">
     <div class="container">
-      <SectionHeading eyebrow="Process" title="Simple, careful and finish-focused." />
-      <div class="steps">
-        {['Consult', 'Assess', 'Prepare', 'Restore', 'Finish'].map((item, index) => <article class="reveal"><span>{String(index + 1).padStart(2, '0')}</span><h3>{item}</h3></article>)}
+      <SectionHeading eyebrow="Before & After" title="Project-ready restoration examples." text="These slots are structured for real before-and-after photos from Singapore floor, stone and wood restoration projects." />
+      <div class="grid three">
+        {['Before assessment', 'Restoration work', 'Finished surface'].map((item) => (
+          <article class="image-card reveal">
+            <img src={service.image} alt={`${subService.title} ${item.toLowerCase()} example in Singapore`} loading="lazy" />
+            <div><span>{item}</span><strong>{subService.title}</strong></div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
   <section class="section related">
     <div class="container">
-      <SectionHeading eyebrow="Related Services" title="Explore adjacent options." />
+      <SectionHeading eyebrow="Related Services" title="Helpful next pages." />
       <div class="grid three">
-        {related.map((item) => <ServiceCard title={item.title} summary={item.summary} href={`/services/${service.slug}/${item.slug}`} />)}
+        {related.map((item) => item?.subService ? (
+          <ServiceCard title={item.subService.title} summary={item.subService.summary} href={subServicePath(item.service, item.subService)} />
+        ) : item ? (
+          <ServiceCard title={item.service.title} summary={item.service.summary} href={servicePath(item.service)} />
+        ) : null)}
+        <ServiceCard title="Request a Quote" summary="Send photos and project details for a practical recommendation from Pro Surface Works." href="/contact/" />
       </div>
     </div>
   </section>
@@ -82,82 +154,35 @@ const related = service.subServices.filter((item) => item.slug !== subService.sl
   <section class="section faq">
     <div class="container">
       <SectionHeading eyebrow="FAQ" title={`${subService.title} questions.`} />
-      <details open><summary>Can I request this exact sub-service?</summary><p>Yes. Mention {subService.title} in the quote form or WhatsApp message so the project can be assessed in that context.</p></details>
-      <details><summary>What information helps with a quote?</summary><p>Photos, approximate area, surface type, property type and preferred timing make the quote request clearer.</p></details>
-      <details><summary>Are related services sometimes recommended?</summary><p>Yes. Surface condition may make preparation, repair, polishing or coating useful before the final finish.</p></details>
+      {subService.faq.map((item, index) => <details open={index === 0}><summary>{item.question}</summary><p>{item.answer}</p></details>)}
     </div>
   </section>
   <CTASection />
 </BaseLayout>
 
 <style>
-  .service-hero {
-    min-height: 72vh;
-    align-items: center;
-    padding: 118px 0 96px;
-  }
-
-  .split {
-    display: grid;
-    grid-template-columns: 0.9fr 1fr;
-    gap: 58px;
-  }
-
-  .benefits,
-  .process,
-  .faq {
-    background: var(--white);
-  }
-
-  .panel,
-  .benefit,
-  .steps article {
-    padding: 24px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-  }
-
-  .dark .panel {
-    border-color: rgba(255, 255, 255, 0.16);
-  }
-
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .steps span {
-    color: var(--gold);
-    font-weight: 900;
-  }
-
-  details {
-    border-top: 1px solid var(--line);
-    padding: 20px 0;
-  }
-
-  summary {
-    cursor: pointer;
-    font-weight: 900;
-  }
-
+  .service-hero { min-height: 72vh; align-items: center; padding: 118px 0 96px; }
+  .split { display: grid; grid-template-columns: 0.9fr 1fr; gap: 58px; }
+  .problems, .benefits, .faq { background: var(--white); }
+  .tile, .benefit, .steps article { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .steps article { min-height: 150px; border-color: rgba(255, 255, 255, 0.16); background: rgba(255, 255, 255, 0.06); }
+  .steps span { color: var(--gold); font-weight: 900; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; align-content: start; }
+  .chips span { border: 1px solid var(--line); border-radius: 999px; padding: 10px 14px; background: var(--white); font-weight: 850; }
+  .project-strip { background: var(--paper-2); }
+  .image-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); }
+  .image-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .image-card div { padding: 18px; }
+  .image-card span, .image-card strong { display: block; }
+  .image-card span { color: var(--muted); font-weight: 800; }
+  details { border-top: 1px solid var(--line); padding: 20px 0; }
+  summary { cursor: pointer; font-weight: 900; }
   @media (max-width: 900px) {
-    .service-hero {
-      min-height: 68vh;
-      padding: 112px 0 76px;
-    }
-
-    .split,
-    .steps {
-      grid-template-columns: 1fr;
-    }
+    .service-hero { min-height: 68vh; padding: 112px 0 76px; }
+    .split, .steps { grid-template-columns: 1fr; }
   }
-
   @media (max-width: 520px) {
-    .service-hero {
-      min-height: auto;
-      padding: 112px 0 64px;
-    }
+    .service-hero { min-height: auto; padding: 112px 0 64px; }
   }
 </style>

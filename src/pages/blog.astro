@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import CTASection from '@/components/CTASection.astro';
+import { services, servicePath } from '@/data/services';
+
+const topics = ['Marble care and polishing', 'Parquet sanding and varnishing', 'Grouting and wet-area maintenance', 'Wood repair and decking', 'Vinyl flooring planning', 'Singapore home surface maintenance'];
+---
+
+<BaseLayout title="Flooring, Marble and Surface Care Blog" description="Helpful guides on flooring, marble, parquet, grouting, wood-care, maintenance and restoration topics for Singapore properties.">
+  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80')`}>
+    <div class="container hero-copy">
+      <div class="eyebrow">Blog</div>
+      <h1>Flooring, marble and surface care guides.</h1>
+      <p>A topic hub for practical restoration, maintenance and planning advice for Singapore property owners.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Topic Clusters" title="Useful flooring and restoration topics." text="This hub is intentionally broad so future articles can cover marble, parquet, grouting, wood care, vinyl and Singapore maintenance questions." />
+      <div class="grid three">
+        {topics.map((topic) => <article class="topic reveal"><h3>{topic}</h3><p>Guides and explainers can be added here as verified article content is prepared.</p></article>)}
+      </div>
+    </div>
+  </section>
+  <section class="section dark">
+    <div class="container">
+      <SectionHeading eyebrow="Service Reading" title="Start from a service category." />
+      <div class="chips">
+        {services.map((service) => <a href={servicePath(service)}>{service.title}</a>)}
+      </div>
+    </div>
+  </section>
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .slim { min-height: 62vh; }
+  .topic { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chips a { border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 999px; padding: 10px 14px; font-weight: 850; }
+</style>

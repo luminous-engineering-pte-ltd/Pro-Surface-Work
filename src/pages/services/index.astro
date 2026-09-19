@@ -3,71 +3,76 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import ServiceCard from '@/components/ServiceCard.astro';
 import CTASection from '@/components/CTASection.astro';
-import { services, uniqueSubServices } from '@/data/services';
+import { services, servicePath } from '@/data/services';
+
+const heroImage = 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=80';
 ---
 
-<BaseLayout title="Services" description="Explore Pro Surface Works services for floor polishing, marble and stone care, parquet repair, timber finishing and surface preparation in Singapore.">
-  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=80')`}>
+<BaseLayout title="Floor and Surface Restoration Services Singapore" description="Explore Pro Surface Works floor and surface restoration services in Singapore, including marble and stone care, grouting, floor care, parquet, wood decking and vinyl flooring." image={heroImage}>
+  <section class="hero slim" style={`--hero-image: url('${heroImage}')`}>
     <div class="container hero-copy">
       <div class="eyebrow">Services</div>
-      <h1>Surface solutions made clear.</h1>
-      <p>Browse every main category and discover the specific sub-service that fits your floor, stone, parquet or timber surface.</p>
+      <h1>Floor and surface restoration services in Singapore.</h1>
+      <p>Browse the full Pro Surface Works service structure and choose the right care for marble, stone, grout, parquet, timber, decking, vinyl or general floor surfaces.</p>
     </div>
   </section>
+
   <section class="section">
     <div class="container">
-      <SectionHeading eyebrow="Main Services" title="Two premium service categories." text="Each category has its own landing page with relevant sub-services and quote guidance." />
+      <SectionHeading eyebrow="Service Hub" title="Seven clear service categories." text="Each category opens into the relevant child services, with no duplicate service pages or old route naming." />
       <div class="grid services-grid">
-        {services.map((service) => <ServiceCard number={service.number} title={service.title} summary={service.summary} href={`/services/${service.slug}`} />)}
+        {services.map((service) => <ServiceCard number={service.number} title={service.title} summary={service.summary} href={servicePath(service)} />)}
       </div>
     </div>
   </section>
-  <section class="section sub-list">
+
+  <section class="section overview">
+    <div class="container split">
+      <div>
+        <div class="eyebrow">How To Choose</div>
+        <h2>Start with the material and the visible issue.</h2>
+      </div>
+      <div>
+        <p>Marble and natural stone usually need polishing or restoration, grout issues belong under grouting, and timber block floors belong under parquet flooring. If the surface simply looks tired, general floor care is a good starting point.</p>
+        <p>Pro Surface Works can review photos and advise whether polishing, regrouting, repair, sanding, varnishing or installation is the more suitable service for your Singapore property.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
     <div class="container">
-      <SectionHeading eyebrow="Sub-Services" title="Unique service list without duplicate cards." text="Some services belong under multiple categories, so this overview deduplicates them while the category hierarchy stays intact." />
-      <div class="chips">
-        {uniqueSubServices.map((sub) => {
-          const parent = services.find((service) => service.subServices.some((item) => item.slug === sub.slug));
-          return <a href={`/services/${parent?.slug}/${sub.slug}`}>{sub.title}</a>;
-        })}
+      <SectionHeading eyebrow="All Categories" title="Every main service links to its final URL." />
+      <div class="category-list">
+        {services.map((service) => (
+          <article class="category-row reveal">
+            <a href={servicePath(service)}><span>{service.number}</span><strong>{service.title}</strong></a>
+            <p>{service.description}</p>
+            {service.subServices.length > 0 && (
+              <div>
+                {service.subServices.map((sub) => <a href={`${servicePath(service)}${sub.slug}/`}>{sub.title}</a>)}
+              </div>
+            )}
+          </article>
+        ))}
       </div>
     </div>
   </section>
+
   <CTASection />
 </BaseLayout>
 
 <style>
-  .slim {
-    min-height: 62vh;
-  }
-
-  .sub-list {
-    background: var(--white);
-  }
-
-  .services-grid {
-    max-width: 860px;
-    margin-inline: auto;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .chips a {
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 10px 14px;
-    background: var(--paper);
-    font-weight: 800;
-  }
-
-  @media (max-width: 900px) {
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
+  .slim { min-height: 62vh; }
+  .services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .overview { background: var(--white); }
+  .split { display: grid; grid-template-columns: 0.9fr 1fr; gap: 58px; }
+  .category-list { display: grid; gap: 16px; }
+  .category-row { display: grid; grid-template-columns: 0.55fr 0.8fr 1fr; gap: 22px; align-items: start; padding: 22px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: var(--radius); }
+  .category-row > a { display: flex; gap: 12px; align-items: baseline; font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.45rem; font-weight: 700; }
+  .category-row span { color: var(--gold); font-family: Inter, sans-serif; font-size: 0.9rem; font-weight: 900; }
+  .category-row div { display: flex; flex-wrap: wrap; gap: 8px; }
+  .category-row div a { border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 999px; padding: 8px 11px; color: rgba(255, 255, 255, 0.82); font-size: 0.85rem; font-weight: 800; }
+  @media (max-width: 980px) {
+    .services-grid, .split, .category-row { grid-template-columns: 1fr; }
   }
 </style>
