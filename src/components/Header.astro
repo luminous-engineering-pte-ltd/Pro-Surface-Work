@@ -100,10 +100,10 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
   .site-header.is-scrolled,
   .site-header.services-open,
   body.menu-open .site-header {
-    color: var(--ink);
-    background: rgba(247, 244, 237, 0.92);
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 14px 40px rgba(7, 21, 37, 0.08);
+    color: var(--white);
+    background: rgba(7, 21, 37, 0.94);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 14px 40px rgba(7, 21, 37, 0.2);
     backdrop-filter: blur(18px);
   }
 
@@ -130,7 +130,7 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
     position: relative;
     flex: 0 0 auto;
     min-width: 0;
-    gap: 10px;
+    gap: 6px;
     color: var(--white);
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.44);
   }
@@ -145,7 +145,7 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
 
   .brand-text {
     color: var(--white);
-    font-size: 1.08rem;
+    font-size: 1.18rem;
     font-weight: 900;
     line-height: 1.05;
     white-space: nowrap;
@@ -441,8 +441,8 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
 
     .site-header.is-scrolled .menu-btn,
     body.menu-open .menu-btn {
-      border-color: rgba(16, 32, 51, 0.18);
-      background: rgba(255, 255, 255, 0.72);
+      border-color: rgba(255, 255, 255, 0.32);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .menu-btn:hover {
@@ -653,7 +653,7 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
     }
 
     .brand {
-      gap: 8px;
+      gap: 5px;
       max-width: min(66vw, 236px);
     }
 
@@ -663,7 +663,7 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
     }
 
     .brand-text {
-      font-size: 0.86rem;
+      font-size: 0.94rem;
       white-space: nowrap;
     }
 
