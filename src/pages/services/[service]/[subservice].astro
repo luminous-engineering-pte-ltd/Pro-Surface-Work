@@ -63,21 +63,15 @@ const introParagraphs = page.intro.filter((block) => block.kind === 'paragraph')
       <Breadcrumb items={breadcrumbItems} />
       <div class="eyebrow">{service.title}</div>
       <h1>{heading}</h1>
-      <p>{introParagraphs[0]?.text}</p>
+      <div class="hero-description">
+        {introParagraphs.map((block) => <p>{block.text}</p>)}
+      </div>
       <div class="hero-actions">
         <a class="btn light" href="/contact/">Request a Free Assessment</a>
         <a class="btn ghost" href={servicePath(service)}>Back to {service.title}</a>
       </div>
     </div>
   </section>
-
-  {introParagraphs.length > 1 && (
-    <section class="section intro-section">
-      <div class="container intro-copy">
-        {introParagraphs.slice(1).map((block) => <p>{block.text}</p>)}
-      </div>
-    </section>
-  )}
 
   <DocumentSections page={page} />
 
@@ -100,8 +94,8 @@ const introParagraphs = page.intro.filter((block) => block.kind === 'paragraph')
 
 <style>
   .service-hero { min-height: 68vh; padding: 118px 0 76px; }
-  .intro-section { background: var(--paper); }
-  .intro-copy { max-width: 880px; }
+  .hero-description { max-width: 720px; display: grid; gap: 10px; margin-top: 20px; }
+  .hero-description p { margin: 0; line-height: 1.72; }
   .related-section { background: var(--white); }
   .related-heading { margin-bottom: 30px; }
   .related-heading h2 { margin: 8px 0 0; font-size: clamp(2rem, 3vw, 3rem); }

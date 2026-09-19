@@ -5,8 +5,8 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="/" aria-label="Pro Surface Works home">
-      <span class="brand-mark">PS</span>
-      <span>Pro Surface Works</span>
+      <img class="brand-logo" src="/update-Pro.png" alt="Pro Surface Works" width="1774" height="887" />
+      <span class="brand-text">Pro Surface Works</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
       {navLinks.map((link) => (
@@ -127,21 +127,28 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
   }
 
   .brand {
-    gap: 12px;
-    font-weight: 900;
+    position: relative;
+    flex: 0 0 auto;
+    min-width: 0;
+    gap: 10px;
+    color: var(--white);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.44);
   }
 
-  .brand-mark {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.36);
-    border-radius: 50%;
+  .brand-logo {
+    width: 112px;
+    height: 62px;
+    flex: 0 0 auto;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .brand-text {
     color: var(--white);
-    background: linear-gradient(135deg, var(--navy), var(--green-2));
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.1rem;
+    font-size: 1.08rem;
+    font-weight: 900;
+    line-height: 1.05;
+    white-space: nowrap;
   }
 
   .desktop-nav {
@@ -640,24 +647,24 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
       gap: 12px;
     }
 
-    .brand {
-      gap: 10px;
-    }
-
-    .brand-mark {
-      width: 39px;
-      height: 39px;
-    }
-
     .call-link {
       width: 42px;
       height: 42px;
     }
 
-    .brand span:last-child {
-      max-width: 154px;
-      line-height: 1.05;
-      font-size: 0.95rem;
+    .brand {
+      gap: 8px;
+      max-width: min(66vw, 236px);
+    }
+
+    .brand-logo {
+      width: 84px;
+      height: 48px;
+    }
+
+    .brand-text {
+      font-size: 0.86rem;
+      white-space: nowrap;
     }
 
     .mobile-panel {
