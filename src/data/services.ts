@@ -235,5 +235,6 @@ export const company = {
   email: 'support@prosurfaceworks.com',
   phone: '+65 8597 9456',
   whatsapp: '6585979456',
-  location: 'Singapore'
+  location: 'Singapore',
+  address: '14 Roberts Ln, Singapore 218293'
 };
