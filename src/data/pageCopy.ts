@@ -48,6 +48,7 @@ export function inlineContentParts(value: string): { text: string; href?: string
 
   const targets = [
     { text: 'Projects page', href: '/projects/' },
+    { text: 'Service Areas page', href: '/service-areas/' },
     { text: 'Grouting hub', href: '/services/grouting/' },
     ...services.map((service) => ({ text: service.title, href: servicePath(service) })),
     ...services.flatMap((service) => service.subServices.map((sub) => ({ text: sub.title, href: subServicePath(service, sub) })))

@@ -203,22 +203,18 @@ export const findSubServiceBySlug = (slug: string) => {
 export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/services/', label: 'Services' },
-  { href: '/projects/', label: 'Projects' },
-  { href: '/service-areas/', label: 'Service Areas' },
   { href: '/about/', label: 'About' },
-  { href: '/blog/', label: 'Blog' },
-  { href: '/faq/', label: 'FAQ' },
-  { href: '/contact/', label: 'Contact' }
+  { href: '/blog/', label: 'Blog' }
 ];
 
 export const corePages = [
   { href: '/', title: 'Floor and Marble Restoration Singapore', description: 'Pro Surface Works provides floor and marble restoration in Singapore, including marble polishing, parquet repair, grouting, wood decking and vinyl flooring services.' },
   { href: '/services/', title: 'Floor and Surface Restoration Services Singapore', description: 'Explore Pro Surface Works floor and surface restoration services in Singapore, including marble, grouting, parquet, timber, decking and vinyl flooring.' },
   { href: '/projects/', title: 'Floor Restoration Before and After Singapore', description: 'View Pro Surface Works project examples and before-and-after restoration work for floors, marble, parquet, timber and grouting in Singapore.' },
-  { href: '/service-areas/', title: 'Floor Polishing Services Singapore Islandwide', description: 'Pro Surface Works provides floor polishing and restoration services islandwide across Singapore for homes and commercial spaces.' },
+  { href: '/service-areas/', title: 'Floor & Surface Care Services Across Singapore | Pro Surface Works', description: 'Pro Surface Works provides floor and surface care services for homes and businesses across Singapore. Tell us your location and requirement to get started.' },
   { href: '/about/', title: 'Pro Surface Works Singapore', description: 'Learn about Pro Surface Works Singapore, a floor, marble, parquet, grouting, timber and surface restoration specialist.' },
   { href: '/blog/', title: 'Flooring, Marble and Surface Care Blog', description: 'Helpful guides on flooring, marble, parquet, grouting, wood-care, maintenance and restoration topics for Singapore properties.' },
-  { href: '/faq/', title: 'Floor and Surface Restoration FAQ', description: 'Answers to common customer questions about floor polishing, marble restoration, parquet repair, grouting and quote requests in Singapore.' },
+  { href: '/faq/', title: 'Frequently Asked Questions | Pro Surface Works', description: "Answers to common questions about Pro Surface Works' flooring and surface care services in Singapore, including marble, grouting, parquet, timber, decking and vinyl." },
   { href: '/contact/', title: 'Floor Polishing Quote Singapore', description: 'Request a floor polishing quote in Singapore from Pro Surface Works for marble, parquet, grouting, timber, decking and vinyl flooring services.' }
 ];
 

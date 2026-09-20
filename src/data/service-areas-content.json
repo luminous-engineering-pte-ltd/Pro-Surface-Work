@@ -1,0 +1,337 @@
+{
+    "url":  "https://www.prosurfaceworks.com/service-areas/",
+    "title":  "Floor \u0026 Surface Care Services Across Singapore | Pro Surface Works",
+    "description":  "Pro Surface Works provides floor and surface care services for homes and businesses across Singapore. Tell us your location and requirement to get started.",
+    "heading":  "Floor \u0026 Surface Care Services Across Singapore",
+    "lead":  "Pro Surface Works provides floor and surface care services for residential and commercial properties across Singapore. Share your location and requirement with us and we\u0027ll recommend the right service and arrange an assessment.",
+    "ctaLabel":  "Request a Site Assessment",
+    "sections":  [
+                     {
+                         "title":  "Serving Homes and Businesses Across Singapore",
+                         "blocks":  [
+                                        {
+                                            "style":  "",
+                                            "text":  "Pro Surface Works is not limited to a single neighbourhood. We work on residential and commercial floor and surface projects in locations across Singapore, and the specific coverage for your property is confirmed once you share your location and requirement with us."
+                                        }
+                                    ]
+                     },
+                     {
+                         "title":  "Areas We Serve",
+                         "blocks":  [
+                                        {
+                                            "style":  "",
+                                            "text":  "Central Singapore"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Including areas such as Orchard, Bukit Timah, Novena, Toa Payoh, Bishan and Kallang, covering a mix of established residential and commercial properties."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "East Singapore"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Including areas such as Bedok, Tampines, Pasir Ris, Paya Lebar, Katong and the East Coast, spanning residential estates and commercial premises."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "West Singapore"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Including areas such as Jurong East, Jurong West, Clementi, Bukit Batok, Bukit Panjang and Boon Lay."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "North Singapore"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Including areas such as Woodlands, Yishun, Sembawang, Canberra and Admiralty."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "North-East Singapore"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Including areas such as Serangoon, Hougang, Sengkang, Punggol and Ang Mo Kio."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "CBD \u0026 Commercial Districts"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Including areas such as Raffles Place, Tanjong Pagar, Marina Bay and Shenton Way, where our work is largely with commercial properties."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "This gives a general sense of our coverage across the island. If your area isn\u0027t listed here, get in touch and we\u0027ll confirm whether we can take on your project."
+                                        }
+                                    ]
+                     },
+                     {
+                         "title":  "Our Flooring \u0026 Surface Services Across Singapore",
+                         "blocks":  [
+                                        {
+                                            "style":  "",
+                                            "text":  "Marble \u0026 Stone Care — polishing, restoration and related marble and stone surface services."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Grouting Services — regrouting, marble gum grouting and epoxy grouting for tiled and stone surfaces."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "General Floor Care — polishing, buffing and refinishing for non-marble hard floors such as homogeneous tile, granite, terrazzo and concrete."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Parquet Flooring — installation, polishing, repair, sanding and varnishing, and related parquet services."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Timber \u0026 Wood Repair — repair services for doors, furniture, cabinets and other wood items."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Wood Decking — outdoor wood deck installation and repair."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Vinyl Flooring — vinyl flooring installation for residential and commercial spaces."
+                                        }
+                                    ]
+                     },
+                     {
+                         "title":  "Properties We Serve",
+                         "blocks":  [
+                                        {
+                                            "style":  "",
+                                            "text":  "Residential"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Condominiums and apartments"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Landed homes"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Other private residences"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Commercial"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Offices"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Retail spaces"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Hotels and other hospitality properties"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Other suitable commercial premises"
+                                        }
+                                    ]
+                     },
+                     {
+                         "title":  "Floor \u0026 Surface Care for Different Singapore Properties",
+                         "blocks":  [
+                                        {
+                                            "style":  "",
+                                            "text":  "Older residential properties may need restoration or repair work on floors and surfaces that have worn over time, while newer interiors may call for installation, finishing or general surface-care services."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Commercial spaces often need floor restoration, polishing or maintenance work carried out around operational schedules, so timing and site access are usually part of the initial discussion."
+                                        }
+                                    ]
+                     },
+                     {
+                         "title":  "How Our Singapore-Wide Service Works",
+                         "blocks":  [
+                                        {
+                                            "style":  "",
+                                            "text":  "1. Tell Us Your Location \u0026 Requirement"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Share where your property is and what you need looked at."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "2. Share Photos or Arrange an Assessment"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Send photos for an initial understanding, or arrange a site assessment."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "3. We Recommend the Appropriate Service"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Based on the condition and your requirement, we identify the relevant service."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "4. Quote \u0026 Schedule"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "We provide a quotation and schedule the work according to your project\u0027s scope."
+                                        }
+                                    ]
+                     },
+                     {
+                         "title":  "Why Local Coverage Matters for Floor \u0026 Surface Work",
+                         "blocks":  [
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Site-specific assessment of the existing floor or surface"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Understanding the existing surface condition before recommending treatment"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Property access considerations for the specific site"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Scheduling that works around your property or business"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Selecting the appropriate service for the actual condition found on site"
+                                        }
+                                    ]
+                     },
+                     {
+                         "title":  "Our Work Across Singapore",
+                         "blocks":  [
+                                        {
+                                            "style":  "",
+                                            "text":  "Examples of completed projects across different Singapore properties, including the property type, the work performed and the final result, are available on our Projects page."
+                                        }
+                                    ]
+                     },
+                     {
+                         "title":  "Why Customers Choose Professional Floor \u0026 Surface Care",
+                         "blocks":  [
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Proper assessment before any work begins"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "A recommendation matched to the actual condition of the floor or surface"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Clear scope and process from initial contact through to completion"
+                                        },
+                                        {
+                                            "style":  "ListParagraph",
+                                            "text":  "Experience working across a range of property types and floor conditions"
+                                        }
+                                    ]
+                     },
+                     {
+                         "title":  "Frequently Asked Questions",
+                         "blocks":  [
+                                        {
+                                            "style":  "",
+                                            "text":  "Do you provide floor and surface care services across Singapore?"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Yes, we work on residential and commercial projects across Singapore. Share your location and requirement with us to confirm coverage for your specific property."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Which areas in Singapore do you serve?"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "We serve Central, East, West, North and North-East Singapore, as well as CBD and commercial districts. If your area isn\u0027t listed on this page, get in touch and we\u0027ll confirm."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Do you serve condominiums and landed properties?"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Yes, we work on condominiums, apartments and landed homes, among other residential property types."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Do you work with commercial properties?"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Yes, we work with offices, retail spaces, hotels and other suitable commercial premises."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Can I request a quote before a site visit?"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Yes, sharing photos and details of your requirement can give us an initial understanding before arranging a full site assessment where needed."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Do I need to visit your office to arrange a service?"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "No, our services are carried out on-site at your property. You can get in touch with your location and requirement to arrange an assessment."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "How do I request a site assessment?"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Contact us with your location, a description of the issue, and your preferred timing, and we\u0027ll take it from there."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Can I send photos of my floor or surface first?"
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Yes, photos can help us understand your requirement before confirming whether a site assessment is needed."
+                                        }
+                                    ]
+                     },
+                     {
+                         "title":  "Need Floor or Surface Care in Singapore?",
+                         "blocks":  [
+                                        {
+                                            "style":  "",
+                                            "text":  "Share your location, photos and preferred timing, and we\u0027ll recommend the right service and arrange an assessment."
+                                        },
+                                        {
+                                            "style":  "",
+                                            "text":  "Request a Site Assessment"
+                                        }
+                                    ]
+                     }
+                 ]
+}

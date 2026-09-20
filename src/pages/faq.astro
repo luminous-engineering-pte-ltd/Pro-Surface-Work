@@ -1,47 +1,82 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import SectionHeading from '@/components/SectionHeading.astro';
-import CTASection from '@/components/CTASection.astro';
+import { inlineContentParts } from '@/data/pageCopy';
+import content from '@/data/faq-content.json';
 
-const faqs = [
-  ['What photos should I send for a quote?', 'Send wide photos of the whole area, close-ups of scratches, stains or grout lines, and the approximate floor or surface size.'],
-  ['Do you handle both residential and commercial projects?', 'Yes. Pro Surface Works can advise on homes, apartments, offices, retail spaces and selected commercial properties in Singapore.'],
-  ['How do I choose between polishing and restoration?', 'Polishing may suit light dullness, while restoration is usually better for deeper wear, etching, scratches or uneven finishing.'],
-  ['Can parquet floors be repaired before polishing?', 'Yes. Loose, damaged or worn parquet areas may need repair or sanding and varnishing before a polished finish makes sense.'],
-  ['When is regrouting recommended?', 'Regrouting is useful when grout lines are stained, cracked, missing, uneven or difficult to clean.'],
-  ['How quickly can I get a quote?', 'Initial guidance is usually easier when you send photos, location, property type, service required and preferred timing.']
-];
-
+const heroImage = 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1800&q=80';
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map(([question, answer]) => ({
+  mainEntity: content.groups.flatMap((group) => group.items.map(({ question, answer }) => ({
     '@type': 'Question',
     name: question,
     acceptedAnswer: { '@type': 'Answer', text: answer }
-  }))
+  })))
 };
+
+const sectionId = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
 ---
 
-<BaseLayout title="Floor and Surface Restoration FAQ" description="Answers to common customer questions about floor polishing, marble restoration, parquet repair, grouting and quote requests in Singapore." schema={schema}>
-  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1800&q=80')`}>
+<BaseLayout title={content.title} description={content.description} image={heroImage} schema={schema}>
+  <section class="hero slim" style={`--hero-image: url('${heroImage}')`}>
     <div class="container hero-copy">
       <div class="eyebrow">FAQ</div>
-      <h1>Floor and surface restoration questions.</h1>
-      <p>Concise answers for customers comparing floor polishing, marble restoration, parquet repair, grouting and quote options.</p>
+      <h1>{content.heading}</h1>
+      <p>{content.lead}</p>
     </div>
   </section>
-  <section class="section">
+
+  <nav class="faq-nav" aria-label="FAQ topics">
+    <div class="container faq-nav-inner">
+      {content.groups.map((group) => <a href={`#${sectionId(group.title)}`}>{group.title}</a>)}
+    </div>
+  </nav>
+
+  {content.groups.map((group, groupIndex) => (
+    <section class:list={['section', 'faq-group', { tinted: groupIndex % 2 === 1 }]} id={sectionId(group.title)}>
+      <div class="container faq-layout">
+        <h2>{group.title}</h2>
+        <div class="faq-list">
+          {group.items.map(({ question, answer }, index) => (
+            <details open={groupIndex === 0 && index === 0}>
+              <summary>{question}</summary>
+              <p>{inlineContentParts(answer).map((part) => part.href ? <a href={part.href}>{part.text}</a> : part.text)}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section faq-closing">
     <div class="container">
-      <SectionHeading eyebrow="Answers" title="Common customer questions." />
-      {faqs.map(([question, answer], index) => <details open={index === 0}><summary>{question}</summary><p>{answer}</p></details>)}
+      <h2>{content.closing.title}</h2>
+      <p>{content.closing.text}</p>
+      <a class="btn light" href="/contact/">{content.closing.ctaLabel}</a>
     </div>
   </section>
-  <CTASection />
 </BaseLayout>
 
 <style>
   .slim { min-height: 62vh; }
-  details { border-top: 1px solid var(--line); padding: 20px 0; }
-  summary { cursor: pointer; font-weight: 900; }
+  .faq-nav { background: var(--paper); border-bottom: 1px solid var(--line); }
+  .faq-nav-inner { display: flex; flex-wrap: wrap; gap: 10px 22px; padding-block: 24px; }
+  .faq-nav a { color: var(--green-2); font-size: .9rem; font-weight: 800; }
+  .faq-nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .faq-group { background: var(--white); scroll-margin-top: 90px; }
+  .faq-group.tinted { background: var(--paper); }
+  .faq-layout { display: grid; grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr); gap: 52px; }
+  h2 { font-size: clamp(2.25rem, 4vw, 3.6rem); }
+  .faq-list details { padding: 20px 0; border-top: 1px solid var(--line); }
+  .faq-list details:last-child { border-bottom: 1px solid var(--line); }
+  .faq-list summary { cursor: pointer; font-weight: 800; line-height: 1.5; }
+  .faq-list p { margin: 14px 0 0; }
+  .faq-list p a { color: var(--green-2); text-decoration: underline; text-underline-offset: 3px; }
+  .faq-closing { color: var(--white); background: var(--navy); }
+  .faq-closing h2 { max-width: 720px; }
+  .faq-closing p { max-width: 680px; color: rgba(255,255,255,.78); }
+  @media (max-width: 800px) {
+    .faq-layout { grid-template-columns: 1fr; gap: 20px; }
+    .faq-group { scroll-margin-top: 72px; }
+  }
 </style>

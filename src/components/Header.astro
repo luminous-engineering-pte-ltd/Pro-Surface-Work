@@ -76,12 +76,8 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
         ))}
       </div>
     </div>
-    <a href="/projects/">Projects</a>
-    <a href="/service-areas/">Service Areas</a>
     <a href="/about/">About</a>
     <a href="/blog/">Blog</a>
-    <a href="/faq/">FAQ</a>
-    <a href="/contact/">Contact</a>
     <a class="quote-link mobile" href="/contact/">Get a Quote</a>
   </div>
 </header>
@@ -110,9 +106,9 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
   .nav-wrap {
     width: min(1240px, calc(100% - 40px));
     height: 78px;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    justify-content: space-between;
     gap: 24px;
     margin-inline: auto;
   }
@@ -130,6 +126,7 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
     position: relative;
     flex: 0 0 auto;
     min-width: 0;
+    justify-self: start;
     gap: 6px;
     color: var(--white);
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.44);
@@ -172,6 +169,7 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
 
   .nav-actions {
     gap: 10px;
+    justify-self: end;
   }
 
   .services-trigger {
@@ -401,6 +399,11 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
   }
 
   @media (max-width: 1080px) {
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+    }
+
     .desktop-nav,
     .quote-link:not(.mobile) {
       display: none;

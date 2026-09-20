@@ -1,42 +1,62 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import SectionHeading from '@/components/SectionHeading.astro';
-import CTASection from '@/components/CTASection.astro';
+import DocumentSections from '@/components/DocumentSections.astro';
+import { faqSchema, type CopyBlock, type CopyPage } from '@/data/pageCopy';
+import content from '@/data/service-areas-content.json';
 
-const areas = ['Central Singapore', 'East Singapore', 'West Singapore', 'North Singapore', 'North-East Singapore', 'CBD and commercial districts', 'Condominiums and apartments', 'Landed homes'];
+const heroImage = 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1800&q=80';
+const pairedSections = new Set([
+  'Areas We Serve',
+  'How Our Singapore-Wide Service Works',
+  'Frequently Asked Questions'
+]);
+const listSections = new Set([
+  'Our Flooring & Surface Services Across Singapore',
+  'Why Local Coverage Matters for Floor & Surface Work',
+  'Why Customers Choose Professional Floor & Surface Care'
+]);
+
+const page: CopyPage = {
+  url: content.url,
+  title: content.title,
+  description: content.description,
+  intro: [
+    { kind: 'heading', text: content.heading },
+    { kind: 'paragraph', text: content.lead }
+  ],
+  sections: content.sections.map((section) => {
+    const blocks: CopyBlock[] = section.blocks.map((block, index) => {
+      if (section.title === 'Need Floor or Surface Care in Singapore?' && index === 1) return { kind: 'link', text: block.text };
+      if (section.title === 'Properties We Serve') {
+        return { kind: block.style === 'ListParagraph' ? 'list' : 'heading', text: block.text };
+      }
+      if (pairedSections.has(section.title) && index % 2 === 0 && !(section.title === 'Areas We Serve' && index === section.blocks.length - 1)) {
+        return { kind: 'heading', text: block.text };
+      }
+      if (listSections.has(section.title)) return { kind: 'list', text: block.text };
+      return { kind: 'paragraph', text: block.text };
+    });
+    return {
+      eyebrow: section.title === 'Frequently Asked Questions' ? 'FAQ' : '',
+      title: section.title,
+      blocks
+    };
+  })
+};
 ---
 
-<BaseLayout title="Floor Polishing Services Singapore Islandwide" description="Pro Surface Works provides floor polishing and restoration services islandwide across Singapore for homes and commercial spaces.">
-  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1800&q=80')`}>
+<BaseLayout title={page.title} description={page.description} image={heroImage} schema={faqSchema(page)}>
+  <section class="hero slim" style={`--hero-image: url('${heroImage}')`}>
     <div class="container hero-copy">
       <div class="eyebrow">Service Areas</div>
-      <h1>Floor polishing services Singapore islandwide.</h1>
-      <p>Islandwide support for floor restoration, marble polishing, parquet repair, grouting, timber repair, decking and vinyl flooring services.</p>
+      <h1>{content.heading}</h1>
+      <p>{content.lead}</p>
+      <div class="hero-actions"><a class="btn light" href="/contact/">{content.ctaLabel}</a></div>
     </div>
   </section>
-  <section class="section">
-    <div class="container split">
-      <div>
-        <div class="eyebrow">Singapore Coverage</div>
-        <h2>Homes and commercial spaces across the island.</h2>
-      </div>
-      <p>Pro Surface Works serves Singapore customers who need reliable floor and surface care without navigating duplicate or confusing service pages. Share your location, photos and preferred timing for practical quote support.</p>
-    </div>
-  </section>
-  <section class="section dark">
-    <div class="container">
-      <SectionHeading eyebrow="Coverage" title="Common property and area types." />
-      <div class="grid four">
-        {areas.map((area) => <article class="area reveal"><h3>{area}</h3></article>)}
-      </div>
-    </div>
-  </section>
-  <CTASection />
+  <DocumentSections page={page} />
 </BaseLayout>
 
 <style>
   .slim { min-height: 62vh; }
-  .split { display: grid; grid-template-columns: 0.9fr 1fr; gap: 58px; }
-  .area { padding: 24px; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: var(--radius); }
-  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
 </style>
