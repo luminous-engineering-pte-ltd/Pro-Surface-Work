@@ -207,6 +207,17 @@ export const navLinks = [
   { href: '/blog/', label: 'Blog' }
 ];
 
+export const footerQuickLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/services/', label: 'Services' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/service-areas/', label: 'Service Areas' },
+  { href: '/about/', label: 'About' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/faq/', label: 'FAQ' },
+  { href: '/contact/', label: 'Contact' }
+];
+
 export const corePages = [
   { href: '/', title: 'Floor and Marble Restoration Singapore', description: 'Pro Surface Works provides floor and marble restoration in Singapore, including marble polishing, parquet repair, grouting, wood decking and vinyl flooring services.' },
   { href: '/services/', title: 'Floor and Surface Restoration Services Singapore', description: 'Explore Pro Surface Works floor and surface restoration services in Singapore, including marble, grouting, parquet, timber, decking and vinyl flooring.' },

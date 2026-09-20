@@ -1,5 +1,5 @@
 ---
-import { company, navLinks, services, servicePath } from '@/data/services';
+import { company, footerQuickLinks, services, servicePath } from '@/data/services';
 ---
 
 <footer class="footer">
@@ -14,7 +14,7 @@ import { company, navLinks, services, servicePath } from '@/data/services';
     </div>
     <div>
       <h3>Quick Links</h3>
-      {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      {footerQuickLinks.map((link) => <a href={link.href}>{link.label}</a>)}
     </div>
     <div>
       <h3>Services</h3>
