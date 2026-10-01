@@ -87,7 +87,11 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
           referrerpolicy="no-referrer-when-downgrade"
           aria-hidden="true"
         ></iframe>
-        <span class="map-overlay">Open in Google Maps</span>
+        <span class="map-place-card" aria-hidden="true">
+          <strong>Pro Surface Works</strong>
+          <span>14 Roberts Ln, Singapore</span>
+          <span class="map-rating"><b>5.0</b><span class="map-stars">★★★★★</span><em>Reviews</em></span>
+        </span>
       </a>
     </div>
   </div>
@@ -264,26 +268,75 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
     transition: transform 520ms var(--ease-premium), filter 360ms ease;
   }
 
-  .map-overlay {
+  .map-place-card {
     position: absolute;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
+    top: 8px;
+    left: 8px;
+    right: 8px;
     z-index: 2;
-    display: inline-flex;
-    width: fit-content;
-    max-width: calc(100% - 20px);
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 999px;
-    padding: 6px 9px;
+    display: grid;
+    gap: 2px;
+    max-width: 142px;
+    border: 1px solid rgba(7, 21, 37, 0.08);
+    border-radius: 9px;
+    padding: 7px 8px;
     margin: 0;
-    color: var(--white);
-    background: rgba(7, 21, 37, 0.72);
-    box-shadow: 0 12px 28px rgba(7, 21, 37, 0.18);
-    font-size: 0.72rem;
-    font-weight: 900;
-    backdrop-filter: blur(12px);
+    color: #1f2937;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 10px 24px rgba(7, 21, 37, 0.2);
+    font-family: Arial, sans-serif;
+    line-height: 1.1;
+    pointer-events: none;
+  }
+
+  .map-place-card strong,
+  .map-place-card span,
+  .map-place-card b,
+  .map-place-card em {
+    display: inline;
+    margin: 0;
+    color: inherit;
+    overflow-wrap: normal;
+  }
+
+  .map-place-card strong {
+    display: block;
+    color: #1f2937;
+    font-size: 0.69rem;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .map-place-card > span {
+    display: block;
+    color: #5f6368;
+    font-size: 0.57rem;
+  }
+
+  .map-rating {
+    display: flex !important;
+    align-items: center;
+    gap: 3px;
+    color: #5f6368 !important;
+    font-size: 0.58rem !important;
+    white-space: nowrap;
+  }
+
+  .map-rating b {
+    color: #3c4043;
+    font-weight: 700;
+  }
+
+  .map-stars {
+    color: #f59e0b !important;
+    font-size: 0.62rem;
+    letter-spacing: -0.03em;
+  }
+
+  .map-rating em {
+    color: #2563eb;
+    font-style: normal;
+    font-weight: 700;
   }
 
   .map-link:hover,
@@ -358,11 +411,15 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
 
     .footer-map {
       grid-column: auto;
+      width: fit-content;
+      justify-self: start;
+      text-align: left;
     }
 
     .map-link {
-      width: clamp(150px, 48vw, 180px);
-      height: clamp(130px, 42vw, 160px);
+      width: 160px;
+      height: 145px;
+      margin-inline: 0;
     }
   }
 

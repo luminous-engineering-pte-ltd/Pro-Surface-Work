@@ -581,19 +581,27 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
       inset: 78px 0 auto 0;
       max-height: calc(100vh - 78px);
       display: grid;
-      gap: 8px;
+      gap: 10px;
       overflow: auto;
-      padding: 16px 20px 28px;
-      background: rgba(247, 244, 237, 0.98);
-      color: var(--ink);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 22px 55px rgba(7, 21, 37, 0.14);
+      padding: 18px 20px 30px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(6, 182, 212, 0.14), transparent 18rem),
+        radial-gradient(circle at 88% 12%, rgba(37, 99, 235, 0.16), transparent 18rem),
+        linear-gradient(145deg, rgba(6, 24, 42, 0.98), rgba(10, 38, 62, 0.98));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow:
+        0 24px 64px rgba(3, 10, 22, 0.34),
+        0 0 42px rgba(6, 182, 212, 0.12);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
       transform: translateY(-12px);
-      transition: opacity 260ms var(--ease-premium), transform 260ms var(--ease-premium), visibility 260ms var(--ease-premium);
-      backdrop-filter: blur(18px);
+      transition:
+        opacity 280ms var(--ease-premium),
+        transform 280ms var(--ease-premium),
+        visibility 280ms var(--ease-premium);
+      backdrop-filter: blur(20px);
     }
 
     body.menu-open .mobile-panel {
@@ -615,31 +623,39 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      border: 0;
-      border-radius: var(--radius);
-      color: var(--ink);
-      background: transparent;
-      padding: 0 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      color: rgba(241, 249, 255, 0.92);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 0 15px;
       font-size: 1rem;
       font-weight: 850;
       text-align: left;
-      transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+      transition:
+        color 200ms ease,
+        background 200ms ease,
+        border-color 200ms ease,
+        transform 220ms var(--ease-premium),
+        box-shadow 220ms var(--ease-premium);
     }
 
     .mobile-panel > a:hover,
     .mobile-services-toggle:hover,
     .mobile-services-toggle[aria-current="page"],
     .mobile-services-wrap.is-open > .mobile-services-toggle {
-      color: var(--green);
-      background: rgba(31, 90, 73, 0.08);
-      transform: translateX(1px);
+      color: var(--white);
+      border-color: rgba(125, 211, 252, 0.28);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 12px 28px rgba(6, 182, 212, 0.12);
+      transform: translateX(2px);
     }
 
     .mobile-services-wrap {
       overflow: hidden;
-      border: 1px solid rgba(16, 32, 51, 0.1);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.52);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
 
     .mobile-services {
@@ -676,9 +692,9 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
       gap: 14px;
       width: 100%;
       border: 0;
-      border-bottom: 1px solid rgba(16, 32, 51, 0.1);
-      border-radius: 6px;
-      color: var(--ink);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 8px;
+      color: rgba(241, 249, 255, 0.92);
       background: transparent;
       padding: 12px 12px;
       font-size: 0.95rem;
@@ -690,8 +706,8 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
 
     .mobile-service-toggle:hover,
     .mobile-service.is-open .mobile-service-toggle {
-      color: var(--green);
-      background: rgba(31, 90, 73, 0.08);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .mobile-service-chevron {
@@ -731,7 +747,7 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
       align-items: center;
       width: 100%;
       border-radius: 6px;
-      color: var(--muted);
+      color: rgba(226, 242, 251, 0.78);
       font-size: 0.92rem;
       font-weight: 780;
       line-height: 1.35;
@@ -740,8 +756,8 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
     }
 
     .mobile-service div a:hover {
-      color: var(--green);
-      background: rgba(31, 90, 73, 0.08);
+      color: var(--white);
+      background: rgba(6, 182, 212, 0.12);
       transform: translateX(2px);
     }
 
@@ -758,6 +774,18 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
         0 12px 28px rgba(37, 99, 235, 0.2),
         0 0 18px rgba(6, 182, 212, 0.12),
         inset 0 1px 0 rgba(255, 255, 255, 0.24);
+    }
+
+    .quote-link.mobile:hover,
+    .quote-link.mobile:focus-visible {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.34);
+      background-position: 100% 50%;
+      box-shadow:
+        0 16px 36px rgba(37, 99, 235, 0.28),
+        0 0 28px rgba(6, 182, 212, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px) scale(1.01);
     }
 
     .mobile-panel > :nth-child(1) { --mobile-index: 1; }
