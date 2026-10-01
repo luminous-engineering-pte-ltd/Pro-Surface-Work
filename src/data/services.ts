@@ -33,10 +33,10 @@ export type ServiceCategory = {
   subServices: SubService[];
 };
 
-const marbleImage = '/images/services/marble-stone-care.jpeg';
+const marbleImage = '/images/services/marble-stone-care-new.png';
 const groutImage = '/images/services/grouting-services.jpeg';
-const floorCareImage = '/images/services/general-floor-care.jpeg';
-const parquetImage = '/images/services/parquet-flooring.png';
+const floorCareImage = '/images/services/general-floor-care-new.jpeg';
+const parquetImage = '/images/services/parquet-flooring-new.png';
 const woodImage = '/images/services/timber-wood-repair-new.png';
 const deckingImage = '/images/services/wood-decking.jpeg';
 const vinylImage = '/images/services/vinyl-flooring.jpeg';
@@ -53,9 +53,9 @@ const sharedProblems = ['Dull or tired surface appearance', 'Visible wear from d
 const sharedProcess = ['Review photos and project details', 'Assess the material and site condition', 'Carry out the suitable preparation and service work', 'Inspect the finish and share maintenance guidance'];
 const sharedBenefits = ['Cleaner and more professional appearance', 'Treatment matched to the actual surface', 'Useful for homes and commercial properties', 'Clearer quote scope before work begins'];
 
-export const services: ServiceCategory[] = [
+const serviceCategories: ServiceCategory[] = [
   {
-    number: '01',
+    number: '02',
     title: 'Marble & Stone Care',
     slug: 'marble-stone-care',
     primaryKeyword: 'marble and stone restoration singapore',
@@ -75,7 +75,7 @@ export const services: ServiceCategory[] = [
     ]
   },
   {
-    number: '02',
+    number: '03',
     title: 'Grouting Services',
     slug: 'grouting',
     primaryKeyword: 'grouting services singapore',
@@ -94,7 +94,7 @@ export const services: ServiceCategory[] = [
     ]
   },
   {
-    number: '03',
+    number: '01',
     title: 'General Floor Care',
     slug: 'general-floor-care',
     primaryKeyword: 'floor care services singapore',
@@ -184,6 +184,18 @@ export const services: ServiceCategory[] = [
     ]
   }
 ];
+
+const serviceOrder = [
+  'general-floor-care',
+  'marble-stone-care',
+  'grouting',
+  'parquet-flooring',
+  'timber-wood-repair',
+  'wood-decking',
+  'vinyl-flooring'
+];
+
+export const services: ServiceCategory[] = serviceOrder.map((slug) => serviceCategories.find((service) => service.slug === slug)!);
 
 export const servicePath = (service: ServiceCategory) => `/services/${service.slug}/`;
 export const subServicePath = (service: ServiceCategory, subService: SubService) => `${servicePath(service)}${subService.slug}/`;
