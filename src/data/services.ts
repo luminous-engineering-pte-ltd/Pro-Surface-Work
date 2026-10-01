@@ -33,13 +33,13 @@ export type ServiceCategory = {
   subServices: SubService[];
 };
 
-const marbleImage = 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1400&q=80';
-const groutImage = 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=80';
-const floorCareImage = 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80';
-const parquetImage = 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1400&q=80';
-const woodImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=80';
-const deckingImage = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80';
-const vinylImage = 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1400&q=80';
+const marbleImage = '/images/services/marble-stone-care.jpeg';
+const groutImage = '/images/services/grouting-services.jpeg';
+const floorCareImage = '/images/services/general-floor-care.jpeg';
+const parquetImage = '/images/services/parquet-flooring.png';
+const woodImage = '/images/services/timber-wood-repair.jpeg';
+const deckingImage = '/images/services/wood-decking.jpeg';
+const vinylImage = '/images/services/vinyl-flooring.jpeg';
 
 const faq = (service: string): FaqItem[] => [
   { question: `How do I know if I need ${service}?`, answer: 'Send clear photos, the approximate area and a short note about the issue. Pro Surface Works can advise whether restoration, repair, polishing, grouting or replacement is the better fit.' },
