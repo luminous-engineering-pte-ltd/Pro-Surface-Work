@@ -471,6 +471,91 @@ p {
 .home-hero .hero-actions .btn {
   flex: 0 1 auto;
   max-width: 100%;
+  min-height: 52px;
+  border-radius: 14px;
+  padding: 14px 22px;
+  font-weight: 850;
+  transition:
+    transform 250ms var(--ease-premium),
+    border-color 250ms ease,
+    background 250ms ease,
+    box-shadow 250ms var(--ease-premium),
+    color 250ms ease;
+}
+
+.home-hero .hero-actions .btn::after {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  content: "->";
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: transform 250ms var(--ease-premium), background 250ms ease;
+}
+
+.home-hero .hero-actions .btn:hover::after,
+.home-hero .hero-actions .btn:focus-visible::after {
+  transform: translateX(4px);
+}
+
+.home-hero .hero-actions .btn.light {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(135deg, #2563eb, #06b6d4 52%, #2dd4bf);
+  background-size: 160% 160%;
+  box-shadow:
+    0 18px 38px rgba(37, 99, 235, 0.3),
+    0 0 32px rgba(6, 182, 212, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+}
+
+.home-hero .hero-actions .btn.light::after {
+  color: #075985;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.home-hero .hero-actions .btn.light:hover,
+.home-hero .hero-actions .btn.light:focus-visible {
+  color: var(--white);
+  background-position: 100% 50%;
+  box-shadow:
+    0 24px 52px rgba(37, 99, 235, 0.38),
+    0 0 42px rgba(6, 182, 212, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.home-hero .hero-actions .btn.ghost {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.48);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+}
+
+.home-hero .hero-actions .btn.ghost::after {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.home-hero .hero-actions .btn.ghost:hover,
+.home-hero .hero-actions .btn.ghost:focus-visible {
+  color: var(--white);
+  border-color: rgba(125, 211, 252, 0.78);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(37, 99, 235, 0.18));
+  box-shadow:
+    0 20px 46px rgba(6, 182, 212, 0.18),
+    0 0 0 1px rgba(125, 211, 252, 0.22) inset;
+  transform: translateY(-3px) scale(1.02);
 }
 
 .home-hero .btn.whatsapp {
@@ -484,6 +569,121 @@ p {
   height: 1.1rem;
   flex: 0 0 auto;
   fill: currentColor;
+}
+
+.service-hero .hero-actions {
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.service-hero .hero-actions .btn {
+  min-height: 52px;
+  border-radius: 14px;
+  padding: 14px 22px;
+  font-weight: 850;
+  letter-spacing: 0;
+  white-space: nowrap;
+  transition:
+    transform 260ms var(--ease-premium),
+    border-color 260ms ease,
+    background 260ms ease,
+    box-shadow 260ms var(--ease-premium),
+    color 260ms ease;
+}
+
+.service-hero .hero-actions .btn::before {
+  z-index: 0;
+  background: linear-gradient(115deg, transparent 18%, rgba(255, 255, 255, 0.32), transparent 58%);
+  transform: translateX(-72%);
+  transition: opacity 260ms ease, transform 560ms var(--ease-premium);
+}
+
+.service-hero .hero-actions .btn::after {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.28rem;
+  height: 1.28rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  content: "->";
+  font-size: 0.86rem;
+  line-height: 1;
+  transition:
+    transform 260ms var(--ease-premium),
+    background 260ms ease,
+    color 260ms ease;
+}
+
+.service-hero .hero-actions .btn:hover,
+.service-hero .hero-actions .btn:focus-visible {
+  transform: translateY(-3px) scale(1.018);
+}
+
+.service-hero .hero-actions .btn:hover::before,
+.service-hero .hero-actions .btn:focus-visible::before {
+  opacity: 1;
+  transform: translateX(72%);
+}
+
+.service-hero .hero-actions .btn:hover::after,
+.service-hero .hero-actions .btn:focus-visible::after {
+  transform: translateX(4px);
+}
+
+.service-hero .hero-actions .btn.light {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.18);
+  background:
+    linear-gradient(135deg, #2563eb, #06b6d4 52%, #10b981);
+  background-size: 170% 170%;
+  box-shadow:
+    0 18px 40px rgba(37, 99, 235, 0.32),
+    0 0 32px rgba(6, 182, 212, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+}
+
+.service-hero .hero-actions .btn.light::after {
+  color: #075985;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.service-hero .hero-actions .btn.light:hover,
+.service-hero .hero-actions .btn.light:focus-visible {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.34);
+  background-position: 100% 50%;
+  box-shadow:
+    0 24px 56px rgba(37, 99, 235, 0.4),
+    0 0 44px rgba(6, 182, 212, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.service-hero .hero-actions .btn.ghost {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.46);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+}
+
+.service-hero .hero-actions .btn.ghost::after {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.service-hero .hero-actions .btn.ghost:hover,
+.service-hero .hero-actions .btn.ghost:focus-visible {
+  color: var(--white);
+  border-color: rgba(125, 211, 252, 0.78);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(37, 99, 235, 0.18));
+  box-shadow:
+    0 20px 46px rgba(6, 182, 212, 0.18),
+    0 0 0 1px rgba(125, 211, 252, 0.22) inset;
 }
 
 @keyframes rise {
@@ -744,8 +944,27 @@ details dl {
     margin-top: 30px;
   }
 
+  .service-hero .hero-actions {
+    align-items: stretch;
+    max-width: 330px;
+  }
+
+  .service-hero .hero-actions .btn {
+    min-height: 50px;
+    width: 100%;
+    padding: 13px 16px;
+    white-space: normal;
+  }
+
+  .service-hero .hero-actions .btn::after {
+    width: 1.16rem;
+    height: 1.16rem;
+    font-size: 0.78rem;
+  }
+
   .home-hero .hero-actions .btn {
     min-height: 52px;
+    width: min(100%, 290px);
   }
 
   .home-hero .btn.whatsapp {

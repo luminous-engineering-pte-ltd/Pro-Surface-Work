@@ -334,11 +334,14 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
     .footer-map {
       grid-column: 1 / -1;
       width: 100%;
+      justify-self: center;
+      text-align: center;
     }
 
     .map-link {
-      width: min(100%, 360px);
-      height: 210px;
+      width: clamp(190px, 34vw, 240px);
+      height: clamp(170px, 28vw, 200px);
+      margin-inline: auto;
     }
   }
 
@@ -358,8 +361,8 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
     }
 
     .map-link {
-      width: 100%;
-      height: 220px;
+      width: clamp(150px, 48vw, 180px);
+      height: clamp(130px, 42vw, 160px);
     }
   }
 
