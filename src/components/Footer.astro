@@ -212,14 +212,14 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
 
   .footer-map {
     min-width: 0;
+    width: fit-content;
   }
 
   .map-link {
     position: relative;
     display: block;
-    width: 100%;
-    max-width: 320px;
-    height: clamp(260px, 16vw, 300px);
+    width: clamp(160px, 11vw, 180px);
+    height: clamp(150px, 10vw, 170px);
     margin: 0;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.16);
@@ -261,22 +261,22 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
 
   .map-overlay {
     position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     z-index: 2;
     display: inline-flex;
     width: fit-content;
-    max-width: calc(100% - 28px);
+    max-width: calc(100% - 20px);
     align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 999px;
-    padding: 8px 12px;
+    padding: 6px 9px;
     margin: 0;
     color: var(--white);
     background: rgba(7, 21, 37, 0.72);
     box-shadow: 0 12px 28px rgba(7, 21, 37, 0.18);
-    font-size: 0.82rem;
+    font-size: 0.72rem;
     font-weight: 900;
     backdrop-filter: blur(12px);
   }
@@ -317,7 +317,7 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
     }
 
     .map-link {
-      max-width: none;
+      width: clamp(160px, 12vw, 180px);
     }
   }
 
@@ -328,6 +328,12 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
 
     .footer-map {
       grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    .map-link {
+      width: min(100%, 360px);
+      height: 210px;
     }
   }
 
@@ -347,7 +353,7 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
     }
 
     .map-link {
-      max-width: none;
+      width: 100%;
       height: 220px;
     }
   }

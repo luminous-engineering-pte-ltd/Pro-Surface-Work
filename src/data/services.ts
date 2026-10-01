@@ -37,7 +37,7 @@ const marbleImage = '/images/services/marble-stone-care.jpeg';
 const groutImage = '/images/services/grouting-services.jpeg';
 const floorCareImage = '/images/services/general-floor-care.jpeg';
 const parquetImage = '/images/services/parquet-flooring.png';
-const woodImage = '/images/services/timber-wood-repair.jpeg';
+const woodImage = '/images/services/timber-wood-repair-new.png';
 const deckingImage = '/images/services/wood-decking.jpeg';
 const vinylImage = '/images/services/vinyl-flooring.jpeg';
 
