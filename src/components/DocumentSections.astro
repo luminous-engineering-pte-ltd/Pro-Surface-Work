@@ -19,7 +19,7 @@ function groupedBlocks(blocks: CopyBlock[]) {
 ---
 
 {sections.map((section, index) => (
-  <section class:list={['section', 'document-section', { tinted: index % 2 === 1, 'faq-section': section.eyebrow === 'FAQ' }]} id={(section.eyebrow || section.title).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+  <section class:list={['section', 'document-section', `document-section-${index % 4}`, { tinted: index % 2 === 1, 'faq-section': section.eyebrow === 'FAQ' }]} id={(section.eyebrow || section.title).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
     <div class="container">
       <div class="document-heading">
         {section.eyebrow && <div class="eyebrow">{section.eyebrow}</div>}
@@ -52,30 +52,196 @@ function groupedBlocks(blocks: CopyBlock[]) {
 ))}
 
 <style>
-  .document-section { background: var(--white); }
-  .document-section.tinted { background: var(--paper); }
-  .document-heading { max-width: 880px; margin-bottom: 32px; }
+  .document-section {
+    isolation: isolate;
+    background:
+      radial-gradient(circle at 88% 12%, rgba(37,99,235,.09), transparent 22rem),
+      radial-gradient(circle at 8% 88%, rgba(6,182,212,.06), transparent 20rem),
+      var(--surface);
+  }
+  .document-section.tinted {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(14,165,233,.1), transparent 22rem),
+      radial-gradient(circle at 86% 72%, rgba(124,58,237,.09), transparent 24rem),
+      linear-gradient(180deg, #f8fbff, var(--surface-cool));
+  }
+  .document-section-1 {
+    background:
+      radial-gradient(circle at 12% 16%, rgba(6,182,212,.1), transparent 22rem),
+      radial-gradient(circle at 88% 74%, rgba(37,99,235,.08), transparent 24rem),
+      linear-gradient(180deg, #f7fdff, #ffffff);
+  }
+  .document-section-2 {
+    background:
+      radial-gradient(circle at 84% 14%, rgba(124,58,237,.1), transparent 22rem),
+      radial-gradient(circle at 16% 78%, rgba(37,99,235,.08), transparent 24rem),
+      linear-gradient(180deg, #ffffff, #f6f4ff);
+  }
+  .document-section-3 {
+    background:
+      radial-gradient(circle at 18% 10%, rgba(43,138,126,.11), transparent 22rem),
+      radial-gradient(circle at 88% 86%, rgba(183,155,99,.09), transparent 24rem),
+      linear-gradient(180deg, #ffffff, #f4fbf8);
+  }
+  .document-section::after {
+    position: absolute;
+    left: -8rem;
+    bottom: 8%;
+    width: 20rem;
+    height: 20rem;
+    content: "";
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.09), transparent 70%);
+    pointer-events: none;
+  }
+  .document-section.faq-section {
+    background:
+      radial-gradient(circle at 88% 18%, rgba(31,90,73,.07), transparent 24rem),
+      linear-gradient(180deg, #ffffff, var(--surface-blue));
+  }
+  .document-heading {
+    max-width: 880px;
+    margin-bottom: 36px;
+  }
   .document-heading h2 { margin: 8px 0 0; font-size: clamp(2rem, 3vw, 3rem); line-height: 1.08; }
-  .document-body, .document-faq { max-width: 880px; }
+  .document-body, .document-faq {
+    max-width: 920px;
+  }
+  .document-section:nth-child(odd) .container {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.48fr) minmax(0, 1fr);
+    gap: clamp(34px, 5vw, 72px);
+    align-items: start;
+  }
+  .document-section:nth-child(odd) .document-heading {
+    position: sticky;
+    top: 110px;
+  }
+  .document-section:nth-child(odd) .document-body,
+  .document-section:nth-child(odd) .document-faq {
+    max-width: none;
+  }
+  .document-section.tinted .document-body,
+  .document-section.faq-section .document-faq,
+  .document-section:nth-child(odd) .document-body {
+    border: 1px solid rgba(16, 32, 51, 0.08);
+    border-radius: 24px;
+    padding: clamp(24px, 4vw, 42px);
+    background:
+      radial-gradient(circle at 100% 0%, rgba(37,99,235,.06), transparent 18rem),
+      linear-gradient(180deg, rgba(255,255,255,.86), rgba(248,251,255,.7));
+    box-shadow: 0 22px 60px rgba(7, 21, 37, 0.075), 0 0 0 1px rgba(255,255,255,.7) inset;
+    backdrop-filter: blur(14px);
+  }
   .document-body h3 { margin: 34px 0 10px; font-size: 1.85rem; }
   .document-body h3:first-child { margin-top: 0; }
   .document-body h3 a:hover { color: var(--green-2); }
   .document-body p { max-width: 780px; margin-bottom: 16px; }
   .document-body p a, .document-faq p a { color: var(--green-2); text-decoration: underline; text-underline-offset: 3px; }
-  .document-body ul { margin: 12px 0 28px; padding-left: 22px; color: var(--muted); line-height: 1.75; }
-  .document-body li + li { margin-top: 8px; }
-  .document-link { display: inline-flex; margin: 4px 0 20px; color: var(--green-2); font-weight: 800; }
-  .document-link:hover { text-decoration: underline; }
-  .fact-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 34px; margin: 0; }
-  .fact-list div { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .document-body ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 18px 0 28px;
+    padding: 0;
+    color: var(--muted);
+    line-height: 1.65;
+    list-style: none;
+  }
+  .document-body li {
+    position: relative;
+    min-width: 0;
+    border: 1px solid rgba(16,32,51,.08);
+    border-radius: 16px;
+    padding: 14px 14px 14px 42px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.62)),
+      radial-gradient(circle at 0% 0%, rgba(37,99,235,.08), transparent 10rem);
+    box-shadow: 0 10px 26px rgba(7,21,37,.045);
+    transition: transform 260ms var(--ease-premium), border-color 260ms ease, box-shadow 260ms ease;
+  }
+  .document-body li:nth-child(4n + 2)::before { background: var(--teal-blue-gradient); }
+  .document-body li:nth-child(4n + 3)::before { background: var(--blue-purple-gradient); }
+  .document-body li:nth-child(4n + 4)::before { background: linear-gradient(135deg, var(--gold), #0ea5e9); }
+  .document-body li:hover {
+    border-color: rgba(37, 99, 235, 0.22);
+    box-shadow: 0 16px 34px rgba(37,99,235,.08);
+    transform: translateY(-2px);
+  }
+  .document-body li::before {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    content: "";
+    background: var(--accent-gradient);
+    box-shadow: 0 0 16px rgba(43,138,126,.28);
+  }
+  .document-body li + li { margin-top: 0; }
+  .document-link { display: inline-flex; align-items: center; margin: 4px 0 20px; color: var(--green-2); font-weight: 800; }
+  .document-link:hover { transform: translateX(3px); }
+  .fact-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; }
+  .fact-list div { display: flex; justify-content: space-between; gap: 20px; border: 1px solid rgba(16,32,51,.08); border-radius: 16px; padding: 18px; background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(248,251,255,.68)); box-shadow: 0 10px 28px rgba(7,21,37,.045); transition: border-color 220ms ease, transform 220ms var(--ease-premium), box-shadow 220ms ease; }
+  .fact-list div:hover { border-color: rgba(37, 99, 235, 0.28); box-shadow: 0 16px 34px rgba(37,99,235,.08); transform: translateX(3px); }
   .fact-list dt { color: var(--muted); }
   .fact-list dd { margin: 0; font-weight: 700; text-align: right; }
-  .table-scroll { max-width: 100%; overflow-x: auto; margin: 20px 0 28px; }
+  .table-scroll { max-width: 100%; overflow-x: auto; margin: 20px 0 28px; border-radius: 16px; box-shadow: 0 14px 34px rgba(7, 21, 37, 0.06); }
   .table-scroll table { width: 100%; border-collapse: collapse; line-height: 1.5; }
   .table-scroll th, .table-scroll td { padding: 15px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
   .table-scroll th { background: var(--paper-2); }
-  .document-faq details { padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .document-faq details { border: 1px solid rgba(16,32,51,.08); border-radius: 16px; padding: 18px 20px; background: linear-gradient(180deg, rgba(255,255,255,.84), rgba(248,251,255,.68)); box-shadow: 0 10px 28px rgba(7,21,37,.045); transition: border-color 220ms ease, background 220ms ease, padding-inline 220ms var(--ease-premium), box-shadow 220ms ease; }
+  .document-faq details + details { margin-top: 12px; }
+  .document-faq details:hover, .document-faq details[open] { border-color: rgba(37, 99, 235, 0.28); box-shadow: 0 16px 36px rgba(37,99,235,.08); }
   .document-faq summary { cursor: pointer; font-weight: 800; }
+  .document-faq summary::marker { color: var(--gold); }
   .document-faq p { margin: 12px 0 0; }
-  @media (max-width: 700px) { .fact-list { grid-template-columns: 1fr; } }
+  #how-it-works .document-body p {
+    position: relative;
+    margin-bottom: 14px;
+    border: 1px solid rgba(16,32,51,.08);
+    border-radius: 18px;
+    padding: 18px 18px 18px 68px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.86), rgba(248,251,255,.7)),
+      radial-gradient(circle at 0% 0%, rgba(6,182,212,.08), transparent 12rem);
+    box-shadow: 0 12px 30px rgba(7,21,37,.055);
+  }
+  #how-it-works .document-body p::before {
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--white);
+    background: var(--blue-cyan-gradient);
+    box-shadow: 0 10px 24px rgba(37,99,235,.18);
+    font-size: .78rem;
+    font-weight: 900;
+  }
+  #how-it-works .document-body p:nth-of-type(1)::before { content: "01"; }
+  #how-it-works .document-body p:nth-of-type(2)::before { content: "02"; }
+  #how-it-works .document-body p:nth-of-type(3)::before { content: "03"; }
+  #how-it-works .document-body p:nth-of-type(4)::before { content: "04"; }
+  #how-it-works .document-body p:nth-of-type(5)::before { content: "05"; }
+  @media (max-width: 900px) {
+    .document-section:nth-child(odd) .container {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .document-section:nth-child(odd) .document-heading {
+      position: relative;
+      top: auto;
+    }
+  }
+  @media (max-width: 700px) {
+    .fact-list,
+    .document-body ul {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

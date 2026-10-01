@@ -28,11 +28,13 @@ const examples = [
           const service = services.find((item) => item.slug === slug)!;
           return (
             <article class="project-card reveal">
-              <img src={service.image} alt={`${title} before and after project in Singapore`} loading="lazy" />
+              <div class="project-media">
+                <img src={service.image} alt={`${title} before and after project in Singapore`} loading="lazy" />
+              </div>
               <div>
                 <h3>{title}</h3>
                 <p>{text}</p>
-                <a href={servicePath(service)}>View related service</a>
+                <a href={servicePath(service)}>View related service <span aria-hidden="true">&rarr;</span></a>
               </div>
             </article>
           );
@@ -45,8 +47,28 @@ const examples = [
 
 <style>
   .slim { min-height: 62vh; }
-  .project-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); }
+  .section {
+    background:
+      radial-gradient(circle at 88% 8%, rgba(6,182,212,.12), transparent 22rem),
+      radial-gradient(circle at 14% 40%, rgba(124,58,237,.1), transparent 22rem),
+      radial-gradient(circle at 50% 100%, rgba(37,99,235,.08), transparent 26rem),
+      linear-gradient(180deg, #ffffff, #f4f8ff);
+  }
+  .project-card { --card-a: #2563eb; --card-b: #06b6d4; position: relative; padding: 12px; overflow: hidden; border: 1px solid rgba(16, 32, 51, 0.1); border-radius: 22px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(247,250,255,.9)); box-shadow: 0 20px 54px rgba(7, 21, 37, 0.09), 0 0 0 1px rgba(255,255,255,.7) inset; isolation: isolate; }
+  .project-card:nth-child(2) { --card-a: #0d9488; --card-b: #2563eb; }
+  .project-card:nth-child(3) { --card-a: #7c3aed; --card-b: #06b6d4; }
+  .project-card::before { position: absolute; inset: 0; z-index: -1; content: ""; background: linear-gradient(135deg, color-mix(in srgb, var(--card-a) 15%, transparent), transparent 42%, color-mix(in srgb, var(--card-b) 15%, transparent)); opacity: .72; transition: opacity 360ms ease; }
+  .project-card:hover::before { opacity: 1; }
+  .project-media { position: relative; margin: 0; padding: 0; border-radius: 14px; overflow: hidden; }
+  .project-media::after { position: absolute; inset: 0; content: ""; background: linear-gradient(180deg, transparent 42%, rgba(7,21,37,.48)), linear-gradient(135deg, color-mix(in srgb, var(--card-a) 22%, transparent), transparent 54%); opacity: .66; transition: opacity 520ms ease; }
+  .project-card:hover .project-media::after { opacity: .46; }
   .project-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-  .project-card div { padding: 22px; }
-  .project-card a { color: var(--green-2); font-weight: 900; }
+  .project-card > div:not(.project-media) { position: relative; padding: 22px 8px 8px; }
+  .project-card h3 { margin-bottom: 10px; font-size: clamp(1.45rem, 2vw, 1.85rem); }
+  .project-card p { margin-bottom: 20px; }
+  .project-card a { display: inline-flex; align-items: center; gap: 7px; border: 1px solid color-mix(in srgb, var(--card-a) 20%, transparent); border-radius: 999px; padding: 10px 13px 10px 15px; color: color-mix(in srgb, var(--card-a) 82%, var(--green)); background: color-mix(in srgb, var(--card-a) 8%, transparent); box-shadow: 0 10px 24px rgba(7,21,37,.04); font-size: .9rem; font-weight: 900; }
+  .project-card a span { transition: transform 340ms var(--ease-premium); }
+  .project-card a:hover { color: var(--white); background: linear-gradient(135deg, var(--card-a), var(--card-b)); box-shadow: 0 12px 26px color-mix(in srgb, var(--card-a) 22%, transparent); transform: translateX(0); }
+  .project-card a:hover span { transform: translateX(4px); }
 </style>
+

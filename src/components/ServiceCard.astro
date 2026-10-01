@@ -1,45 +1,152 @@
 ---
-type Props = { number?: string; title: string; summary: string; href: string };
-const { number, title, summary, href } = Astro.props;
+type Props = { number?: string; title: string; summary: string; href: string; image?: string };
+const { number, title, summary, href, image } = Astro.props;
 ---
 
 <a class="service-card reveal" href={href}>
-  {number && <span>{number}</span>}
-  <h3>{title}</h3>
-  <p>{summary}</p>
-  <strong>Explore Service -&gt;</strong>
+  {image && (
+    <span class="service-card-media">
+      <img src={image} alt={`${title} service`} loading="lazy" />
+    </span>
+  )}
+  <span class="service-card-body">
+    {number && <span class="service-number">{number}</span>}
+    <span class="service-card-copy">
+      <h3>{title}</h3>
+      <p>{summary}</p>
+    </span>
+    <strong>Explore Service <span aria-hidden="true">-&gt;</span></strong>
+  </span>
 </a>
 
 <style>
   .service-card {
-    min-height: 260px;
+    --card-a: #2563eb;
+    --card-b: #06b6d4;
+    position: relative;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 26px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.72);
-    box-shadow: 0 14px 34px rgba(7, 21, 37, 0.06);
-    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    padding: 12px;
+    border: 1px solid rgba(16, 32, 51, 0.1);
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(247,250,255,.92));
+    box-shadow: 0 20px 54px rgba(7, 21, 37, 0.09), 0 0 0 1px rgba(255,255,255,.72) inset;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 420ms var(--ease-premium), box-shadow 420ms var(--ease-premium), border-color 340ms ease, background 340ms ease;
+  }
+
+  .service-card:nth-child(2) { --card-a: #0d9488; --card-b: #2563eb; }
+  .service-card:nth-child(3) { --card-a: #7c3aed; --card-b: #06b6d4; }
+  .service-card:nth-child(4) { --card-a: #0891b2; --card-b: #b79b63; }
+  .service-card:nth-child(5) { --card-a: #2b8a7e; --card-b: #7c3aed; }
+  .service-card:nth-child(6) { --card-a: #2563eb; --card-b: #b79b63; }
+
+  .service-card::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    opacity: .6;
+    background:
+      radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--card-a) 13%, transparent), transparent 13rem),
+      linear-gradient(135deg, color-mix(in srgb, var(--card-a) 16%, transparent), rgba(255,255,255,.08) 42%, color-mix(in srgb, var(--card-b) 14%, transparent));
+    transition: opacity 420ms ease;
   }
 
   .service-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(31, 90, 73, 0.42);
-    box-shadow: var(--shadow);
+    transform: translateY(-8px) scale(1.015);
+    border-color: color-mix(in srgb, var(--card-a) 42%, transparent);
+    box-shadow: 0 24px 58px rgba(7, 21, 37, 0.13), 0 18px 46px color-mix(in srgb, var(--card-a) 13%, transparent);
   }
 
-  span {
-    color: var(--gold);
+  .service-card:hover::before {
+    opacity: 1;
+  }
+
+  .service-card-media {
+    display: block;
+    aspect-ratio: 16 / 10;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--navy);
+  }
+
+  .service-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.01);
+    transition: transform 820ms var(--ease-premium), filter 520ms ease;
+  }
+
+  .service-card:hover .service-card-media img {
+    transform: scale(1.075);
+    filter: saturate(1.04) contrast(1.04);
+  }
+
+  .service-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 20px 8px 8px;
+  }
+
+  .service-number {
+    display: inline-grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    margin-bottom: 14px;
+    border: 1px solid rgba(183,155,99,.32);
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--card-a), var(--card-b));
+    color: var(--white);
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--card-a) 22%, transparent);
+    font-size: .84rem;
     font-weight: 900;
   }
 
   h3 {
-    margin: 18px 0 12px;
+    margin: 0 0 12px;
+    font-size: clamp(1.45rem, 2vw, 1.85rem);
+  }
+
+  p {
+    margin-bottom: 22px;
   }
 
   strong {
-    color: var(--green-2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: fit-content;
+    margin-top: auto;
+    border: 1px solid color-mix(in srgb, var(--card-a) 20%, transparent);
+    border-radius: 999px;
+    padding: 10px 13px 10px 15px;
+    color: color-mix(in srgb, var(--card-a) 82%, var(--green));
+    background: color-mix(in srgb, var(--card-a) 8%, transparent);
+    font-size: .9rem;
+    transition: color 340ms ease, background 340ms ease, box-shadow 340ms var(--ease-premium);
+  }
+
+  .service-card:hover strong,
+  .service-card:focus-visible strong {
+    color: var(--white);
+    background: linear-gradient(135deg, var(--card-a), var(--card-b));
+    box-shadow: 0 12px 24px color-mix(in srgb, var(--card-a) 22%, transparent);
+  }
+
+  strong span {
+    color: currentColor;
+    transition: transform 340ms var(--ease-premium);
+  }
+
+  .service-card:hover strong span {
+    transform: translateX(4px);
   }
 </style>
+

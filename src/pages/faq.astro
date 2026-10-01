@@ -59,20 +59,40 @@ const sectionId = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, 
 
 <style>
   .slim { min-height: 62vh; }
-  .faq-nav { background: var(--paper); border-bottom: 1px solid var(--line); }
+  .faq-nav { background: linear-gradient(135deg, rgba(239,246,255,.92), rgba(240,253,250,.88)); border-bottom: 1px solid rgba(37, 99, 235, 0.1); backdrop-filter: blur(14px); }
   .faq-nav-inner { display: flex; flex-wrap: wrap; gap: 10px 22px; padding-block: 24px; }
-  .faq-nav a { color: var(--green-2); font-size: .9rem; font-weight: 800; }
-  .faq-nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .faq-group { background: var(--white); scroll-margin-top: 90px; }
-  .faq-group.tinted { background: var(--paper); }
+  .faq-nav a { border: 1px solid rgba(37, 99, 235, 0.14); border-radius: 999px; padding: 9px 12px; color: #1d4ed8; background: rgba(255, 255, 255, 0.56); font-size: .9rem; font-weight: 800; }
+  .faq-nav a:hover { color: #155e75; background: var(--white); box-shadow: 0 12px 28px rgba(37, 99, 235, 0.1); transform: translateY(-2px); }
+  .faq-group {
+    background:
+      radial-gradient(circle at 88% 12%, rgba(6,182,212,.09), transparent 20rem),
+      radial-gradient(circle at 12% 80%, rgba(37,99,235,.08), transparent 20rem),
+      var(--surface);
+    scroll-margin-top: 90px;
+  }
+  .faq-group.tinted {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(124,58,237,.09), transparent 22rem),
+      radial-gradient(circle at 88% 76%, rgba(6,182,212,.08), transparent 22rem),
+      linear-gradient(180deg, #f7faff, #f7fbff);
+  }
   .faq-layout { display: grid; grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr); gap: 52px; }
   h2 { font-size: clamp(2.25rem, 4vw, 3.6rem); }
-  .faq-list details { padding: 20px 0; border-top: 1px solid var(--line); }
-  .faq-list details:last-child { border-bottom: 1px solid var(--line); }
+  .faq-list details { border: 1px solid rgba(16,32,51,.08); border-radius: 18px; padding: 20px 22px; background: linear-gradient(180deg, rgba(255,255,255,.84), rgba(248,251,255,.68)); box-shadow: 0 12px 30px rgba(7,21,37,.055); backdrop-filter: blur(12px); transition: border-color 220ms ease, transform 220ms var(--ease-premium), box-shadow 220ms ease; }
+  .faq-list details + details { margin-top: 14px; }
+  .faq-list details:hover, .faq-list details[open] { border-color: rgba(37, 99, 235, 0.32); box-shadow: 0 18px 42px rgba(37,99,235,.1); transform: translateX(3px); }
   .faq-list summary { cursor: pointer; font-weight: 800; line-height: 1.5; }
+  .faq-list summary::marker { color: var(--gold); }
   .faq-list p { margin: 14px 0 0; }
   .faq-list p a { color: var(--green-2); text-decoration: underline; text-underline-offset: 3px; }
-  .faq-closing { color: var(--white); background: var(--navy); }
+  .faq-closing {
+    color: var(--white);
+    background:
+      radial-gradient(circle at 15% 22%, rgba(6,182,212,.2), transparent 22rem),
+      radial-gradient(circle at 85% 15%, rgba(124,58,237,.18), transparent 22rem),
+      radial-gradient(circle at 76% 84%, rgba(183,155,99,.16), transparent 22rem),
+      linear-gradient(135deg, #071525, #1d4ed8 54%, #5b21b6);
+  }
   .faq-closing h2 { max-width: 720px; }
   .faq-closing p { max-width: 680px; color: rgba(255,255,255,.78); }
   @media (max-width: 800px) {

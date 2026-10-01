@@ -35,8 +35,10 @@ export type ServiceCategory = {
 
 const marbleImage = 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1400&q=80';
 const groutImage = 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=80';
+const floorCareImage = 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80';
 const parquetImage = 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1400&q=80';
 const woodImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=80';
+const deckingImage = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80';
 const vinylImage = 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1400&q=80';
 
 const faq = (service: string): FaqItem[] => [
@@ -96,7 +98,7 @@ export const services: ServiceCategory[] = [
     title: 'General Floor Care',
     slug: 'general-floor-care',
     primaryKeyword: 'floor care services singapore',
-    image: groutImage,
+    image: floorCareImage,
     summary: 'Floor polishing, buffing, refinishing and restoration for tired residential and commercial floors.',
     description: 'General Floor Care covers polishing, buffing, refinishing and restoration for floors that need renewed presentation.',
     seoTitle: 'Floor Care Services Singapore',
@@ -152,7 +154,7 @@ export const services: ServiceCategory[] = [
     title: 'Wood Decking',
     slug: 'wood-decking',
     primaryKeyword: 'wood decking services singapore',
-    image: woodImage,
+    image: deckingImage,
     summary: 'Wood decking service support for installation, repair and restoration planning.',
     description: 'Wood Decking covers deck installation and repair for suitable Singapore outdoor and semi-outdoor areas.',
     seoTitle: 'Wood Decking Services Singapore',

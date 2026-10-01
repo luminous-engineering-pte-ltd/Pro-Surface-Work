@@ -83,9 +83,9 @@ const introParagraphs = page.intro.filter((block) => block.kind === 'paragraph')
       </div>
       <div class="grid three">
         {related.map((item) => item?.subService ? (
-          <ServiceCard title={item.subService.title} summary={item.subService.summary} href={subServicePath(item.service, item.subService)} />
+          <ServiceCard title={item.subService.title} summary={item.subService.summary} href={subServicePath(item.service, item.subService)} image={item.service.image} />
         ) : item ? (
-          <ServiceCard title={item.service.title} summary={item.service.summary} href={servicePath(item.service)} />
+          <ServiceCard title={item.service.title} summary={item.service.summary} href={servicePath(item.service)} image={item.service.image} />
         ) : null)}
       </div>
     </div>
@@ -96,7 +96,11 @@ const introParagraphs = page.intro.filter((block) => block.kind === 'paragraph')
   .service-hero { min-height: 68vh; padding: 118px 0 76px; }
   .hero-description { max-width: 720px; display: grid; gap: 10px; margin-top: 20px; }
   .hero-description p { margin: 0; line-height: 1.72; }
-  .related-section { background: var(--white); }
+  .related-section {
+    background:
+      radial-gradient(circle at 84% 10%, rgba(183,155,99,.06), transparent 22rem),
+      linear-gradient(180deg, #ffffff, var(--surface-blue));
+  }
   .related-heading { margin-bottom: 30px; }
   .related-heading h2 { margin: 8px 0 0; font-size: clamp(2rem, 3vw, 3rem); }
   @media (max-width: 520px) { .service-hero { min-height: auto; padding: 112px 0 64px; } }

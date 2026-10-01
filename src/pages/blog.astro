@@ -36,7 +36,27 @@ const topics = ['Marble care and polishing', 'Parquet sanding and varnishing', '
 
 <style>
   .slim { min-height: 62vh; }
-  .topic { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); }
+  .section:not(.dark) {
+    background:
+      radial-gradient(circle at 10% 12%, rgba(37,99,235,.1), transparent 22rem),
+      radial-gradient(circle at 90% 18%, rgba(124,58,237,.08), transparent 22rem),
+      radial-gradient(circle at 52% 100%, rgba(6,182,212,.08), transparent 24rem),
+      linear-gradient(180deg, #ffffff, #f5f9ff);
+  }
+  .topic { --card-a: #2563eb; --card-b: #06b6d4; position: relative; min-height: 220px; padding: 30px; border: 1px solid rgba(16, 32, 51, 0.1); border-radius: 20px; background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(247,250,255,.9)); overflow: hidden; box-shadow: 0 18px 44px rgba(7, 21, 37, 0.07), 0 0 0 1px rgba(255,255,255,.72) inset; }
+  .topic:nth-child(2) { --card-a: #0d9488; --card-b: #2563eb; }
+  .topic:nth-child(3) { --card-a: #7c3aed; --card-b: #06b6d4; }
+  .topic:nth-child(4) { --card-a: #0891b2; --card-b: #b79b63; }
+  .topic:nth-child(5) { --card-a: #2b8a7e; --card-b: #7c3aed; }
+  .topic:nth-child(6) { --card-a: #2563eb; --card-b: #b79b63; }
+  .topic::before { position: absolute; inset: 0; content: ""; opacity: .68; background: radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--card-a) 12%, transparent), transparent 12rem), linear-gradient(135deg, color-mix(in srgb, var(--card-a) 13%, transparent), transparent 42%, color-mix(in srgb, var(--card-b) 12%, transparent)); transition: opacity 420ms ease; }
+  .topic::after { position: absolute; left: 30px; right: 30px; bottom: 0; height: 3px; content: ""; border-radius: 999px 999px 0 0; background: linear-gradient(90deg, var(--card-a), var(--card-b)); opacity: .62; transform: scaleX(.34); transform-origin: left; transition: transform 520ms var(--ease-premium), opacity 420ms ease; }
+  .topic:hover::before { opacity: 1; }
+  .topic:hover::after { opacity: .92; transform: scaleX(1); }
+  .topic > * { position: relative; }
+  .topic h3 { margin-bottom: 14px; font-size: clamp(1.45rem, 2vw, 1.85rem); }
   .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-  .chips a { border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 999px; padding: 10px 14px; font-weight: 850; }
+  .chips a { border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 999px; padding: 10px 14px; font-weight: 850; background: rgba(255, 255, 255, 0.06); }
+  .chips a:hover { border-color: rgba(255, 255, 255, 0.36); background: rgba(255, 255, 255, 0.13); transform: translateY(-2px); }
 </style>
+
