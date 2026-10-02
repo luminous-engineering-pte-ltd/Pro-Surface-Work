@@ -5,7 +5,7 @@ import DocumentCategoryGrid from '@/components/DocumentCategoryGrid.astro';
 import { pageCopy, faqSchema } from '@/data/pageCopy';
 
 const page = pageCopy.home;
-const heroImage = 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85';
+const heroImage = '/images/home-banner.jpeg';
 const heading = page.intro.find((block) => block.kind === 'heading')?.text;
 const lead = page.intro.find((block) => block.kind === 'paragraph')?.text;
 ---
