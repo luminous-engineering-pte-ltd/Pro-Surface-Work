@@ -912,7 +912,11 @@ details dl {
 
   .home-hero {
     padding: 112px 0 56px;
-    background-position: center;
+  }
+
+  .home-hero::before {
+    background-position: 64% center;
+    background-size: auto 96%;
   }
 
   .home-hero .hero-copy {
