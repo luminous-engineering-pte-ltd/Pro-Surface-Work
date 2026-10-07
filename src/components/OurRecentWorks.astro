@@ -34,6 +34,7 @@ const {
                 alt={work.alt}
                 loading="lazy"
                 decoding="async"
+                style={work.objectPosition ? `object-position: ${work.objectPosition}` : undefined}
               />
               <span>{work.label}</span>
             </div>
