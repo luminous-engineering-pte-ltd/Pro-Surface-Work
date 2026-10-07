@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import AboutProSurfaceWorks from '@/components/AboutProSurfaceWorks.astro';
 import DocumentSections from '@/components/DocumentSections.astro';
 import DocumentCategoryGrid from '@/components/DocumentCategoryGrid.astro';
 import { pageCopy, faqSchema } from '@/data/pageCopy';
@@ -23,5 +24,6 @@ const lead = page.intro.find((block) => block.kind === 'paragraph')?.text;
     </div>
   </section>
   <DocumentCategoryGrid page={page} sectionName="WHAT WE DO" />
-  <DocumentSections page={page} skip={['WHAT WE DO']} />
+  <AboutProSurfaceWorks />
+  <DocumentSections page={page} skip={['WHAT WE DO', 'WHO WE ARE']} />
 </BaseLayout>

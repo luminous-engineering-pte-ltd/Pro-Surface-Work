@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import AboutProSurfaceWorks from '@/components/AboutProSurfaceWorks.astro';
 import DocumentSections from '@/components/DocumentSections.astro';
 import DocumentCategoryGrid from '@/components/DocumentCategoryGrid.astro';
 import { pageCopy } from '@/data/pageCopy';
@@ -24,6 +25,7 @@ const lead = page.intro.find((block) => block.kind === 'paragraph')?.text;
     </div>
   </section>
   <DocumentCategoryGrid page={page} sectionName="SERVICE CATEGORIES" showChildren />
+  <AboutProSurfaceWorks />
   <DocumentSections page={page} skip={['SERVICE CATEGORIES']} />
 </BaseLayout>
 

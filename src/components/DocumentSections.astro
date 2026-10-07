@@ -3,7 +3,15 @@ import { contentHref, inlineContentParts, pageFaqs, type CopyPage, type CopyBloc
 
 type Props = { page: CopyPage; skip?: string[] };
 const { page, skip = [] } = Astro.props;
-const sections = page.sections.filter((section) => !skip.includes(section.eyebrow));
+const sections = page.sections
+  .reduce<{ section: CopyPage['sections'][number]; layoutIndex: number; render: boolean }[]>((items, section) => {
+    const render = !skip.includes(section.eyebrow);
+    const affectsLayoutOrder = render || section.eyebrow === 'WHO WE ARE';
+    const layoutIndex = items.filter((item) => item.render || item.section.eyebrow === 'WHO WE ARE').length;
+    if (affectsLayoutOrder) items.push({ section, layoutIndex, render });
+    return items;
+  }, [])
+  .filter((item) => item.render);
 
 function groupedBlocks(blocks: CopyBlock[]) {
   const grouped: (CopyBlock | { kind: 'listGroup'; items: string[] })[] = [];
@@ -18,8 +26,8 @@ function groupedBlocks(blocks: CopyBlock[]) {
 }
 ---
 
-{sections.map((section, index) => (
-  <section class:list={['section', 'document-section', `document-section-${index % 4}`, { tinted: index % 2 === 1, 'faq-section': section.eyebrow === 'FAQ' }]} id={(section.eyebrow || section.title).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+{sections.map(({ section, layoutIndex }) => (
+  <section class:list={['section', 'document-section', `document-section-${layoutIndex % 4}`, { tinted: layoutIndex % 2 === 1, split: layoutIndex % 2 === 0, 'faq-section': section.eyebrow === 'FAQ' }]} id={(section.eyebrow || section.title).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
     <div class="container">
       <div class="document-heading">
         {section.eyebrow && <div class="eyebrow">{section.eyebrow}</div>}
@@ -107,23 +115,23 @@ function groupedBlocks(blocks: CopyBlock[]) {
   .document-body, .document-faq {
     max-width: 920px;
   }
-  .document-section:nth-child(odd) .container {
+  .document-section.split .container {
     display: grid;
     grid-template-columns: minmax(240px, 0.48fr) minmax(0, 1fr);
     gap: clamp(34px, 5vw, 72px);
     align-items: start;
   }
-  .document-section:nth-child(odd) .document-heading {
+  .document-section.split .document-heading {
     position: sticky;
     top: 110px;
   }
-  .document-section:nth-child(odd) .document-body,
-  .document-section:nth-child(odd) .document-faq {
+  .document-section.split .document-body,
+  .document-section.split .document-faq {
     max-width: none;
   }
   .document-section.tinted .document-body,
   .document-section.faq-section .document-faq,
-  .document-section:nth-child(odd) .document-body {
+  .document-section.split .document-body {
     border: 1px solid rgba(16, 32, 51, 0.08);
     border-radius: 24px;
     padding: clamp(24px, 4vw, 42px);
@@ -229,11 +237,11 @@ function groupedBlocks(blocks: CopyBlock[]) {
   #how-it-works .document-body p:nth-of-type(4)::before { content: "04"; }
   #how-it-works .document-body p:nth-of-type(5)::before { content: "05"; }
   @media (max-width: 900px) {
-    .document-section:nth-child(odd) .container {
+    .document-section.split .container {
       grid-template-columns: 1fr;
       gap: 24px;
     }
-    .document-section:nth-child(odd) .document-heading {
+    .document-section.split .document-heading {
       position: relative;
       top: auto;
     }

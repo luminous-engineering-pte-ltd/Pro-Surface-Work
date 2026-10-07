@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import AboutProSurfaceWorks from '@/components/AboutProSurfaceWorks.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import DocumentSections from '@/components/DocumentSections.astro';
 import ServiceCard from '@/components/ServiceCard.astro';
@@ -74,6 +75,8 @@ const introParagraphs = page.intro.filter((block) => block.kind === 'paragraph')
   </section>
 
   <DocumentSections page={page} />
+
+  <AboutProSurfaceWorks />
 
   <section class="section related-section">
     <div class="container">
