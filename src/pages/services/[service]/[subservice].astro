@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import AboutProSurfaceWorks from '@/components/AboutProSurfaceWorks.astro';
+import OurRecentWorks from '@/components/OurRecentWorks.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import DocumentSections from '@/components/DocumentSections.astro';
 import ServiceCard from '@/components/ServiceCard.astro';
 import { pageCopy, faqSchema } from '@/data/pageCopy';
+import { recentWorksForPage } from '@/data/recentWorks';
 import { findSubServiceBySlug, services, servicePath, subServicePath, type ServiceCategory, type SubService } from '@/data/services';
 
 export function getStaticPaths() {
@@ -56,6 +58,7 @@ const schema = [
 ].filter(Boolean);
 const heading = page.intro.find((block) => block.kind === 'heading')?.text;
 const introParagraphs = page.intro.filter((block) => block.kind === 'paragraph');
+const recentWorks = recentWorksForPage(subService.slug);
 ---
 
 <BaseLayout title={page.title} description={page.description} image={service.image} schema={schema}>
@@ -74,7 +77,9 @@ const introParagraphs = page.intro.filter((block) => block.kind === 'paragraph')
     </div>
   </section>
 
-  <DocumentSections page={page} />
+  <DocumentSections page={page}>
+    <OurRecentWorks slot="before-faq" projects={recentWorks} />
+  </DocumentSections>
 
   <AboutProSurfaceWorks />
 

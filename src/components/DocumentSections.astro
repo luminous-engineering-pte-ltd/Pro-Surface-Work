@@ -27,36 +27,39 @@ function groupedBlocks(blocks: CopyBlock[]) {
 ---
 
 {sections.map(({ section, layoutIndex }) => (
-  <section class:list={['section', 'document-section', `document-section-${layoutIndex % 4}`, { tinted: layoutIndex % 2 === 1, split: layoutIndex % 2 === 0, 'faq-section': section.eyebrow === 'FAQ' }]} id={(section.eyebrow || section.title).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
-    <div class="container">
-      <div class="document-heading">
-        {section.eyebrow && <div class="eyebrow">{section.eyebrow}</div>}
-        <h2>{section.title}</h2>
+  <>
+    {section.eyebrow === 'FAQ' && <slot name="before-faq" />}
+    <section class:list={['section', 'document-section', `document-section-${layoutIndex % 4}`, { tinted: layoutIndex % 2 === 1, split: layoutIndex % 2 === 0, 'faq-section': section.eyebrow === 'FAQ' }]} id={(section.eyebrow || section.title).toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+      <div class="container">
+        <div class="document-heading">
+          {section.eyebrow && <div class="eyebrow">{section.eyebrow}</div>}
+          <h2>{section.title}</h2>
+        </div>
+        {section.eyebrow === 'FAQ' ? (
+          <div class="document-faq">
+            {pageFaqs(page).map((item, faqIndex) => <details open={faqIndex === 0}><summary>{item.question}</summary><p>{inlineContentParts(item.answer).map((part) => part.href ? <a href={part.href}>{part.text}</a> : part.text)}</p></details>)}
+          </div>
+        ) : (
+          <div class="document-body">
+            {groupedBlocks(section.blocks).map((block) => {
+              if (block.kind === 'listGroup') return <ul>{block.items.map((item) => <li>{item}</li>)}</ul>;
+              if (block.kind === 'facts') return <dl class="fact-list">{block.rows?.map(([term, value]) => <div><dt>{term}</dt><dd>{value}</dd></div>)}</dl>;
+              if (block.kind === 'table') return <div class="table-scroll"><table><thead><tr>{block.rows?.[0]?.map((cell) => <th>{cell}</th>)}</tr></thead><tbody>{block.rows?.slice(1).map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody></table></div>;
+              if (block.kind === 'link') {
+                const href = contentHref(block.text ?? '');
+                return href ? <a class="document-link" href={href}>{block.text}</a> : <span class="document-link">{block.text}</span>;
+              }
+              if (block.kind === 'heading') {
+                const href = contentHref(block.text ?? '');
+                return <h3>{href ? <a href={href}>{block.text}</a> : block.text}</h3>;
+              }
+              return <p>{inlineContentParts(block.text ?? '').map((part) => part.href ? <a href={part.href}>{part.text}</a> : part.text)}</p>;
+            })}
+          </div>
+        )}
       </div>
-      {section.eyebrow === 'FAQ' ? (
-        <div class="document-faq">
-          {pageFaqs(page).map((item, faqIndex) => <details open={faqIndex === 0}><summary>{item.question}</summary><p>{inlineContentParts(item.answer).map((part) => part.href ? <a href={part.href}>{part.text}</a> : part.text)}</p></details>)}
-        </div>
-      ) : (
-        <div class="document-body">
-          {groupedBlocks(section.blocks).map((block) => {
-            if (block.kind === 'listGroup') return <ul>{block.items.map((item) => <li>{item}</li>)}</ul>;
-            if (block.kind === 'facts') return <dl class="fact-list">{block.rows?.map(([term, value]) => <div><dt>{term}</dt><dd>{value}</dd></div>)}</dl>;
-            if (block.kind === 'table') return <div class="table-scroll"><table><thead><tr>{block.rows?.[0]?.map((cell) => <th>{cell}</th>)}</tr></thead><tbody>{block.rows?.slice(1).map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}</tbody></table></div>;
-            if (block.kind === 'link') {
-              const href = contentHref(block.text ?? '');
-              return href ? <a class="document-link" href={href}>{block.text}</a> : <span class="document-link">{block.text}</span>;
-            }
-            if (block.kind === 'heading') {
-              const href = contentHref(block.text ?? '');
-              return <h3>{href ? <a href={href}>{block.text}</a> : block.text}</h3>;
-            }
-            return <p>{inlineContentParts(block.text ?? '').map((part) => part.href ? <a href={part.href}>{part.text}</a> : part.text)}</p>;
-          })}
-        </div>
-      )}
-    </div>
-  </section>
+    </section>
+  </>
 ))}
 
 <style>

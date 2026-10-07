@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import AboutProSurfaceWorks from '@/components/AboutProSurfaceWorks.astro';
+import OurRecentWorks from '@/components/OurRecentWorks.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import DocumentSections from '@/components/DocumentSections.astro';
 import { pageCopy, faqSchema } from '@/data/pageCopy';
+import { recentWorksForPage } from '@/data/recentWorks';
 import { services, servicePath, type ServiceCategory } from '@/data/services';
 
 export function getStaticPaths() {
@@ -43,6 +45,7 @@ const schema = [
 ].filter(Boolean);
 const heading = page.intro.find((block) => block.kind === 'heading')?.text;
 const introParagraphs = page.intro.filter((block) => block.kind === 'paragraph');
+const recentWorks = recentWorksForPage(service.slug);
 ---
 
 <BaseLayout title={page.title} description={page.description} image={service.image} schema={schema}>
@@ -57,7 +60,9 @@ const introParagraphs = page.intro.filter((block) => block.kind === 'paragraph')
       <div class="hero-actions"><a class="btn light" href="/contact/">Request a Free Assessment</a></div>
     </div>
   </section>
-  <DocumentSections page={page} />
+  <DocumentSections page={page}>
+    <OurRecentWorks slot="before-faq" projects={recentWorks} />
+  </DocumentSections>
   <AboutProSurfaceWorks />
 </BaseLayout>
 
