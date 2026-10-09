@@ -80,17 +80,53 @@ const schemaItems = [baseSchema, ...(Array.isArray(schema) ? schema : schema ? [
       const servicesMenu = document.querySelector('[data-services-menu]');
       const servicesToggle = document.querySelector('[data-services-toggle]');
       const closeServicesLinks = document.querySelectorAll('[data-close-services]');
+      const hoverServicesQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+      let closeServicesTimer;
+
+      const canHoverServices = () => hoverServicesQuery.matches;
 
       const setServicesOpen = (isOpen) => {
+        window.clearTimeout(closeServicesTimer);
         servicesMenu?.classList.toggle('is-open', isOpen);
         header?.classList.toggle('services-open', isOpen);
         servicesToggle?.setAttribute('aria-expanded', String(isOpen));
       };
 
+      const closeServicesSoon = () => {
+        window.clearTimeout(closeServicesTimer);
+        closeServicesTimer = window.setTimeout(() => setServicesOpen(false), 180);
+      };
+
       servicesToggle?.addEventListener('click', (event) => {
         event.stopPropagation();
+        if (canHoverServices()) {
+          setServicesOpen(true);
+          return;
+        }
         setServicesOpen(!servicesMenu?.classList.contains('is-open'));
       });
+
+      servicesMenu?.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'mouse' && canHoverServices()) {
+          setServicesOpen(true);
+        }
+      });
+
+      servicesMenu?.addEventListener('pointerleave', (event) => {
+        if (event.pointerType === 'mouse' && canHoverServices()) {
+          closeServicesSoon();
+        }
+      });
+
+      servicesMenu?.addEventListener('focusin', () => setServicesOpen(true));
+
+      servicesMenu?.addEventListener('focusout', (event) => {
+        if (!servicesMenu.contains(event.relatedTarget)) {
+          closeServicesSoon();
+        }
+      });
+
+      hoverServicesQuery.addEventListener?.('change', () => setServicesOpen(false));
 
       document.addEventListener('click', (event) => {
         if (!servicesMenu?.contains(event.target)) {
