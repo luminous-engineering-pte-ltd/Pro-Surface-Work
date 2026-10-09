@@ -616,7 +616,8 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
 
     .menu-btn:hover {
       transform: translateY(-1px);
-      background: rgba(31, 90, 73, 0.12);
+      border-color: rgba(191, 240, 255, 0.36);
+      background: rgba(219, 250, 255, 0.13);
     }
 
     .menu-btn span {
@@ -645,13 +646,14 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
       padding: 18px 20px 30px;
       color: var(--white);
       background:
-        radial-gradient(circle at 18% 0%, rgba(6, 182, 212, 0.14), transparent 18rem),
-        radial-gradient(circle at 88% 12%, rgba(37, 99, 235, 0.16), transparent 18rem),
-        linear-gradient(145deg, rgba(6, 24, 42, 0.98), rgba(10, 38, 62, 0.98));
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        linear-gradient(115deg, rgba(255, 255, 255, 0.12), transparent 28%, rgba(255, 255, 255, 0.08) 58%, transparent 76%),
+        radial-gradient(circle at 14% 0%, rgba(125, 211, 252, 0.28), transparent 22rem),
+        linear-gradient(135deg, #143a66 0%, #1e63b5 52%, #19c2d1 100%);
+      border-bottom: 1px solid rgba(191, 240, 255, 0.28);
       box-shadow:
-        0 24px 64px rgba(3, 10, 22, 0.34),
-        0 0 42px rgba(6, 182, 212, 0.12);
+        0 26px 76px rgba(3, 10, 22, 0.38),
+        0 0 44px rgba(6, 182, 212, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -682,10 +684,15 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(191, 240, 255, 0.18);
       border-radius: 12px;
-      color: rgba(241, 249, 255, 0.92);
-      background: rgba(255, 255, 255, 0.035);
+      color: rgba(248, 252, 255, 0.96);
+      background:
+        linear-gradient(145deg, rgba(18, 52, 88, 0.9), rgba(17, 83, 132, 0.84)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 52%);
+      box-shadow:
+        0 10px 26px rgba(3, 10, 22, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
       padding: 0 15px;
       font-size: 1rem;
       font-weight: 850;
@@ -703,55 +710,70 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
     .mobile-services-toggle[aria-current="page"],
     .mobile-services-wrap.is-open > .mobile-services-toggle {
       color: var(--white);
-      border-color: rgba(125, 211, 252, 0.28);
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 12px 28px rgba(6, 182, 212, 0.12);
+      border-color: rgba(219, 250, 255, 0.38);
+      background:
+        linear-gradient(145deg, rgba(24, 76, 124, 0.96), rgba(18, 112, 166, 0.9)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 54%);
+      box-shadow:
+        0 16px 38px rgba(3, 10, 22, 0.2),
+        0 0 26px rgba(6, 182, 212, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
       transform: translateX(2px);
     }
 
     .mobile-services-toggle {
       color: #ffffff;
-      border-color: #40618a;
-      background: linear-gradient(135deg, #172b49, #234b77);
+      border-color: rgba(191, 240, 255, 0.18);
+      background:
+        linear-gradient(145deg, rgba(18, 52, 88, 0.9), rgba(17, 83, 132, 0.84)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 52%);
       box-shadow:
-        0 10px 24px rgba(7, 21, 37, 0.16),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        0 10px 26px rgba(3, 10, 22, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
     }
 
     .mobile-services-toggle:hover,
     .mobile-services-toggle:focus-visible,
     .mobile-services-toggle[aria-current="page"] {
       color: #ffffff;
-      border-color: #5f84b4;
-      background: linear-gradient(135deg, #1c4070, #2563a6);
+      border-color: rgba(219, 250, 255, 0.38);
+      background:
+        linear-gradient(145deg, rgba(24, 76, 124, 0.96), rgba(18, 112, 166, 0.9)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 54%);
       box-shadow:
-        0 14px 34px rgba(37, 99, 166, 0.24),
-        0 0 28px rgba(6, 182, 212, 0.14),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        0 16px 38px rgba(3, 10, 22, 0.2),
+        0 0 26px rgba(6, 182, 212, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 
     .mobile-services-toggle:active {
-      background: linear-gradient(135deg, #18365b, #245487);
+      background:
+        linear-gradient(145deg, rgba(24, 76, 124, 0.98), rgba(18, 112, 166, 0.94)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 54%);
     }
 
     .mobile-services-wrap.is-open > .mobile-services-toggle {
       color: #ffffff;
-      border-color: #5f84b4;
-      background: linear-gradient(135deg, #18365b, #245487);
+      border-color: rgba(219, 250, 255, 0.38);
+      background:
+        linear-gradient(145deg, rgba(24, 76, 124, 0.98), rgba(18, 112, 166, 0.94)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 54%);
       box-shadow:
-        0 14px 34px rgba(37, 99, 166, 0.24),
-        0 0 28px rgba(6, 182, 212, 0.14),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        0 16px 38px rgba(3, 10, 22, 0.2),
+        0 0 26px rgba(6, 182, 212, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 
     .mobile-services-wrap {
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(191, 240, 255, 0.24);
       border-radius: 14px;
       background:
-        linear-gradient(180deg, rgba(13, 34, 54, 0.76), rgba(8, 28, 48, 0.76)),
-        rgba(255, 255, 255, 0.04);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        linear-gradient(115deg, rgba(255, 255, 255, 0.1), transparent 36%, rgba(255, 255, 255, 0.06) 72%),
+        linear-gradient(135deg, rgba(20, 58, 102, 0.72), rgba(30, 99, 181, 0.62), rgba(25, 194, 209, 0.46));
+      box-shadow:
+        0 10px 26px rgba(3, 10, 22, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
     }
 
     .mobile-services {
@@ -788,10 +810,12 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
       gap: 14px;
       width: 100%;
       border: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      border-bottom: 1px solid rgba(191, 240, 255, 0.16);
       border-radius: 8px;
-      color: rgba(241, 249, 255, 0.92);
-      background: rgba(255, 255, 255, 0.02);
+      color: rgba(248, 252, 255, 0.96);
+      background:
+        linear-gradient(145deg, rgba(18, 52, 88, 0.72), rgba(17, 83, 132, 0.62)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 52%);
       padding: 12px 12px;
       font-size: 0.95rem;
       font-weight: 850;
@@ -803,7 +827,9 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
     .mobile-service-toggle:hover,
     .mobile-service.is-open .mobile-service-toggle {
       color: var(--white);
-      background: rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(145deg, rgba(24, 76, 124, 0.9), rgba(18, 112, 166, 0.82)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 54%);
     }
 
     .mobile-service-chevron {
@@ -844,7 +870,7 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
       width: 100%;
       border: 1px solid transparent;
       border-radius: 6px;
-      color: rgba(226, 242, 251, 0.78);
+      color: rgba(229, 244, 255, 0.86);
       font-size: 0.92rem;
       font-weight: 780;
       line-height: 1.35;
@@ -854,8 +880,8 @@ import { services, navLinks, servicePath, subServicePath } from '@/data/services
 
     .mobile-service div a:hover {
       color: var(--white);
-      border-color: rgba(125, 211, 252, 0.16);
-      background: rgba(6, 182, 212, 0.12);
+      border-color: rgba(191, 240, 255, 0.18);
+      background: rgba(219, 250, 255, 0.13);
       transform: translateX(2px);
     }
 
