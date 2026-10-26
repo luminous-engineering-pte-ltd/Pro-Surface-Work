@@ -4,3 +4,6 @@ node_modules/
 out/
 build/
 dist/
+public/optimized/
+src/data/image-manifest.json
+artifacts/lighthouse/

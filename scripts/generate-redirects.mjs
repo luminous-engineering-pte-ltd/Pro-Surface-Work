@@ -33,6 +33,16 @@ redirects.push({
 // Commit this generated file: Vercel reads project configuration before build.
 await writeFile(new URL('../vercel.json', import.meta.url), `${JSON.stringify({
   $schema: 'https://openapi.vercel.sh/vercel.json',
+  headers: [
+    {
+      source: '/optimized/:path*',
+      headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
+    },
+    {
+      source: '/fonts/:path*',
+      headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
+    }
+  ],
   redirects
 }, null, 2)}\n`);
 console.log(`Generated ${redirects.length} Vercel redirects for ${paths.size} content routes and ${Object.keys(legacy).length} legacy routes.`);

@@ -1,4 +1,5 @@
 ---
+import { heroStyle } from '@/data/images';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import AboutProSurfaceWorks from '@/components/AboutProSurfaceWorks.astro';
 import DocumentSections from '@/components/DocumentSections.astro';
@@ -12,7 +13,7 @@ const lead = page.intro.find((block) => block.kind === 'paragraph')?.text;
 ---
 
 <BaseLayout title={page.title} description={page.description} image={heroImage}>
-  <section class="hero document-hero" style={`--hero-image: url('${heroImage}')`}>
+  <section class="hero document-hero" style={heroStyle(heroImage)}>
     <div class="container hero-copy">
       <div class="eyebrow">Services</div>
       <h1>{heading}</h1>

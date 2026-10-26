@@ -5,6 +5,7 @@ import WhatsAppButton from '@/components/WhatsAppButton.astro';
 import '@/styles/global.css';
 import { company } from '@/data/services';
 import seo from '@/data/seo.json';
+import { preloadImage } from '@/data/images';
 
 type Props = {
   title: string;
@@ -48,12 +49,28 @@ const schemaItems = [baseSchema, ...(Array.isArray(schema) ? schema : schema ? [
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <!-- Google Tag Manager -->
     <script is:inline>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-TVGXN4NW');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+      // Keep events queued immediately; let the page's critical resources load
+      // before downloading analytics and processing its third-party scripts.
+      window.addEventListener('load', () => {
+        const loadAnalytics = () => {
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TVGXN4NW';
+          document.head.appendChild(script);
+        };
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(loadAnalytics, { timeout: 1000 });
+        } else {
+          loadAnalytics();
+        }
+      }, { once: true });
     </script>
     <!-- End Google Tag Manager -->
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="5pdvZTQLGPZbjaQ1FirtmW729GufOktephexgE2kNYU" />
     <title>{pageTitle}</title>
@@ -61,7 +78,6 @@ const schemaItems = [baseSchema, ...(Array.isArray(schema) ? schema : schema ? [
     {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={url} />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -79,10 +95,10 @@ const schemaItems = [baseSchema, ...(Array.isArray(schema) ? schema : schema ? [
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
     <meta name="twitter:image:alt" content={imageAlt} />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    {preloadImage(image).map((preload) => <link rel="preload" as="image" {...preload} fetchpriority="high" />)}
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-v20-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/cormorant-garamond-v21-latin.woff2" crossorigin />
+    {image.startsWith('https://images.unsplash.com/') && <link rel="preconnect" href="https://images.unsplash.com" />}
     <script type="application/ld+json" set:html={JSON.stringify(schemaItems.length === 1 ? schemaItems[0] : schemaItems)} />
   </head>
   <body>

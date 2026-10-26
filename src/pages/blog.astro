@@ -1,14 +1,16 @@
 ---
+import { heroStyle } from '@/data/images';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import CTASection from '@/components/CTASection.astro';
 import { services, servicePath } from '@/data/services';
 
 const topics = ['Marble care and polishing', 'Parquet sanding and varnishing', 'Grouting and wet-area maintenance', 'Wood repair and decking', 'Vinyl flooring planning', 'Singapore home surface maintenance'];
+const heroImage = 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80';
 ---
 
-<BaseLayout title="Flooring, Marble and Surface Care Blog" description="Helpful guides on flooring, marble, parquet, grouting, wood-care, maintenance and restoration topics for Singapore properties.">
-  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80')`}>
+<BaseLayout image={heroImage} title="Flooring, Marble and Surface Care Blog" description="Helpful guides on flooring, marble, parquet, grouting, wood-care, maintenance and restoration topics for Singapore properties.">
+  <section class="hero slim" style={heroStyle(heroImage)}>
     <div class="container hero-copy">
       <div class="eyebrow">Blog</div>
       <h1>Flooring, marble and surface care guides.</h1>

@@ -1,10 +1,12 @@
 ---
+import { heroStyle } from '@/data/images';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { company, services } from '@/data/services';
+const heroImage = 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1800&q=80';
 ---
 
-<BaseLayout title="Floor Polishing Quote Singapore" description="Request a floor polishing quote in Singapore from Pro Surface Works for marble, parquet, grouting, timber, decking and vinyl flooring services.">
-  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1800&q=80')`}>
+<BaseLayout image={heroImage} title="Floor Polishing Quote Singapore" description="Request a floor polishing quote in Singapore from Pro Surface Works for marble, parquet, grouting, timber, decking and vinyl flooring services.">
+  <section class="hero slim" style={heroStyle(heroImage)}>
     <div class="container hero-copy">
       <div class="eyebrow">Contact</div>
       <h1>Request a floor polishing quote in Singapore.</h1>

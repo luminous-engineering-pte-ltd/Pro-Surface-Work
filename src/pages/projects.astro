@@ -1,4 +1,5 @@
 ---
+import { heroStyle, responsiveImage } from '@/data/images';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import CTASection from '@/components/CTASection.astro';
@@ -9,10 +10,11 @@ const examples = [
   ['Parquet floor restoration', 'Worn timber blocks assessed, prepared and refinished for a cleaner look.', 'parquet-flooring'],
   ['Tile and marble regrouting', 'Dark or failing joints refreshed for better surface presentation.', 'grouting']
 ];
+const heroImage = 'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1800&q=80';
 ---
 
-<BaseLayout title="Floor Restoration Projects Singapore" description="Explore floor restoration services from Pro Surface Works in Singapore. Detailed project case studies are being prepared.">
-  <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1800&q=80')`}>
+<BaseLayout image={heroImage} title="Floor Restoration Projects Singapore" description="Explore floor restoration services from Pro Surface Works in Singapore. Detailed project case studies are being prepared.">
+  <section class="hero slim" style={heroStyle(heroImage)}>
     <div class="container hero-copy">
       <div class="eyebrow">Projects</div>
       <h1>Floor restoration projects in Singapore.</h1>
@@ -29,7 +31,7 @@ const examples = [
           return (
             <article class="project-card">
               <div class="project-media">
-                <img src={service.image} alt={`${title} service in Singapore`} loading="lazy" />
+                <img {...responsiveImage(service.image, '(max-width: 640px) calc(100vw - 48px), 400px')} alt={`${title} service in Singapore`} loading="lazy" />
               </div>
               <div>
                 <h3>{title}</h3>
@@ -62,7 +64,7 @@ const examples = [
   .project-media { position: relative; margin: 0; padding: 0; border-radius: 14px; overflow: hidden; }
   .project-media::after { position: absolute; inset: 0; content: ""; background: linear-gradient(180deg, transparent 42%, rgba(7,21,37,.48)), linear-gradient(135deg, color-mix(in srgb, var(--card-a) 22%, transparent), transparent 54%); opacity: .66; transition: opacity 520ms ease; }
   .project-card:hover .project-media::after { opacity: .46; }
-  .project-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .project-card img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
   .project-card > div:not(.project-media) { position: relative; padding: 22px 8px 8px; }
   .project-card h3 { margin-bottom: 10px; font-size: clamp(1.45rem, 2vw, 1.85rem); }
   .project-card p { margin-bottom: 20px; }

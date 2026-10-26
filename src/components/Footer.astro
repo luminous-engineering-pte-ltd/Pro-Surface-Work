@@ -1,4 +1,5 @@
 ---
+import { responsiveImage } from '@/data/images';
 import { company, footerQuickLinks, services, servicePath } from '@/data/services';
 
 const mapUrl = 'https://maps.app.goo.gl/uhdDV3wg1tBqHB6R8';
@@ -9,7 +10,7 @@ const mapEmbedUrl = 'https://www.google.com/maps?q=Pro%20Surface%20Works%2C%2014
   <div class="container footer-grid">
     <div>
       <a class="brand" href="/" aria-label="Pro Surface Works home">
-        <img class="brand-logo" src="/update-Pro.png" alt="Pro Surface Works" width="1774" height="887" />
+        <img class="brand-logo" {...responsiveImage('/update-Pro.png', '126px')} alt="Pro Surface Works" loading="lazy" decoding="async" width="1774" height="887" />
         <span class="brand-text">Pro Surface Works</span>
       </a>
       <p>Professional floor polishing, restoration, timber finishing, marble care, grouting and surface solutions across Singapore.</p>

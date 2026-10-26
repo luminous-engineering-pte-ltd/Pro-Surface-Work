@@ -1,11 +1,12 @@
 ---
+import { responsiveImage } from '@/data/images';
 import { services, navLinks, servicePath, subServicePath } from '@/data/services';
 ---
 
 <header class="site-header">
   <div class="nav-wrap">
     <a class="brand" href="/" aria-label="Pro Surface Works home">
-      <img class="brand-logo" src="/update-Pro.png" alt="Pro Surface Works" width="1774" height="887" />
+      <img class="brand-logo" {...responsiveImage('/update-Pro.png', '112px')} alt="Pro Surface Works" width="1774" height="887" />
       <span class="brand-text">Pro Surface Works</span>
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">

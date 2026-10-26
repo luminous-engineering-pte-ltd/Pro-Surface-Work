@@ -1,12 +1,16 @@
 {
   "scripts": {
-    "dev": "astro dev --host 127.0.0.1",
-    "build": "node scripts/generate-redirects.mjs && astro build",
+    "dev": "node scripts/optimize-images.mjs && astro dev --host 127.0.0.1",
+    "build": "node scripts/optimize-images.mjs && node scripts/generate-redirects.mjs && astro build",
     "check:seo": "node scripts/check-seo.mjs",
+    "check:performance": "node scripts/check-performance.mjs",
+    "images:prepare": "node scripts/optimize-images.mjs",
     "preview": "astro preview --host 127.0.0.1"
   },
   "dependencies": {
     "astro": "^4.16.18"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
 }

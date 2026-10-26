@@ -48,4 +48,5 @@ indexing and sitemap inclusion together.
 Run `npm run check:seo` after a build to validate metadata, sitemap coverage,
 robots rules, structured data, assets, links, and redirect configuration.
 
-Image files, compression, responsive sizes, and loading behavior are unchanged.
+Image originals are preserved. Responsive WebP/AVIF derivatives and local fonts
+are prepared as part of the performance workflow; see `PERFORMANCE.md`.

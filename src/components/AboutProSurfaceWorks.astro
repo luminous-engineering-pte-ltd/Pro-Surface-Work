@@ -1,4 +1,5 @@
 ---
+import { responsiveImage } from '@/data/images';
 type Feature = {
   title: string;
   text: string;
@@ -35,7 +36,7 @@ const features: Feature[] = [
     <div class="about-psw__media">
       <div class="about-psw__image-shell" data-about-tilt>
         <img
-          src={imageSrc}
+          {...responsiveImage(imageSrc, '(max-width: 980px) calc(100vw - 64px), 600px')}
           width="1456"
           height="1024"
           alt="Pro Surface Works service van in Singapore showing flooring, marble, stone and parquet care services"
@@ -98,7 +99,7 @@ const features: Feature[] = [
         ))}
       </div>
 
-      <a class="btn primary about-psw__cta" href="/services/" aria-label="Explore Pro Surface Works flooring and surface restoration services">
+      <a class="btn primary about-psw__cta" href="/services/" aria-label="Explore Our Services at Pro Surface Works">
         Explore Our Services
         <span aria-hidden="true">-&gt;</span>
       </a>

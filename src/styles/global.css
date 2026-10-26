@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url('/fonts/inter-v20-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-v21-latin.woff2') format('woff2');
+}
+
 :root {
   --navy: #071525;
   --navy-2: #0d2236;
@@ -370,6 +386,17 @@ p {
     radial-gradient(circle at 50% 44%, rgba(31, 90, 73, 0.28), transparent 44%),
     linear-gradient(90deg, rgba(7, 21, 37, 0.92), rgba(7, 21, 37, 0.76) 54%, rgba(7, 21, 37, 0.58)),
     linear-gradient(0deg, rgba(7, 21, 37, 0.72), rgba(7, 21, 37, 0.18) 58%);
+}
+
+@supports (background-image: image-set(url('') type('image/avif'))) {
+  .hero::before {
+    background-image: var(--hero-modern-image, var(--hero-image));
+  }
+  @media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+    .home-hero::before {
+      background-image: var(--hero-mobile-image, var(--hero-modern-image, var(--hero-image)));
+    }
+  }
 }
 
 .hero-copy {

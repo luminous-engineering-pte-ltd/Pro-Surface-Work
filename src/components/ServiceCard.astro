@@ -1,4 +1,5 @@
 ---
+import { responsiveImage } from '@/data/images';
 type Props = { number?: string; title: string; summary: string; href: string; image?: string };
 const { number, title, summary, href, image } = Astro.props;
 ---
@@ -6,7 +7,7 @@ const { number, title, summary, href, image } = Astro.props;
 <a class="service-card" href={href}>
   {image && (
     <span class="service-card-media">
-      <img src={image} alt={`${title} service`} loading="lazy" />
+      <img {...responsiveImage(image, '(max-width: 640px) calc(100vw - 48px), (max-width: 980px) 50vw, 400px', 'card')} alt={`${title} service`} loading="lazy" />
     </span>
   )}
   <span class="service-card-body">

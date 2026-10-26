@@ -1,4 +1,5 @@
 ---
+import { responsiveImage } from '@/data/images';
 import { defaultRecentWorks, type RecentWorkProject } from '@/data/recentWorks';
 
 type Props = {
@@ -27,10 +28,10 @@ const {
     <div class="recent-works__showcase">
       {projects.map((work) => (
         <article class:list={['recent-work', { 'recent-work--featured': work.featured }]}>
-          <a href="/projects/" aria-label={`View recent work examples for ${work.title}`}>
+          <a href="/projects/">
             <div class="recent-work__media">
               <img
-                src={work.image}
+                {...responsiveImage(work.image, work.featured ? '(max-width: 980px) calc(100vw - 48px), 800px' : '(max-width: 980px) calc(100vw - 48px), 400px')}
                 alt={work.alt}
                 loading="lazy"
                 decoding="async"

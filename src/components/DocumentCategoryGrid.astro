@@ -1,4 +1,5 @@
 ---
+import { responsiveImage } from '@/data/images';
 import { services, servicePath, subServicePath } from '@/data/services';
 import { type CopyPage } from '@/data/pageCopy';
 
@@ -25,8 +26,8 @@ const categories = services.map((service) => {
       <div class:list={['category-grid', { expanded: showChildren }]}>
         {categories.map(({ service, description }) => (
           <article class="category-card">
-            <a class="category-media" href={servicePath(service)} aria-label={`Explore ${service.title}`}>
-              <img src={service.image} alt={`${service.title} service by Pro Surface Works`} loading="lazy" />
+            <a class="category-media" href={servicePath(service)} aria-label={`${service.number}: Explore ${service.title}`}>
+              <img {...responsiveImage(service.image, '(max-width: 640px) calc(100vw - 48px), (max-width: 980px) calc((100vw - 72px) / 2), 400px', 'card')} alt={`${service.title} service by Pro Surface Works`} loading="lazy" />
               <span class="category-number">{service.number}</span>
             </a>
             <div class="category-content">

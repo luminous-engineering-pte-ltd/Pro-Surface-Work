@@ -68,6 +68,7 @@ export default defineConfig({
   site: seo.site,
   trailingSlash: 'always',
   output: 'static',
+  build: { inlineStylesheets: 'always' },
   integrations: [addGoogleSiteVerification()],
   redirects
 });

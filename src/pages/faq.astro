@@ -1,4 +1,5 @@
 ---
+import { heroStyle } from '@/data/images';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { inlineContentParts } from '@/data/pageCopy';
 import content from '@/data/faq-content.json';
@@ -18,7 +19,7 @@ const sectionId = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, 
 ---
 
 <BaseLayout title={content.title} description={content.description} image={heroImage} schema={schema}>
-  <section class="hero slim" style={`--hero-image: url('${heroImage}')`}>
+  <section class="hero slim" style={heroStyle(heroImage)}>
     <div class="container hero-copy">
       <div class="eyebrow">FAQ</div>
       <h1>{content.heading}</h1>
