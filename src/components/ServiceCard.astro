@@ -3,7 +3,7 @@ type Props = { number?: string; title: string; summary: string; href: string; im
 const { number, title, summary, href, image } = Astro.props;
 ---
 
-<a class="service-card reveal" href={href}>
+<a class="service-card" href={href}>
   {image && (
     <span class="service-card-media">
       <img src={image} alt={`${title} service`} loading="lazy" />

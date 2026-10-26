@@ -27,7 +27,7 @@ const examples = [
         {examples.map(([title, text, slug]) => {
           const service = services.find((item) => item.slug === slug)!;
           return (
-            <article class="project-card reveal">
+            <article class="project-card">
               <div class="project-media">
                 <img src={service.image} alt={`${title} service in Singapore`} loading="lazy" />
               </div>

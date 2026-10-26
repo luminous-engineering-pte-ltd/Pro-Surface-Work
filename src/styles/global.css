@@ -340,34 +340,6 @@ p {
   overflow: hidden;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translate3d(0, 22px, 0) scale(0.985);
-  transition:
-    opacity 620ms var(--ease-premium),
-    transform 620ms var(--ease-premium);
-  transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
-  will-change: auto;
-}
-
-.reveal.from-left {
-  transform: translate3d(-22px, 8px, 0) scale(0.99);
-}
-
-.reveal.from-right {
-  transform: translate3d(22px, 8px, 0) scale(0.99);
-}
-
-.reveal.scale-in {
-  transform: scale(0.96);
-}
-
 .hero {
   position: relative;
   min-height: 92vh;
@@ -403,20 +375,7 @@ p {
 .hero-copy {
   max-width: 790px;
   min-width: 0;
-  animation: rise 680ms ease both;
 }
-
-.hero-copy > * {
-  opacity: 0;
-  transform: translateY(18px);
-  animation: hero-copy-in 720ms var(--ease-premium) both;
-}
-
-.hero-copy > :nth-child(1) { animation-delay: 120ms; }
-.hero-copy > :nth-child(2) { animation-delay: 220ms; }
-.hero-copy > :nth-child(3) { animation-delay: 320ms; }
-.hero-copy > :nth-child(4) { animation-delay: 430ms; }
-.hero-copy > :nth-child(5) { animation-delay: 520ms; }
 
 .hero p {
   max-width: 670px;
@@ -686,28 +645,6 @@ p {
     0 0 0 1px rgba(125, 211, 252, 0.22) inset;
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes hero-copy-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes hero-drift {
   from {
     transform: scale(1.06) translate3d(0, 0, 0);
@@ -851,10 +788,6 @@ details dl {
     transition-duration: 0.01ms !important;
   }
 
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 @media (hover: none) {

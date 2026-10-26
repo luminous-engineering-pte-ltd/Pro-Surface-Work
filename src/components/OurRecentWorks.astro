@@ -19,14 +19,14 @@ const {
 <section class="section recent-works" aria-labelledby="recent-works-title" data-recent-works>
   <div class="container recent-works__inner">
     <div class="recent-works__head">
-      <div class="eyebrow recent-works__reveal" data-recent-reveal style="--recent-delay: 0ms">{eyebrow}</div>
-      <h2 id="recent-works-title" class="recent-works__reveal" data-recent-reveal style="--recent-delay: 90ms">{heading}</h2>
-      <p class="recent-works__reveal" data-recent-reveal style="--recent-delay: 170ms">{description}</p>
+      <div class="eyebrow">{eyebrow}</div>
+      <h2 id="recent-works-title">{heading}</h2>
+      <p>{description}</p>
     </div>
 
     <div class="recent-works__showcase">
-      {projects.map((work, index) => (
-        <article class:list={['recent-work', { 'recent-work--featured': work.featured }]} data-recent-reveal style={`--recent-delay: ${260 + index * 95}ms`}>
+      {projects.map((work) => (
+        <article class:list={['recent-work', { 'recent-work--featured': work.featured }]}>
           <a href="/projects/" aria-label={`View recent work examples for ${work.title}`}>
             <div class="recent-work__media">
               <img
@@ -53,30 +53,6 @@ const {
   </div>
 </section>
 
-<script>
-  const recentSections = document.querySelectorAll('[data-recent-works]');
-  const reduceRecentMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  recentSections.forEach((section) => {
-    section.classList.add('recent-works--ready');
-    const revealItems = section.querySelectorAll('[data-recent-reveal]');
-
-    if (reduceRecentMotion || !('IntersectionObserver' in window)) {
-      revealItems.forEach((item) => item.classList.add('is-visible'));
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
-
-    revealItems.forEach((item) => observer.observe(item));
-  });
-</script>
 
 <style>
   .recent-works {
@@ -327,26 +303,6 @@ const {
     transform: translateX(4px) scale(1.05);
   }
 
-  .recent-works--ready [data-recent-reveal] {
-    opacity: 0;
-    clip-path: inset(0 0 16% 0 round 18px);
-    transform: translate3d(0, 24px, 0);
-    transition:
-      opacity 700ms var(--ease-premium) var(--recent-delay, 0ms),
-      transform 700ms var(--ease-premium) var(--recent-delay, 0ms),
-      clip-path 760ms var(--ease-premium) var(--recent-delay, 0ms);
-  }
-
-  .recent-works--ready [data-recent-reveal].is-visible {
-    opacity: 1;
-    clip-path: inset(0 0 0 0 round 0);
-    transform: none;
-  }
-
-  .recent-works--ready .recent-work.is-visible {
-    clip-path: inset(0 0 0 0 round var(--recent-work-radius));
-  }
-
   @media (max-width: 980px) {
     .recent-works__head {
       grid-template-columns: 1fr;
@@ -421,15 +377,11 @@ const {
     .recent-work,
     .recent-work img,
     .recent-work__media::after,
-    .recent-work__content i,
-    .recent-works--ready [data-recent-reveal] {
+    .recent-work__content i {
       clip-path: none !important;
       transform: none !important;
       transition-duration: 0.01ms !important;
     }
 
-    .recent-works--ready [data-recent-reveal] {
-      opacity: 1;
-    }
   }
 </style>

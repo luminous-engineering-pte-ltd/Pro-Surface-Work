@@ -32,7 +32,7 @@ const features: Feature[] = [
 
 <section class="section about-psw" aria-labelledby="about-pro-surface-works" data-about-psw>
   <div class="container about-psw__grid">
-    <div class="about-psw__media about-psw__reveal" data-about-reveal style="--about-delay: 0ms">
+    <div class="about-psw__media">
       <div class="about-psw__image-shell" data-about-tilt>
         <img
           src={imageSrc}
@@ -50,9 +50,9 @@ const features: Feature[] = [
     </div>
 
     <div class="about-psw__content">
-      <div class="eyebrow about-psw__reveal" data-about-reveal style="--about-delay: 80ms">WHO WE ARE</div>
-      <h2 id="about-pro-surface-works" class="about-psw__reveal" data-about-reveal style="--about-delay: 150ms">About Pro Surface Works</h2>
-      <div class="about-psw__copy about-psw__reveal" data-about-reveal style="--about-delay: 220ms">
+      <div class="eyebrow">WHO WE ARE</div>
+      <h2 id="about-pro-surface-works">About Pro Surface Works</h2>
+      <div class="about-psw__copy">
         <p>
           Pro Surface Works is a Singapore-based flooring and surface restoration company focused on improving the appearance,
           finish and usability of well-used floors and surfaces. The team works across marble polishing, stone restoration,
@@ -66,8 +66,8 @@ const features: Feature[] = [
       </div>
 
       <div class="about-psw__features" aria-label="Pro Surface Works service qualities">
-        {features.map((feature, index) => (
-          <article class="about-psw__feature about-psw__reveal" data-about-reveal style={`--about-delay: ${300 + index * 80}ms`}>
+        {features.map((feature) => (
+          <article class="about-psw__feature">
             <span class:list={['about-psw__icon', `about-psw__icon--${feature.icon}`]} aria-hidden="true">
               {feature.icon === 'workmanship' && (
                 <svg viewBox="0 0 24 24" focusable="false">
@@ -98,7 +98,7 @@ const features: Feature[] = [
         ))}
       </div>
 
-      <a class="btn primary about-psw__cta about-psw__reveal" href="/services/" data-about-reveal style="--about-delay: 660ms" aria-label="Explore Pro Surface Works flooring and surface restoration services">
+      <a class="btn primary about-psw__cta" href="/services/" aria-label="Explore Pro Surface Works flooring and surface restoration services">
         Explore Our Services
         <span aria-hidden="true">-&gt;</span>
       </a>
@@ -111,22 +111,6 @@ const features: Feature[] = [
   const reduceAboutMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   aboutSections.forEach((section) => {
-    section.classList.add('about-psw--ready');
-
-    const revealItems = section.querySelectorAll('[data-about-reveal]');
-    if (reduceAboutMotion || !('IntersectionObserver' in window)) {
-      revealItems.forEach((item) => item.classList.add('is-visible'));
-    } else {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        });
-      }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
-      revealItems.forEach((item) => observer.observe(item));
-    }
-
     const tilt = section.querySelector('[data-about-tilt]');
     if (!tilt || reduceAboutMotion) return;
 
@@ -403,23 +387,6 @@ const features: Feature[] = [
     transform: translateX(4px);
   }
 
-  .about-psw--ready .about-psw__reveal {
-    opacity: 0;
-    transform: translate3d(0, 24px, 0);
-    transition:
-      opacity 680ms var(--ease-premium) var(--about-delay, 0ms),
-      transform 680ms var(--ease-premium) var(--about-delay, 0ms);
-  }
-
-  .about-psw--ready .about-psw__media.about-psw__reveal {
-    transform: translate3d(-28px, 8px, 0) scale(0.985);
-  }
-
-  .about-psw--ready .about-psw__reveal.is-visible {
-    opacity: 1;
-    transform: none;
-  }
-
   @media (max-width: 980px) {
     .about-psw__grid {
       grid-template-columns: 1fr;
@@ -482,14 +449,10 @@ const features: Feature[] = [
     .about-psw__image-shell::after,
     .about-psw__feature,
     .about-psw__icon,
-    .about-psw__cta span,
-    .about-psw--ready .about-psw__reveal {
+    .about-psw__cta span {
       transition-duration: 0.01ms !important;
       transform: none !important;
     }
 
-    .about-psw--ready .about-psw__reveal {
-      opacity: 1;
-    }
   }
 </style>
