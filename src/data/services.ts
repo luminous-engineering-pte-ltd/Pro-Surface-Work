@@ -1,3 +1,5 @@
+import seo from './seo.json';
+
 export type FaqItem = { question: string; answer: string };
 
 export type SubService = {
@@ -245,10 +247,17 @@ export const corePages = [
 
 export const company = {
   name: 'Pro Surface Works',
-  domain: 'prosurfaceworks.com',
+  domain: new URL(seo.site).host,
   email: 'support@prosurfaceworks.com',
   phone: '+65 8597 9456',
   whatsapp: '6585979456',
   location: 'Singapore',
-  address: '14 Roberts Ln, Singapore 218293'
+  address: '14 Roberts Ln, Singapore 218293',
+  streetAddress: '14 Roberts Ln',
+  postalCode: '218293',
+  socialProfiles: [
+    'https://www.facebook.com/prosurfaceworks',
+    'https://www.instagram.com/prosurfaceworks01',
+    'https://www.linkedin.com/company/pro-surface-works'
+  ]
 };

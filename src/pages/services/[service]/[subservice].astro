@@ -39,7 +39,7 @@ const schema = [
     '@type': 'Service',
     name: subService.title,
     serviceType: subService.primaryKeyword,
-    provider: { '@type': 'LocalBusiness', name: 'Pro Surface Works' },
+    provider: { '@id': new URL('/#business', Astro.site).href },
     areaServed: 'Singapore',
     url: new URL(pageUrl, Astro.site).toString(),
     description: page.description

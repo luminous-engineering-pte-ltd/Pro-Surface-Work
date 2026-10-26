@@ -11,25 +11,25 @@ const examples = [
 ];
 ---
 
-<BaseLayout title="Floor Restoration Before and After Singapore" description="View Pro Surface Works project examples and before-and-after restoration work for floors, marble, parquet, timber and grouting in Singapore.">
+<BaseLayout title="Floor Restoration Projects Singapore" description="Explore floor restoration services from Pro Surface Works in Singapore. Detailed project case studies are being prepared.">
   <section class="hero slim" style={`--hero-image: url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1800&q=80')`}>
     <div class="container hero-copy">
       <div class="eyebrow">Projects</div>
-      <h1>Floor restoration before and after in Singapore.</h1>
-      <p>A portfolio structure for marble polishing, parquet restoration, grouting and floor care project examples.</p>
+      <h1>Floor restoration projects in Singapore.</h1>
+      <p>Detailed project case studies are being prepared. Explore the services below or contact our team about your restoration needs.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <SectionHeading eyebrow="Project Portfolio" title="Before-and-after restoration work." text="Use these structured project cards for verified site photos as the portfolio grows." />
+      <SectionHeading eyebrow="Restoration Services" title="Explore our restoration work." text="These service examples introduce our work. Detailed project photos and case studies will follow." />
       <div class="grid three">
         {examples.map(([title, text, slug]) => {
           const service = services.find((item) => item.slug === slug)!;
           return (
             <article class="project-card reveal">
               <div class="project-media">
-                <img src={service.image} alt={`${title} before and after project in Singapore`} loading="lazy" />
+                <img src={service.image} alt={`${title} service in Singapore`} loading="lazy" />
               </div>
               <div>
                 <h3>{title}</h3>

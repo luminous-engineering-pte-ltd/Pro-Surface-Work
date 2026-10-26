@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
-    "build": "astro build",
+    "build": "node scripts/generate-redirects.mjs && astro build",
+    "check:seo": "node scripts/check-seo.mjs",
     "preview": "astro preview --host 127.0.0.1"
   },
   "dependencies": {

@@ -1,0 +1,656 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/floor-grinding-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/floor-grinding-polishing/",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/floor-grinding-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/machine-grinding-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/machine-grinding-polishing/",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/machine-grinding-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/buffing-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/buffing-polishing/",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/buffing-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/floor-refinishing-restoration",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-refinishing-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/floor-refinishing-restoration/",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-refinishing-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/floor-refinishing-restoration/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-refinishing-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/marble-floor-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/marble-floor-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/marble-floor-polishing/",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/marble-floor-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/marble-floor-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/marble-floor-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/marble-bathroom-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/marble-bathroom-polishing/",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/marble-bathroom-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/kitchen-top-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/kitchen-countertop-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/kitchen-top-polishing/",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/kitchen-countertop-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/kitchen-top-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/kitchen-countertop-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/vanity-top-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/vanity-top-polishing/",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/vanity-top-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/basin-top-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/basin-top-polishing/",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/basin-top-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/marble-regrouting",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/tile-marble-regrouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/marble-regrouting/",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/tile-marble-regrouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/marble-regrouting/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/tile-marble-regrouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/tile-regrouting",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/tile-marble-regrouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/tile-regrouting/",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/tile-marble-regrouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/tile-regrouting/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/tile-marble-regrouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/homogeneous-tile-gum-grouting",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/marble-gum-grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/homogeneous-tile-gum-grouting/",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/marble-gum-grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/homogeneous-tile-gum-grouting/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/marble-gum-grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/porcelain-tile-grouting",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/epoxy-grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/porcelain-tile-grouting/",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/epoxy-grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/floor-marble-stone-restoration-polishing/porcelain-tile-grouting/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/epoxy-grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/parquet-repair-restoration",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-repair-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/parquet-repair-restoration/",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-repair-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/parquet-repair-restoration/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-repair-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/floor-sanding-varnishing",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-floor-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/floor-sanding-varnishing/",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-floor-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/floor-sanding-varnishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-floor-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/staircase-sanding-varnishing",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/staircase-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/staircase-sanding-varnishing/",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/staircase-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/staircase-sanding-varnishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/staircase-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/timber-wood-repair",
+      "destination": "https://www.prosurfaceworks.com/services/timber-wood-repair/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/timber-wood-repair/",
+      "destination": "https://www.prosurfaceworks.com/services/timber-wood-repair/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/timber-wood-repair/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/timber-wood-repair/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/old-varnish-removal-stripping",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/old-varnish-removal/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/old-varnish-removal-stripping/",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/old-varnish-removal/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-wood-finishing-repair-restoration/old-varnish-removal-stripping/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/old-varnish-removal/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-floor",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-floor-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-floor/",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-floor-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-floor/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-floor-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/index.html",
+      "destination": "https://www.prosurfaceworks.com/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about",
+      "destination": "https://www.prosurfaceworks.com/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/about/index.html",
+      "destination": "https://www.prosurfaceworks.com/about/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog",
+      "destination": "https://www.prosurfaceworks.com/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/index.html",
+      "destination": "https://www.prosurfaceworks.com/blog/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact",
+      "destination": "https://www.prosurfaceworks.com/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/contact/index.html",
+      "destination": "https://www.prosurfaceworks.com/contact/",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq",
+      "destination": "https://www.prosurfaceworks.com/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/faq/index.html",
+      "destination": "https://www.prosurfaceworks.com/faq/",
+      "statusCode": 301
+    },
+    {
+      "source": "/projects",
+      "destination": "https://www.prosurfaceworks.com/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/projects/index.html",
+      "destination": "https://www.prosurfaceworks.com/projects/",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas",
+      "destination": "https://www.prosurfaceworks.com/service-areas/",
+      "statusCode": 301
+    },
+    {
+      "source": "/service-areas/index.html",
+      "destination": "https://www.prosurfaceworks.com/service-areas/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services",
+      "destination": "https://www.prosurfaceworks.com/services/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/general-floor-care",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/general-floor-care/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/general-floor-care/floor-polishing-buffing",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/general-floor-care/floor-polishing-buffing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-polishing-buffing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/general-floor-care/floor-refinishing-restoration",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-refinishing-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/general-floor-care/floor-refinishing-restoration/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/general-floor-care/floor-refinishing-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/grouting",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/grouting/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/grouting/epoxy-grouting",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/epoxy-grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/grouting/epoxy-grouting/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/epoxy-grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/grouting/marble-gum-grouting",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/marble-gum-grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/grouting/marble-gum-grouting/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/marble-gum-grouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/grouting/tile-marble-regrouting",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/tile-marble-regrouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/grouting/tile-marble-regrouting/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/grouting/tile-marble-regrouting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/marble-stone-care",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/marble-stone-care/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/marble-stone-care/kitchen-countertop-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/kitchen-countertop-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/marble-stone-care/kitchen-countertop-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/kitchen-countertop-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/marble-stone-care/marble-floor-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/marble-floor-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/marble-stone-care/marble-floor-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/marble-floor-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/marble-stone-care/marble-restoration",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/marble-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/marble-stone-care/marble-restoration/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/marble-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/marble-stone-care/vanity-basin-top-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/marble-stone-care/vanity-basin-top-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/marble-stone-care/vanity-basin-top-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/old-varnish-removal",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/old-varnish-removal/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/old-varnish-removal/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/old-varnish-removal/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/parquet-floor-polishing",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-floor-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/parquet-floor-polishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-floor-polishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/parquet-floor-sanding-varnishing",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-floor-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/parquet-floor-sanding-varnishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-floor-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/parquet-flooring-installation",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-flooring-installation/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/parquet-flooring-installation/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-flooring-installation/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/parquet-repair-restoration",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-repair-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/parquet-repair-restoration/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/parquet-repair-restoration/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/skirting-installation-repair",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/skirting-installation-repair/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/skirting-installation-repair/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/skirting-installation-repair/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/staircase-sanding-varnishing",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/staircase-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/parquet-flooring/staircase-sanding-varnishing/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/parquet-flooring/staircase-sanding-varnishing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/timber-wood-repair",
+      "destination": "https://www.prosurfaceworks.com/services/timber-wood-repair/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/timber-wood-repair/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/timber-wood-repair/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/vinyl-flooring",
+      "destination": "https://www.prosurfaceworks.com/services/vinyl-flooring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/vinyl-flooring/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/vinyl-flooring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/vinyl-flooring/vinyl-flooring-installation",
+      "destination": "https://www.prosurfaceworks.com/services/vinyl-flooring/vinyl-flooring-installation/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/vinyl-flooring/vinyl-flooring-installation/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/vinyl-flooring/vinyl-flooring-installation/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/wood-decking",
+      "destination": "https://www.prosurfaceworks.com/services/wood-decking/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/wood-decking/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/wood-decking/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/wood-decking/wood-deck-installation-repair",
+      "destination": "https://www.prosurfaceworks.com/services/wood-decking/wood-deck-installation-repair/",
+      "statusCode": 301
+    },
+    {
+      "source": "/services/wood-decking/wood-deck-installation-repair/index.html",
+      "destination": "https://www.prosurfaceworks.com/services/wood-decking/wood-deck-installation-repair/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "prosurfaceworks.com"
+        }
+      ],
+      "destination": "https://www.prosurfaceworks.com/:path",
+      "statusCode": 301
+    }
+  ]
+}

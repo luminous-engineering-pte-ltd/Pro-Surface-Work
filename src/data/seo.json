@@ -1,0 +1,8 @@
+{
+  "site": "https://www.prosurfaceworks.com",
+  "lastModified": "2026-10-26",
+  "noindexPaths": [
+    "/blog/",
+    "/projects/"
+  ]
+}

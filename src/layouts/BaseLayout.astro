@@ -4,26 +4,41 @@ import Footer from '@/components/Footer.astro';
 import WhatsAppButton from '@/components/WhatsAppButton.astro';
 import '@/styles/global.css';
 import { company } from '@/data/services';
+import seo from '@/data/seo.json';
 
 type Props = {
   title: string;
   description: string;
   image?: string;
+  imageAlt?: string;
   canonical?: string;
   schema?: unknown | unknown[];
 };
 
-const { title, description, image = 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1400&q=80', canonical, schema } = Astro.props;
+const { title, description, image = '/images/home-banner.jpeg', imageAlt = `${title} — ${company.name}`, canonical, schema } = Astro.props;
 const pageTitle = title.includes(company.name) ? title : `${title} | ${company.name}`;
-const url = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+const pathname = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\/?$/, '/');
+const url = new URL(canonical ?? pathname, Astro.site).href;
+const socialImage = new URL(image, Astro.site).href;
+const noindex = seo.noindexPaths.includes(pathname);
 const baseSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': new URL('/#business', Astro.site).href,
   name: company.name,
-  url: `https://${company.domain}`,
+  url: new URL('/', Astro.site).href,
+  image: new URL('/images/about/pro-surface-works-van.png', Astro.site).href,
+  logo: new URL('/update-Pro.png', Astro.site).href,
+  sameAs: company.socialProfiles,
   email: company.email,
   telephone: company.phone,
-  address: { '@type': 'PostalAddress', addressCountry: 'SG', addressLocality: company.location },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: company.streetAddress,
+    postalCode: company.postalCode,
+    addressCountry: 'SG',
+    addressLocality: company.location
+  },
   areaServed: company.location,
   priceRange: '$$'
 };
@@ -43,6 +58,7 @@ const schemaItems = [baseSchema, ...(Array.isArray(schema) ? schema : schema ? [
     <meta name="google-site-verification" content="5pdvZTQLGPZbjaQ1FirtmW729GufOktephexgE2kNYU" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={url} />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -54,7 +70,15 @@ const schemaItems = [baseSchema, ...(Array.isArray(schema) ? schema : schema ? [
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={url} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:site_name" content={company.name} />
+    <meta property="og:locale" content="en_SG" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
